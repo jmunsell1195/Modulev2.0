@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+
+{% block head %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static "utility.css"%}">
+<link rel="stylesheet" href="{% static "style.css"%}"> 
+<title>Welcome!</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+{% endblock %}
+
+{% load static %}
+{% block body %}
+<!-- Navbar -->
+<div class="navbar-container">
+    <div class="navbar-logo">
+      <span>
+        <img id="logo" height="48" width="48" alt="" src="{% static "navbarico.svg" %}"></img>
+        Energy</span>Module
+    </div>
+    <div class="tabs">
+        <nav>
+          <ul>
+              <li><a class="active" href="#">Login</a></li>
+              <li><a class="inactive" href="#">Warm-Up</a></li>
+              <li><a class="inactive" href="#">Instruction</a></li>
+              <li><a class="inactive" href="#">Final</a></li>       
+          </ul>
+        </nav>
+    </div>
+</div>
+
+<div class="choose-module">
+    <div id="statement">
+        <h1>Please Choose a Module</h1>
+    </div>
+    <div id="force-module">
+        <a href="{% url 'force' %}"><strong>Force</strong></a>
+    </div>
+    <div id="energy-module">
+        <a href="{% url 'energy' %}"><strong>Energy</strong></a>
+    </div>
+    <div id="shm-module">
+        <a href="{% url 'shm' %}"><strong>Simple Harmonic Motion</strong></a>
+    </div>
+    <div id="shm-module">
+        <a href="{% url 'shm' %}">Admin Panel</a>
+    </div>
+</div>
+
+
+
+{% endblock %}
