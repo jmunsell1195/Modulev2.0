@@ -97,7 +97,7 @@
 }
 
 .alternate3{
-    background-color: #4ADBF7;
+    background-color: 
 }
 
 .alternate2{
@@ -105,20 +105,47 @@
 }
 
 .alternate1{
-    background-color: #5278EB;
+    background-color: #c2c2c2;
 }
 
 .primary{
-    background-color: #8242F5;
+    background-color: #8c979d;
 }
 
 .secondary{
-    background-color: #463FD4;
+    background-color: #9da5aa;
 }
 
 #focused-button, #distracted-button {
     width: 150px;
 }
+
+.custbut{
+    font-size: 1.2rem;
+    background-color: #fff;
+    padding: 0;
+    width: 5vw;
+    height: 5vh;
+    text-align: center;
+    line-height: 0px;
+    border: none;
+    -moz-box-shadow: 0px 0px 2px #fff;
+    -webkit-box-shadow: 0px 0px 2px #fff;
+    box-shadow: 0px 0px 2px #fff;
+  }
+
+  .custbut:hover{
+    background-color: #6359FB
+  }
+
+  .custbut:active{
+    transform: scale(0.9);
+    background-color: #6c63ff;
+  }
+  .custbut:focus{
+    background-color: #6c63ff;
+  }
+
 
 /* bottom bar styles */
 #bottombar {
@@ -156,3 +183,5 @@
 }
 
 /* content-area */
+
+

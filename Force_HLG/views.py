@@ -4,3 +4,6 @@ from django.http import HttpResponse
 # Create your views here.
 def info(request):
     return render(request,'Force_HLG/details.html')
+
+def pretest(request):
+    return render(request,'Force_HLG/pretest.html')

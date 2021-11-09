@@ -47,15 +47,15 @@
 <!-- Login Container -->
 <div id="login-container">
   <div class="form-wrap login">
-    <h3>Welcome!</h3>
+    <h3><strong>Welcome!</strong></h3>
     <form id="form" method="post">
       {% csrf_token %}
       <span><input id="id_username" name="username" type="text" placeholder="School Email Address">@purdue.edu</span><br/>
       <input id="id_password" name="password" type="password" placeholder="Purdue ID (Omitting Leading 0s and Dashes)">
     </form> 
     <div class="button-box">
-      <button  class="btn alternate1" onclick="help();">Help</button>
-      <button  form="form" type="submit" class="btn primary">Submit</button>
+      <button  class="btn custbut" onclick="help();">Help</button>
+      <button  form="form" type="submit" class="btn custbut">Submit</button>
     </div>
   </div>
   <div class="login-img">
@@ -82,7 +82,7 @@
       <p><h5>{{message}}</h5></p>
     </div>
   {% endfor %}
-  <button class="btn alternate1" onclick="help();">Help</button>
+  <button class="btn " onclick="help();">Help</button>
 </div>
 {% endif %} 
 

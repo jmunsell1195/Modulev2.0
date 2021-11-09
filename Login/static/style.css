@@ -24,11 +24,15 @@ div#login-container{
 .form-wrap.login {
     padding: 1vw 1vw;
     border-radius: 20px;
-    background-color: whitesmoke;
+    background-color: #8c979d;
+    -moz-box-shadow: 0px 0px 10px #8c979d;
+    -webkit-box-shadow: 0px 0px 10px #8c979d;
+    box-shadow: 0px 0px 10px #8c989d;
 }
 
 .form-wrap.login h3 {
     text-align: center;
+    font-size: 2rem;
 }
 
 #login-container img {
@@ -165,11 +169,11 @@ div#login-container{
       margin: auto;
       top: 50%;
       height: 85%;
+      
   }
     
   .choose-module > div {
       width: 60%;
-      background-color: whitesmoke;
       align-items: center;
       vertical-align: middle;
       padding: 4.5vh;
@@ -180,7 +184,6 @@ div#login-container{
 
   .choose-module button {
     width: 60%;
-    background-color: whitesmoke;
     align-items: center;
     vertical-align: middle;
     padding: 4.5vh;
@@ -213,42 +216,69 @@ div#login-container{
     top: 50%;
   }
 
-.hdr{grid-area: hdr;
-       text-align: center;
-       padding: 0 20vw;}
+.hdr{grid-area: hdr;}
 
 .lft{grid-area: lft;}
 
-.ctr{grid-area: ctr;
-        display: flex;
-        flex-direction: column;
-        padding: 0 30vw;  
-}
+.ctr{grid-area: ctr;}
+
 .rght{grid-area: rght;}
 
-.ftr{grid-area: ftr;
-        text-align: center;}
+.ftr{grid-area: ftr;}
+
+.wrapper.hdr {
+    text-align: center;
+    padding: 0 10vw;}
+
+.wrapper.ctr{
+    display: flex;
+    flex-direction: column;
+    padding: 0 20vw;}
+
+.wrapper.ftr {text-align: center;}
 
 .wrapper table {
-    width: 100%;
-}
+    width: 100%;}
 
-
-.wrapper table tr td {
+.wrapper table tbody tr td {
     font-size: 1.2rem;
-    padding-bottom: 1vh;
+    padding-bottom:0;
     left: 50%;
-
-}
+    margin: 1vh 0;}
 
 .wrapper table img {
     width: 25px;
-    margin: 25px;
-}
+    margin: 25px;}
 
-#ftr {
+#ftr2 {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
 }
 
+#ftr2 button {
+    margin: 0 10vw;
+}
 
+/*######################
+  ######################
+  ##    Assessment    ##
+  ######################
+  ######################*/
+
+.quiz-question {
+    display: grid;
+    grid-template-areas: 
+    "hdr hdr"
+    "lft rght"
+    "ftr ftr";
+}
+
+#pre-statement {
+    text-align: center;
+    justify-content: center;
+}
+
+#pre-statement p {
+    padding: 0 30vw;
+    font-size: 1.5rem;
+}
