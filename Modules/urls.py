@@ -3,9 +3,10 @@ from django.urls import path,include
 from . import views
 
 urlpatterns = [
+    path('',views.landing),
     path('admin/', admin.site.urls),
     path('main/',views.Main,name='main'),
-    path('Login/',include('Login.urls'),name="login"),
+    path('Auth/',include('Login.urls')),
     # Module_Classify is a function that evenly participates participants to different conditions HLG/LLG
     # for each module (Force, Energy, Simple Harmonic Oscillator (SHO))
     path('Energy/',views.Energy_Classify,name="energy"),

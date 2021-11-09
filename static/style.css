@@ -1,7 +1,14 @@
-/* Login Page */
+/*################
+  ################
+  ## Login Page ##
+  ################
+  ################*/
 
+/*#######
+   Login
+   Form 
+#######*/
 
-/* Login */
 #login-container {
     display: flex;
     justify-content: center;
@@ -58,7 +65,12 @@ div#login-container{
     width: 100px;
 }
 
- /* Login Form Errors */
+ /*######## 
+    Login 
+    Form 
+    Errors 
+ #########*/
+
  .error {
      display: flex;
      flex-direction: column;
@@ -69,6 +81,12 @@ div#login-container{
  .error .flex-item h5 {
      color: red;
  }
+
+ /*############
+      User
+      Help
+    Section
+###############*/
 
  #help{
      width: 100%;
@@ -108,3 +126,77 @@ div#login-container{
     font-size: 2rem;
 }
 
+/*#################
+  #################
+  ## Logout Page ##
+  #################
+  #################*/
+
+.logged-out {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 7.5vw 5vw;
+    margin: 7.5vw 5vw;
+}
+
+.logged-out > div {
+    text-align: center;
+}
+
+/*######################
+  ######################
+  ## Module Selection ##
+  ##    (Main) Page   ##
+  ######################
+  ######################*/
+
+  .choose-module {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0.5vw;
+      margin: 0.5vw;
+      height: 80%;
+  }
+    
+  .choose-module > div {
+      width: 60%;
+      background-color: whitesmoke;
+      align-items: center;
+      vertical-align: middle;
+      padding: 1.5vw;
+      margin: 1vw;
+      text-align: center;
+      border-radius: 20px;
+  }
+
+.choose-module > div a {
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+
+/*######################
+  ######################
+  ##     Info Page    ##
+  ######################
+  ######################*/
+
+  .wrapper{
+    display: grid;
+    grid-template-areas: 
+    'hdr hdr hdr hdr'
+    'blt cont cont cont'
+    'blt cont cont cont'
+    'blt cont cont cont'
+    'blt cont cont cont'
+    'blt cont cont cont'
+    'ftr ftr ftr ftr';
+    align-items: center;
+    justify-content: center;
+  }
+
+  

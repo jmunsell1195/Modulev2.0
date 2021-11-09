@@ -6,6 +6,7 @@
 
 <link rel="stylesheet" href="{% static "utility.css"%}">
 <link rel="stylesheet" href="{% static "style.css"%}"> 
+<script src="{% static "main_page.js"%}"></script>
 <title>Welcome!</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -35,18 +36,12 @@
 <div class="choose-module">
     <div id="statement">
         <h1>Please Choose a Module</h1>
-    </div>
-    <div id="force-module">
-        <a href="{% url 'force' %}"><strong>Force</strong></a>
-    </div>
-    <div id="energy-module">
-        <a href="{% url 'energy' %}"><strong>Energy</strong></a>
-    </div>
-    <div id="shm-module">
-        <a href="{% url 'shm' %}"><strong>Simple Harmonic Motion</strong></a>
-    </div>
-    <div id="shm-module">
-        <a href="{% url 'shm' %}">Admin Panel</a>
+        <button id="force-module" onclick="force_page();"><strong>Force</strong></button>
+        <button id="energy-module" onclick="energy_page();"><strong>Energy</strong></button>
+
+        <button id="shm-module" onclick="shm_replace();"><strong>Simple Harmonic Motion</strong></button>
+
+        <button id="shm-module" href="{% url 'shm' %}">Admin Panel</button>
     </div>
 </div>
 

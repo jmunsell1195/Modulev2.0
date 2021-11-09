@@ -29,9 +29,9 @@ def Energy_Classify(request):
 
 def Forces_Classify(request):
     if even_dist(cnt) == 1:
-        return redirect('Forces_HLG/')
+        return redirect('Force_HLG/')
     else:
-        return redirect('Forces_LLG/')
+        return redirect('Force_LLG/')
 
 def SHO_Classify(request):
     if even_dist(cnt) == 1:
@@ -41,3 +41,6 @@ def SHO_Classify(request):
 
 def Main(request):
     return render(request,'Modules/main.html')
+
+def landing(request):
+    return redirect('Auth/login/')

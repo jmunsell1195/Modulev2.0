@@ -13,6 +13,6 @@ const back = () => {
     catch {pass};
   }
     const login = () => {
-      window.location.replace('/Login/')
+      window.location.replace('/Auth/login/')
     }
 

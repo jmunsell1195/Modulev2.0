@@ -90,6 +90,8 @@ div#login-container{
 
  #help{
      width: 100%;
+     height: 85%;
+     top: 50%;
      display: none;
      grid-template-areas: 
      "hdr hdr hdr"
@@ -137,8 +139,7 @@ div#login-container{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 7.5vw 5vw;
-    margin: 7.5vw 5vw;
+    height: 85%;
 }
 
 .logged-out > div {
@@ -152,14 +153,18 @@ div#login-container{
   ######################
   ######################*/
 
+  .contr{
+      height: 85vh;
+  }
   .choose-module {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 0.5vw;
-      margin: 0.5vw;
-      height: 80%;
+      padding: 1vh 10vw;
+      margin: auto;
+      top: 50%;
+      height: 85%;
   }
     
   .choose-module > div {
@@ -167,13 +172,83 @@ div#login-container{
       background-color: whitesmoke;
       align-items: center;
       vertical-align: middle;
-      padding: 1.5vw;
-      margin: 1vw;
+      padding: 4.5vh;
+      margin: auto;
       text-align: center;
       border-radius: 20px;
   }
+
+  .choose-module button {
+    width: 60%;
+    background-color: whitesmoke;
+    align-items: center;
+    vertical-align: middle;
+    padding: 4.5vh;
+    margin: 1vh;
+    text-align: center;
+    border-radius: 20px;
+}
 
 .choose-module > div a {
     text-decoration: none;
     font-size: 1.5rem;
 }
+
+
+/*######################
+  ######################
+  ##     Info Page    ##
+  ######################
+  ######################*/
+
+  .wrapper{
+    display: grid;
+    grid-template-areas: 
+    'hdr hdr hdr hdr hdr hdr'
+    'lft ctr ctr ctr ctr rght'
+    'ftr ftr ftr ftr ftr ftr';
+    align-items: center;
+    justify-content: center;
+    height: 85%;
+    top: 50%;
+  }
+
+.hdr{grid-area: hdr;
+       text-align: center;
+       padding: 0 20vw;}
+
+.lft{grid-area: lft;}
+
+.ctr{grid-area: ctr;
+        display: flex;
+        flex-direction: column;
+        padding: 0 30vw;  
+}
+.rght{grid-area: rght;}
+
+.ftr{grid-area: ftr;
+        text-align: center;}
+
+.wrapper table {
+    width: 100%;
+}
+
+
+.wrapper table tr td {
+    font-size: 1.2rem;
+    padding-bottom: 1vh;
+    left: 50%;
+
+}
+
+.wrapper table img {
+    width: 25px;
+    margin: 25px;
+}
+
+#ftr {
+    display: flex;
+    justify-content: space-around;
+}
+
+
