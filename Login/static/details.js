@@ -14,6 +14,10 @@ const show2 = () => {
     $("#main2").css("display","grid")
 };
 
+const nextPage = () => {
+    window.location.replace('warmup/')
+}
+
 $(document).ready(function(){
     
     hide2();

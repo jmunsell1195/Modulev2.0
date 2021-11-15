@@ -4,6 +4,8 @@
   ################
   ################*/
 
+
+
 /*#######
    Login
    Form 
@@ -204,81 +206,114 @@ div#login-container{
   ######################
   ######################*/
 
-  .wrapper{
+
+  /* Simple 3 row container with heading single content area and footer */
+ .wrapper{
     display: grid;
-    grid-template-areas: 
-    'hdr hdr hdr hdr hdr hdr'
-    'lft ctr ctr ctr ctr rght'
-    'ftr ftr ftr ftr ftr ftr';
+    grid-template-rows: 1fr 2fr 1fr;
+    height: 75vh;
+    margin: 5vh 5vw;
     align-items: center;
     justify-content: center;
-    height: 85%;
-    top: 50%;
-  }
+    background-color: whitesmoke;
+    border-radius: 30px;
+ }
 
-.hdr{grid-area: hdr;}
+ .wrapper input {
+     width: 3rem;
+ }
 
-.lft{grid-area: lft;}
-
-.ctr{grid-area: ctr;}
-
-.rght{grid-area: rght;}
-
-.ftr{grid-area: ftr;}
-
-.wrapper.hdr {
+.info.wrapper .hdr{
+    padding: 0 15vw;
     text-align: center;
-    padding: 0 10vw;}
+}
 
-.wrapper.ctr{
-    display: flex;
-    flex-direction: column;
-    padding: 0 20vw;}
+ .ctr{
+     display: flex;
+     justify-content: space-evenly;
+     align-items: center;
+ }
 
-.wrapper.ftr {text-align: center;}
+form{
+    font-size: 1.3rem;
+}
 
-.wrapper table {
-    width: 100%;}
+.ctr.quiz img {
+    width: 20vw;
+}
 
-.wrapper table tbody tr td {
-    font-size: 1.2rem;
-    padding-bottom:0;
-    left: 50%;
-    margin: 1vh 0;}
-
-.wrapper table img {
-    width: 25px;
-    margin: 25px;}
-
-#ftr2 {
+ .ftr{
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
-#ftr2 button {
-    margin: 0 10vw;
-}
+ .wrapper table img {
+     width: 1.5rem;
+     margin: 1rem 2rem;
+ }
 
-/*######################
+ .info.wrapper table {
+     font-size: 1.2rem;
+ }
+
+ .info.wrapper .ctr{
+     padding: 0 20vw;;
+ }
+
+ #ftr2{
+     justify-content: space-around;
+     padding: 0 15vw;
+ }
+
+ /*######################
   ######################
-  ##    Assessment    ##
+  ##     Pre-Test     ##
   ######################
   ######################*/
 
-.quiz-question {
+  .wrapper img {
+      width: 17vw;
+  }
+
+#q7-container.wrapper img{
+    height: 40vh;
+} 
+
+  .wrapper.pretest .hdr{
+      padding: 0 5vw;
+      margin: 5vh 0;
+      text-align: center;
+  } 
+
+  /* form#question4 > div {
+      display: inline;
+      padding-right: 2vw;
+  } */
+
+.ctr form .ctr-container {
     display: grid;
-    grid-template-areas: 
-    "hdr hdr"
-    "lft rght"
-    "ftr ftr";
+    grid-template-columns: repeat(4,auto);
+    align-items: center;
+    justify-content: space-between;
+    grid-gap: 1rem 5rem;
+  }
+
+  input {
+      width: 1.2rem;
+      height: 1.2rem;
+  }
+
+  #button-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+#pre-statement .ctr {
+    padding: 0 10vw;
 }
 
-#pre-statement {
-    text-align: center;
-    justify-content: center;
-}
 
-#pre-statement p {
-    padding: 0 30vw;
-    font-size: 1.5rem;
-}
+
+
