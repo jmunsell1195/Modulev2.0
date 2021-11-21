@@ -1,4 +1,3 @@
-
 const back = () => {
     $("#login-container").css({"display":"flex","padding":"5vw","margin":"5vw","height":"30vw"});
     $("#help").css("display","none");
@@ -15,4 +14,6 @@ const back = () => {
     const login = () => {
       window.location.replace('/Auth/login/')
     }
+
+navStatus('Module',1);
 

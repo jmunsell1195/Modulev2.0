@@ -3,36 +3,42 @@
 
 {% block head %}
 {% load static %}
-
 <link rel="stylesheet" href="{% static "utility.css"%}">
 <link rel="stylesheet" href="{% static "style.css"%}"> 
 <script src="{% static "main_page.js"%}"></script>
-<title>Welcome!</title>
+<title>Force Module | Warmup</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 {% endblock %}
 
 {% load static %}
 {% block body %}
-<!-- Navbar -->
-<div class="navbar-container">
-    <div class="navbar-logo">
-      <span>
-        <img id="logo" height="48" width="48" alt="" src="{% static "navbarico.svg" %}"></img>
-        Energy</span>Module
-    </div>
-    <div class="tabs">
-        <nav>
-          <ul>
-              <li><a class="active" href="#">Login</a></li>
-              <li><a class="inactive" href="#">Warm-Up</a></li>
-              <li><a class="inactive" href="#">Instruction</a></li>
-              <li><a class="inactive" href="#">Final</a></li>       
-          </ul>
-        </nav>
-    </div>
-</div>
-
+            <!-- Navbar -->
+            <div id="navbar" class="navbar-container">
+                <div class="navbar-logo">
+                    <img id="logo" height="48" width="48" alt="" src="{% static "navbarico.svg" %}"></img>
+                    Force Module
+                 </div>
+                <div class="tabs">
+                    <nav>
+                      <ul>
+                          <li><a id="Login" class="inactive" href="#">Login</a></li>
+                          <li><a id="Warm-Up" class="active" href="#">Warm-Up</a></li>
+                          <li><a id="Instruction" class="inactive" href="#">Instruction</a></li>
+                          <li><a id="Final" class="inactive" href="#">Final</a></li>        
+                      </ul>
+                    </nav>
+                </div>
+                <!-- <div class="reporting">
+                  <div class="statement">
+                    <h4>I am feeling</h4>
+                  </div>
+                  <div id="mental-state-buttons">
+                    <button id="distracted-button" class="btn alternate1">Distracted</button>
+                    <button id="focused-button" class="btn primary">Focused</button>
+                  </div>
+                </div> -->
+              </div>
 <div id="pre-statement" class="wrapper pretest">
     <div class="hdr">
         <h1>In the present section</h1>
@@ -41,7 +47,7 @@
         <h3>We will answer a few questions just to get warmed up and get a background. This is the place to show us what you already know. Relax and do your best!</h3>
     </div>
     <div class="ftr">
-        <button class="btn primary">Next</button>
+        <button id="pre-btn" class="btn primary">Next</button>
     </div>
 </div>
 
@@ -53,18 +59,17 @@
     <div class="ctr quiz">
         <div><img class="img-primary" src="{% static "pref1.svg"%}"/></div>
         <div>               
-            <form action="submit" method="POST" id="question1">
+            <form method="POST" id="question1">
                 <p>Please select a choice below</p>
-                <div>
-                    <input type="radio" id="q1c1" name="q1" value="1">
-                    <label for="q1c1">\(A_x = 9.7 \) &nbsp;&nbsp;&nbsp; \(A_y = 9.7 \)</label><br/>
-                    <input type="radio" id="q1c2" name="q1" value="2">
-                    <label for="q1c2">\(A_x = 2.6 \) &nbsp;&nbsp;&nbsp; \(A_y = 9.7 \)</label><br/>
-                    <input type="radio" id="q1c3" name="q1" value="3">
-                    <label for="q1c3">\(A_x = 9.7 \) &nbsp;&nbsp;&nbsp; \(A_y = 2.6 \)</label><br/>
-                    <input type="radio" id="q1c4" name="q1" value="4">
-                    <label for="q1c4">None of the above</label><br/>
-                </div>
+                {{forms.form1.choice.0}}
+                <label for="id_choice_0">\(A_x = 9.7 \) &nbsp;&nbsp;&nbsp; \(A_y = 9.7 \)</label><br/>
+                {{forms.form1.choice.1}}
+                <label for="id_choice_1">\(A_x = 2.6 \) &nbsp;&nbsp;&nbsp; \(A_y = 9.7 \)</label><br/>
+                {{forms.form1.choice.2}}
+                <label for="id_choice_2">\(A_x = 9.7 \) &nbsp;&nbsp;&nbsp; \(A_y = 2.6 \)</label><br/>
+                {{forms.form1.choice.3}}
+                <label for="id_choice_3">None of the above</label><br/>
+                {% csrf_token %}
             </form>
         </div>
     </div>
@@ -83,17 +88,18 @@
     <div class="ctr quiz">
         <div><img src="{% static "pref2.svg"%}"/></div>
         <div>               
-            <form action="submit" method="POST" id="question2">
+            <form method="POST" id="question2">
                 <p>Please select a choice below</p>
                 <div>
-                    <input type="radio" id="q2c1" name="q2" value="1">
+                    {{forms.form2.choice.0}}
                     <label for="q2c1">\(A_x = 13 \) &nbsp;&nbsp;&nbsp;&nbsp; \(A_y = 13 \)</label><br/>
-                    <input type="radio" id="q2c2" name="q2" value="2">
+                    {{forms.form2.choice.1}}
                     <label for="q2c2">\(A_x = 7.5 \) &nbsp;&nbsp;&nbsp; \(A_y = 13 \)</label><br/>
-                    <input type="radio" id="q2c3" name="q2" value="3">
+                    {{forms.form2.choice.2}}
                     <label for="q2c3">\(A_x = 13 \) &nbsp;&nbsp;&nbsp;&nbsp; \(A_y = 7.5 \)</label><br/>
-                    <input type="radio" id="q2c4" name="q2" value="4">
+                    {{forms.form2.choice.3}}
                     <label for="q2c4">None of the above</label><br/>
+                    {% csrf_token %}
                 </div>
             </form>
         </div>
@@ -113,17 +119,18 @@
     <div class="ctr quiz">
         <div><img src="{% static "pref3.svg"%}"/></div>
         <div>               
-            <form action="submit" method="POST" id="question3">
+            <form method="POST" id="question3">
                 <p>Please select a choice below</p>
                 <div>
-                    <input type="radio" id="q3c1" name="q3" value="1">
+                    {{forms.form3.choice.0}}
                     <label for="q3c1">\(A_x = +5.0 \) &nbsp;&nbsp;&nbsp;&nbsp; \(A_y = -8.7 \)</label><br/>
-                    <input type="radio" id="q3c2" name="q3" value="2">
+                    {{forms.form3.choice.1}}
                     <label for="q3c2">\(A_x = -8.7 \) &nbsp;&nbsp;&nbsp;&nbsp; \(A_y =+5.0 \)</label><br/>
-                    <input type="radio" id="q3c3" name="q3" value="3">
+                    {{forms.form3.choice.2}}
                     <label for="q3c3">\(A_x = -8.7 \) &nbsp;&nbsp;&nbsp;&nbsp; \(A_y = -5.0 \)</label><br/>
-                    <input type="radio" id="q3c4" name="q3" value="4">
+                    {{forms.form3.choice.3}}
                     <label for="q3c4">None of the above</label><br/>
+                    {% csrf_token %}
                 </div>
             </form>
         </div>
@@ -138,21 +145,21 @@
 <!-- Question 4 -->
 <div class="wrapper pretest" id="q4-container">
     <div class="hdr">
-        <h3>A \( 1 kg \) block is pushed down and forward (in the direction of the block's motion) at an angle \( \theta \) with 
+        <h5>A \( 1 kg \) block is pushed down and forward (in the direction of the block's motion) at an angle \( \theta \) with 
             the floor. Assuming that the floor has some roughness such that there is frictional force between the block and floor, 
-            which is the correct force diagram?</h3>
+            which is the correct force diagram?</h5>
     </div> 
     <div class="ctr">         
-            <form action="submit" method="POST" id="question4">
+            <form method="POST" id="question4">
                 <div class="ctr-container">
-                    <div><input type="radio" id="q4c1" name="q4" value="1"></div>
-                    <div><input type="radio" id="q4c2" name="q4" value="2"></div>
-                    <div><input type="radio" id="q4c2" name="q4" value="3"></div>    
-                    <div><input type="radio" id="q4c2" name="q4" value="4"></div>
-                    <div><label for="q4c1"><img src="{% static "pre4f1.svg"%}"></label></div>
-                    <div><label for="q4c2"><img src="{% static "pre4f2.svg"%}"></label></div>
-                    <div><label for="q4c3"><img src="{% static "pre4f3.svg"%}"></label></div>
-                    <div><label for="q4c4"><img src="{% static "pre4f4.svg"%}"></label></div> 
+                    <div>{{forms.form4.choice.0}}</div>
+                    <div>{{forms.form4.choice.1}}</div>
+                    <div>{{forms.form4.choice.2}}</div>    
+                    <div>{{forms.form4.choice.3}}</div>
+                    <div><img src="{% static "pre4f1.svg"%}"></div>
+                    <div><img src="{% static "pre4f2.svg"%}"></div>
+                    <div><img src="{% static "pre4f3.svg"%}"></div>
+                    <div><img src="{% static "pre4f4.svg"%}"></div> 
                 </div>
             </form>
     </div>
@@ -167,23 +174,24 @@
 <!-- Question 5 -->
 <div class="wrapper pretest" id="q5-container">
     <div class="hdr">
-        <h3> The forces acting on a box are shown in the free body diagram below. Given the freebody diagram, which of the following
-             choices correctly give the net force acting on the box. Take to the right to be +x and up to be +y</h3>
+        <h5> The forces acting on a box are shown in the free body diagram below. Given the freebody diagram, which of the following
+             choices correctly give the net force acting on the box. Take to the right to be +x and up to be +y</h5>
     </div> 
     <div class="ctr quiz">
         <div><img src="{% static "pref5.svg"%}"/></div>
         <div>               
-            <form action="submit" method="POST" id="question3">
+            <form method="POST" id="question5">
                 <p>Please select a choice below</p>
                 <div>
-                    <input type="radio" id="q5c1" name="q5" value="1">
+                    {{forms.form5.choice.0}}
                     <label for="q5c1">\(F_{net_x} = F-F_{f_k} \) &nbsp;&nbsp;&nbsp;&nbsp; \(F_{net_y} = F_{N} - F_{g} \)</label><br/>
-                    <input type="radio" id="q5c2" name="q5" value="2">
+                    {{forms.form5.choice.1}}
                     <label for="q5c1">\(F_{net_x} = F-F_{f_k} \) &nbsp;&nbsp;&nbsp;&nbsp; \(F_{net_y} = F_{N} - F_{g} \)</label><br/>
-                    <input type="radio" id="q5c3" name="q5" value="3">
+                    {{forms.form5.choice.2}}
                     <label for="q5c3">\(F_{net_x} = F + F_{f_k} \) &nbsp;&nbsp;&nbsp;&nbsp; \(F_{net_y} = F_g + F_{N}\)</label><br/>
-                    <input type="radio" id="q5c4" name="q5" value="4">
+                    {{forms.form5.choice.3}}
                     <label for="q5c4">None of the above</label><br/>
+                    {% csrf_token %}
                 </div>
             </form>
         </div>
@@ -198,20 +206,20 @@
 <!-- Question 6 -->
 <div class="wrapper pretest" id="q6-container">
     <div class="hdr">
-        <h2>If the components of the net force are \(F_{net_x} = F-F_{f_k} \) and \(F_{net_y} = F_{N} - F_{g} \) ,
-             which is the correct force diagram?</h2>
+        <h5>If the components of the net force are \(F_{net_x} = F-F_{f_k} \) and \(F_{net_y} = F_{N} - F_{g} \) ,
+             which is the correct force diagram?</h5>
     </div> 
     <div class="ctr">         
-            <form action="submit" method="POST" id="question6">
+            <form method="POST" id="question6">
                 <div class="ctr-container">
-                    <div><input type="radio" id="q6c1" name="q6" value="1"></div>
-                    <div><input type="radio" id="q6c2" name="q6" value="2"></div>
-                    <div><input type="radio" id="q6c2" name="q6" value="3"></div>    
-                    <div><input type="radio" id="q6c2" name="q6" value="4"></div>
-                    <div><label for="q6c1"><img src="{% static "pref6f1.svg"%}"></label></div>
-                    <div><label for="q6c2"><img src="{% static "pref6f2.svg"%}"></label></div>
-                    <div><label for="q6c3"><img src="{% static "pref6f3.svg"%}"></label></div>
-                    <div><label for="q6c4"><img src="{% static "pref6f4.svg"%}"></label></div> 
+                    <div>{{forms.form6.choice.0}}</div>
+                    <div>{{forms.form6.choice.1}}</div>
+                    <div>{{forms.form6.choice.2}}</div>    
+                    <div>{{forms.form6.choice.3}}</div>
+                    <div><img src="{% static "pref6f1.svg"%}"></div>
+                    <div><img src="{% static "pref6f2.svg"%}"></div>
+                    <div><img src="{% static "pref6f3.svg"%}"></div>
+                    <div><img src="{% static "pref6f4.svg"%}"></div> 
                 </div>
             </form>
     </div>
@@ -231,16 +239,16 @@
     <div class="ctr quiz">
         <div><img src="{% static "pref7.svg"%}"/></div>
         <div>               
-            <form action="submit" method="POST" id="question7">
+            <form method="POST" id="question7">
                 <p>Please select a choice below</p>
                 <div>
-                    <input type="radio" id="q7c1" name="q7" value="1">
+                    {{forms.form7.choice.0}}
                     <label for="q7c1"> Upward &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \(|\vec{a}| = 2.7 m/s^2\)</label><br/>
-                    <input type="radio" id="q7c2" name="q7" value="2">
+                    {{forms.form7.choice.1}}
                     <label for="q7c2"> Downward &nbsp;&nbsp; \(|\vec{a}| = 2.7 m/s^2 \)</label><br/>
-                    <input type="radio" id="q7c3" name="q7" value="3">
+                    {{forms.form7.choice.2}}
                     <label for="q7c3"> Upward &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  \(|\vec{a}| = 5.4 m/s^2\)</label><br/>
-                    <input type="radio" id="q7c4" name="q7" value="4">
+                    {{forms.form7.choice.3}}
                     <label for="q7c4">None of the above</label><br/>
                 </div>
             </form>
@@ -260,17 +268,18 @@
     </div> 
     <div class="ctr quiz">
         <div>               
-            <form action="submit" method="POST" id="question8">
+            <form method="POST" id="question8">
                 <p>Please select a choice below</p>
                 <div>
-                    <input type="radio" id="q8c1" name="q8" value="1">
+                    {{forms.form8.choice.0}}
                     <label for="q8c1">\(|\vec{a}| = 1.3 m/s^2 \)</label><br/>
-                    <input type="radio" id="q8c2" name="q8" value="2">
+                    {{forms.form8.choice.1}}
                     <label for="q8c1">\(|\vec{a}|=2.7 m/s^2\)</label><br/>
-                    <input type="radio" id="q8c3" name="q8" value="3">
+                    {{forms.form8.choice.2}}
                     <label for="q8c3">\(|\vec{a}| = 3.6 m/s^2\)</label><br/>
-                    <input type="radio" id="q8c4" name="q8" value="4">
+                    {{forms.form8.choice.3}}
                     <label for="q8c4">None of the above</label><br/>
+                    {% csrf_token %}
                 </div>
             </form>
         </div>
@@ -291,16 +300,16 @@
     </div> 
     <div class="ctr quiz">
         <div>               
-            <form action="submit" method="POST" id="question9">
+            <form method="POST" id="question9">
                 <p>Please select a choice below</p>
                 <div>
-                    <input type="radio" id="q9c1" name="q9" value="1">
+                    {{forms.form9.choice.0}}
                     <label for="q9c1">\(d = 51 m \)</label><br/>
-                    <input type="radio" id="q9c2" name="q9" value="2">
+                    {{forms.form9.choice.1}}
                     <label for="q9c1">\( d = 102 m \)</label><br/>
-                    <input type="radio" id="q9c3" name="q9" value="3">
+                    {{forms.form9.choice.2}}
                     <label for="q9c3">\( d = 204 m \)</label><br/>
-                    <input type="radio" id="q9c4" name="q9" value="4">
+                    {{forms.form9.choice.3}}
                     <label for="q9c4">None of the above</label><br/>
                 </div>
             </form>
@@ -320,16 +329,16 @@
     </div> 
     <div class="ctr quiz">
         <div>               
-            <form action="submit" method="POST" id="question10">
+            <form method="POST" id="question10">
                 <p>Please select a choice below</p>
                 <div>
-                    <input type="radio" id="q10c1" name="q10" value="1">
+                    {{forms.form10.choice.0}}
                     <label for="q10c1">\(\mu_{k} = 1.24 \)</label><br/>
-                    <input type="radio" id="q10c2" name="q10" value="2">
+                    {{forms.form10.choice.1}}
                     <label for="q10c1">\( \mu_{k} = 0.83 \)</label><br/>
-                    <input type="radio" id="q10c3" name="q10" value="3">
+                    {{forms.form10.choice.2}}
                     <label for="q10c3">\( \mu_{k} = 0.65 \)</label><br/>
-                    <input type="radio" id="q10c4" name="q10" value="4">
+                    {{forms.form10.choice.3}}
                     <label for="q10c4">None of the above</label><br/>
                 </div>
             </form>
@@ -337,17 +346,207 @@
     </div>
     <div class="ftr">
         <div id="button-box">
-            <button form="question10" class="btn primary" type="submit">Submit</button>
+            <button form="question10" id="btn-form10" class="btn primary" type="submit">Submit</button>
         </div>
     </div>
 </div>
 
+
+
 <script>
-    // document.getElementById("pre-statement").style.display="none";
-    // document.getElementById("q1-container").style.display = "none";
-    // document.getElementById("q2-container").style.display = "none";
-    // document.getElementById("q3-container").style.display = "none";
-    // document.getElementById("q4-container").style.display = "none";
+    let clicks = 0;
+    let start = Date.now();
+
+    document.addEventListener('click',function(){clicks += 1})
+
+    const pre_statement = state => {
+        document.getElementById("navbar").style.opacity = "0.4";
+        document.getElementById("bottombar").style.opacity = "0.4";
+        document.getElementById("pre-statement").style.display = String(state);}
+
+    const ques1 = state => {
+        document.getElementById("q1-container").style.display = String(state);
+        return start = Date.now();
+    }
+
+    const ques2 = state => document.getElementById("q2-container").style.display = String(state);
+
+    const ques3 = state => document.getElementById("q3-container").style.display = String(state);
+
+    const ques4 = state => document.getElementById("q4-container").style.display = String(state);
+
+    const ques5 = state => document.getElementById("q5-container").style.display = String(state);
+
+    const ques6 = state => document.getElementById("q6-container").style.display = String(state);
+
+    const ques7 = state => document.getElementById("q7-container").style.display = String(state);
+
+    const ques8 = state => document.getElementById("q8-container").style.display = String(state);
+
+    const ques9 = state => document.getElementById("q9-container").style.display = String(state);
+
+    const ques10 = state => document.getElementById("q10-container").style.display = String(state);
+
+    ques1('none');
+    ques2('none');
+    ques3('none');
+    ques4('none');
+    ques5('none');
+    ques6('none');
+    ques7('none');
+    ques8('none');
+    ques9('none');
+    ques10('none');
+
+    document.getElementById('pre-btn').addEventListener('click',() => {pre_statement('none');ques1("grid")});
+
+    document.getElementById('bottom')
+    console.log(document.getElementById("question1"));
+
+    $("#question1").submit(function(e){
+        e.preventDefault();
+        const form = $(this);
+        let quiz1time = (Date.now() - start)/1000;
+        let url = form.attr("action");
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        $.ajax({
+            headers: {'X-CSRFToken': csrftoken, 'question': 'q1', 'num_clicks': clicks, 'quiz1time':quiz1time},
+            type:"POST",
+            url: url,
+            data: form.serialize(),
+            complete: function(){ques1("none"); ques2("grid"); console.log(document.getElementById("question1"))}
+            })
+         });
+
+    $("#question2").submit(function(e){
+        e.preventDefault();
+        const form = $(this);
+        let quiz1time = (Date.now() - start)/1000;
+        let url = form.attr("action");
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        $.ajax({
+            headers: {'X-CSRFToken': csrftoken, 'question': 'q2','quiz1time':quiz1time},
+            type:"POST",
+            url: url,
+            data: form.serialize(),
+            complete: function(){ques2("none"); ques3("grid");}
+            })
+         });
+
+    $("#question3").submit(function(e){
+        e.preventDefault();
+        const form = $(this);
+        // let quiz1 = (Date.now() - start)/1000;
+        let url = form.attr("action");
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        $.ajax({
+            headers: {'X-CSRFToken': csrftoken, 'ques': 'q1'},
+            type:"POST",
+            url: url,
+            data: form.serialize(),
+            complete: function(){ques3("none"); ques4("grid");}
+            })
+         });
+    
+    $("#question4").submit(function(e){
+        e.preventDefault();
+        const form = $(this);
+        // let quiz1 = (Date.now() - start)/1000;
+        let url = form.attr("action");
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        $.ajax({
+            headers: {'X-CSRFToken': csrftoken, 'ques': 'q1'},
+            type:"POST",
+            url: url,
+            data: form.serialize(),
+            complete: function(){ques4("none"); ques5("grid");}
+            })
+        });
+
+    $("#question5").submit(function(e){
+        e.preventDefault();
+        const form = $(this);
+        // let quiz1 = (Date.now() - start)/1000;
+        let url = form.attr("action");
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        $.ajax({
+            headers: {'X-CSRFToken': csrftoken, 'ques': 'q1'},
+            type:"POST",
+            url: url,
+            data: form.serialize(),
+            complete: function(){ques5("none"); ques6("grid");}
+            })
+         });
+    $("#question6").submit(function(e){
+        e.preventDefault();
+        const form = $(this);
+        // let quiz1 = (Date.now() - start)/1000;
+        let url = form.attr("action");
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        $.ajax({
+            headers: {'X-CSRFToken': csrftoken, 'ques': 'q1'},
+            type:"POST",
+            url: url,
+            data: form.serialize(),
+            complete: function(){ques6("none"); ques7("grid");}
+            })
+         });
+    $("#question7").submit(function(e){
+        e.preventDefault();
+        const form = $(this);
+        // let quiz1 = (Date.now() - start)/1000;
+        let url = form.attr("action");
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        $.ajax({
+            headers: {'X-CSRFToken': csrftoken, 'ques': 'q1'},
+            type:"POST",
+            url: url,
+            data: form.serialize(),
+            complete: function(){ques7("none"); ques8("grid");}
+            })
+         });
+    $("#question8").submit(function(e){
+        e.preventDefault();
+        const form = $(this);
+        // let quiz1 = (Date.now() - start)/1000;
+        let url = form.attr("action");
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        $.ajax({
+            headers: {'X-CSRFToken': csrftoken, 'ques': 'q1'},
+            type:"POST",
+            url: url,
+            data: form.serialize(),
+            complete: function(){ques8("none"); ques9("grid");}
+            })
+         });
+    $("#question9").submit(function(e){
+        e.preventDefault();
+        const form = $(this);
+        // let quiz1 = (Date.now() - start)/1000;
+        let url = form.attr("action");
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        $.ajax({
+            headers: {'X-CSRFToken': csrftoken, 'ques': 'q1'},
+            type:"POST",
+            url: url,
+            data: form.serialize(),
+            complete: function(){ques9("none"); ques10("grid");}
+            })
+         });
+    $("#question10").submit(function(e){
+        e.preventDefault();
+        const form = $(this);
+        // let quiz1 = (Date.now() - start)/1000;
+        let url = form.attr("action");
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        $.ajax({
+            headers: {'X-CSRFToken': csrftoken, 'ques': 'q1'},
+            type:"POST",
+            url: url,
+            data: form.serialize(),
+            complete: function(){ques10("none"); ques9("grid");}
+            })
+         });
 </script>
 
 

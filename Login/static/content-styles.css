@@ -1,0 +1,105 @@
+
+
+audio {
+    width: 80%
+}
+
+audio::-webkit-media-controls-play-button {
+    border-color: #5278eb;
+}
+
+
+audio::-webkit-media-controls-panel {
+    background-color: gray;
+    opacity: 0.9;
+}
+
+
+
+#therm-box{
+    position: absolute;
+}
+ #thermo {
+    position: absolute;
+    height: 18rem;
+    top: 3rem;
+    left: 29.5rem;
+
+}
+
+#level,#level2,#level3 {
+    position: absolute;
+    width: 2.2rem;
+    left: 31.15rem;
+    top: 13rem;
+}
+
+#grad {
+    position: absolute;
+    height: 8rem;
+    left: 31.8rem;
+    top: 7rem;
+}
+#watch {
+    position: absolute;
+    height: 18rem;
+    left: 28.4rem;
+    opacity: 0
+}
+#sec-hand {
+    position: absolute;
+    left: 32.275rem;
+    top: 9.76rem;
+    height: 4rem;
+    z-index: 5;
+    opacity: 0;
+    transform-origin: center 22.5%;
+}
+
+#map {
+    height: 2%;
+    z-index: 1;
+    position: absolute;
+    left: 20rem;
+}
+
+#a-circ,#fh,#mh,#leg,#disp,#comp,#theta {
+    z-index: 2;
+    position: absolute;
+}
+
+/* #fh {
+    
+}
+
+#mh {
+    
+}
+
+#leg {
+    
+} */
+
+#fh-leg, #mh-leg{
+    position: absolute;
+    z-index: 3;
+}
+/* #fh-leg {
+
+}
+#mh-leg {
+
+}
+
+#disp {
+
+}
+
+#comp {
+
+}
+
+#theta {
+
+} */
+

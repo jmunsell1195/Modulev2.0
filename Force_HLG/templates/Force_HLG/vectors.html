@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static "utility.css"%}">
+<link rel="stylesheet" href="{% static "content-styles.css"%}"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Force Module | Vectors</title>
+
+
+{% endblock %}
+
+{% block body %}
+            <!-- Navbar -->
+            <div id="navbar" class="navbar-container">
+              <div class="navbar-logo">
+                  <img id="logo" height="48" width="48" alt="" src="{% static "navbarico.svg" %}"></img>
+                  Force Module
+               </div>
+              <div class="tabs">
+                  <nav>
+                    <ul>
+                        <li><a id="Login" class="inactive" href="#">Login</a></li>
+                        <li><a id="Warm-Up" class="inactive" href="#">Warm-Up</a></li>
+                        <li><a id="Instruction" class="active" href="#">Instruction</a></li>
+                        <li><a id="Final" class="inactive" href="#">Final</a></li>        
+                    </ul>
+                  </nav>
+              </div>
+              <!-- <div class="reporting">
+                <div class="statement">
+                  <h4>I am feeling</h4>
+                </div>
+                <div id="mental-state-buttons">
+                  <button id="distracted-button" class="btn alternate1">Distracted</button>
+                  <button id="focused-button" class="btn primary">Focused</button>
+                </div>
+              </div> -->
+            </div>
+
+<div class="content-stage">
+  <div class="hdr">
+    <h3>Scalars</h3>
+  </div>
+  <div class="ctr">
+    <div id="thermo">
+      <img id="thermo" src="{% static "IMG/themo.svg"%}" alt="">
+      <img id="level" src="{% static "IMG/level.svg"%}">
+      <img id="level2" src="{% static "IMG/level.svg"%}">
+      <img id="level3" src="{% static "IMG/level.svg"%}">
+      <img id="grad" src="{% static "IMG/grad.svg"%}">
+    </div>
+    <div id="watch">
+      <img id="watch" src="{% static "IMG/watch.svg"%}">
+      <img id="sec-hand" src="{% static "IMG/secHand.svg"%}">
+    </div>
+ 
+    <div id="map-box" style="display: none">
+         <img id="#map" src="{% static "IMG/map.svg"%}">
+         <img id="#a-circ" src="{% static "IMG/area_circle.svg"%}">
+         <img id="#fh" src="{% static "IMG/friends_house.svg"%}">
+         <img id="#disp" src="{% static "IMG/displacement.svg"%}">
+         <img id="#mh" src="{% static "IMG/my_house.svg"%}">
+         <img id="#comp" src="{% static "IMG/compass.svg"%}">
+         <img id="#leg" src="{% static "IMG/legend.svg"%}">
+         <img id="#fh-leg" src="{% static "IMG/friends_house_legend.svg"%}">
+         <img id="#mh-leg" src="{% static "IMG/my_house_legend.svg"%}">
+         <img id="#disp" src="{% static "IMG/disp.svg"%}">
+         <img id="#theta" src="{% static "IMG/theta.svg"%}">
+  </div>
+  </div>
+  <div></div>
+  <div class="ftr">
+    <audio id="audio" controls controlList="nodownload">
+      <source src="https://dl.dropbox.com/s/s0rud6ll9795n5k/acc_fb.mp3?dl=1"/>
+    </audio>
+</div>
+  </div>
+</div>
+
+<script>
+
+    const cs = document.querySelector(".content-stage")
+    cs.style.width = String(0.85*w) + "px";
+    cs.style.height = String(0.65*h) + "px";
+
+  const tl = anime.timeline({
+       easing: 'linear',
+       autoplay: false,
+     });
+     tl.add({
+      targets: "#level2",
+      translateY: -7*size,
+     },1000)
+     tl.add({
+      targets: "#level3",
+      translateY: -4*size,
+     },1000)
+     tl.add({
+       targets: "#thermo,#grad,#level,#level2,#level3",
+       opacity: 1
+     },3000)
+     tl.add({
+       targets: "#level,#level2,#level3",
+       opacity: 0,
+     },3900)
+     tl.add({
+       targets: "#thermo,#grad",
+       opacity: 0,
+     },4000)
+     tl.add({
+       targets: "#thermo, #grad,#level,#level2,#level3",
+       begin: function(){
+         items = ["#thermo", "#grad", "#level", "#level2","#level3"]
+         items.forEach(itm =>{
+          document.querySelector(itm).style.display = "none";
+         })
+     }},4500)
+     tl.add({
+       targets: "#watch,#sec-hand",
+       opacity: 1
+     },4500)
+     tl.add({
+       targets: "#sec-hand",
+       rotate: 360,
+       duration: 60000,
+       loop: true,
+     },4500)
+     tl.add({
+       targets: "#watch,#sec-hand",
+       opacity: 0
+     },150000)
+     tl.add({
+       targets: "#watch,#sec-hand",
+       begin: function(){
+         document.querySelector("#watch").style.display = "none";
+         document.querySelector("#sec-hand").style.display = "none";
+       }
+     },150000)
+     let ct;
+
+
+     let place;
+     const audio = document.querySelector("#audio")
+     
+     setInterval(function(){
+       place = audio.currentTime
+       tl.seek(place*1000);
+       console.log(place)
+     },50);
+
+</script>
+
+{% endblock %}

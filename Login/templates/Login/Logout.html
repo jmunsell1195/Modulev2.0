@@ -14,22 +14,6 @@
 
 {% load static %}
 {% block body %}
-<!-- Navbar -->
-<div class="navbar-container">
-    <div class="navbar-logo">
-      <span>
-        <img id="logo" height="48" width="48" alt="" src="{% static "navbarico.svg" %}"></img>
-        Energy</span>Module
-    </div>
-    <div class="tabs">
-        <nav>
-          <ul>
-              <li><a class="active" href="/Auth/login/">Login</a></li>      
-          </ul>
-        </nav>
-    </div>
-</div>
-
 <div class="logged-out">
     <div id="lo-header">
         <h1>You have been logged out!</h1>
@@ -41,7 +25,4 @@
         <button onclick="login();" class="btn btn-primary">Login</button>
     </div>
 </div>
-
-
-
 {% endblock %}

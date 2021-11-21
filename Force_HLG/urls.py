@@ -4,4 +4,5 @@ from . import views
 urlpatterns = [
     path('',views.info,name='force'),
     path('warmup/',views.pretest),
+    path('vectors/',views.vectors),
 ]
