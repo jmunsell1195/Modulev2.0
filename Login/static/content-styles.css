@@ -1,4 +1,8 @@
-
+ /*######################
+  ######################
+  ##      Vectors     ##
+  ######################
+  ######################*/
 
 audio {
     width: 80%
@@ -14,17 +18,13 @@ audio::-webkit-media-controls-panel {
     opacity: 0.9;
 }
 
+/* Screen1 */
 
-
-#therm-box{
-    position: absolute;
-}
  #thermo {
     position: absolute;
     height: 18rem;
     top: 3rem;
     left: 29.5rem;
-
 }
 
 #level,#level2,#level3 {
@@ -40,6 +40,11 @@ audio::-webkit-media-controls-panel {
     left: 31.8rem;
     top: 7rem;
 }
+
+#grad, #thermo, #level, #level2,#level3 {
+    opacity: 0;
+}
+
 #watch {
     position: absolute;
     height: 18rem;
@@ -51,55 +56,170 @@ audio::-webkit-media-controls-panel {
     left: 32.275rem;
     top: 9.76rem;
     height: 4rem;
-    z-index: 5;
+    z-index: 1;
     opacity: 0;
     transform-origin: center 22.5%;
 }
 
 #map {
-    height: 2%;
+    height: 100%;
     z-index: 1;
     position: absolute;
-    left: 20rem;
+    left: 15.5rem;
+    opacity: 0
 }
 
-#a-circ,#fh,#mh,#leg,#disp,#comp,#theta {
+#leg,#disp,#comp,#theta,#mag,#fh {
     z-index: 2;
     position: absolute;
+    opacity: 0;
 }
 
-/* #fh {
-    
+#a-circ {
+    left: 21rem;
+    top: 17rem;
 }
+
+#fh {
+  left: 38.3rem;
+  top: 3.5rem;  
+  width: 2.5rem;
+  opacity: 0;
+} 
 
 #mh {
-    
+    left: 21rem;
+    top: 17rem;
+    width: 2.5rem;
 }
 
 #leg {
-    
-} */
+    left: 38.5rem;
+    top: 9rem;
+    width: 10rem;
+}
 
-#fh-leg, #mh-leg{
+#fh-leg, #mh-leg,#mh,#a-circ,#disp2, #mag2 {
     position: absolute;
     z-index: 3;
+    opacity: 0;
 }
-/* #fh-leg {
+ #fh-leg {
+    left: 39.5rem;
+    top: 12rem;
+    width: 8rem;
+    opacity: 0;
+}
 
-}
 #mh-leg {
+    left: 39.5rem;
+    top: 10rem;
+    width: 8rem;
+}
 
+#mag {
+    left: 27rem;
+    top: 5rem;
+    width: 4rem;
+    opacity: 0;
 }
 
 #disp {
+    width: 17.5rem;
+    left: 21.9rem;
+    top: 4.6rem;
+}
 
+#disp2 {
+    width: 22.3rem;
+    left: 21.9rem;
+    top: 17rem;
 }
 
 #comp {
-
+    left: 20.8rem;
+    top: 5rem;
+    width: 15rem;
 }
 
 #theta {
+    left: 27rem;
+    top: 15rem;
+    width: 1.5rem;
+}
 
-} */
+#mag2 {
+    top: 12.5rem;
+    left: 31rem;
+}
 
+/* Screen2 */
+
+#axes {
+    position: absolute;
+    width: 30rem;
+    left: 18.6rem;
+    top: 1rem;
+}
+
+#force-lab {
+    position:absolute;
+    opacity: 1;
+    left: 45rem;
+    top: 5rem;
+
+}
+#force-vec {
+    position: absolute;
+    opacity:1;
+    width:12rem; 
+    left: 32.6rem;
+    top: 9.7rem;
+}
+
+#comp-lab{
+    opacity: 0
+}
+
+#ycomp-lab{
+    opacity: 0
+}
+
+#lightx{
+    opacity: 0
+}
+
+#ycomp-lab{
+    opacity: 0
+}
+
+#lightx{
+    opacity: 0
+}
+#lighty{
+    opacity: 0
+}
+
+#shadowx{
+    opacity: 0
+}
+
+#shadowy{
+    opacity: 0
+}
+
+#xcomp{
+    opacity: 0
+}
+
+#ycomp{
+    opacity: 0
+}
+
+#xdash{
+    opacity: 0
+}
+
+#ydash{
+    opacity: 0
+}

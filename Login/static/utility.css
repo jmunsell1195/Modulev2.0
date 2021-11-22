@@ -535,9 +535,8 @@ form{
  border: 1px black solid;
  border-radius: 20px;
  margin:auto;
- display: flex;
- justify-content: center;
- align-items: center;
+ position: relative;
+ overflow: hidden;
 }
 
 

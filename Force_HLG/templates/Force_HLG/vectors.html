@@ -39,36 +39,59 @@
               </div> -->
             </div>
 
-<div class="content-stage">
+<div id="cs1" class="content-stage" style="display: none">
   <div class="hdr">
     <h3>Scalars</h3>
   </div>
   <div class="ctr">
-    <div id="thermo">
-      <img id="thermo" src="{% static "IMG/themo.svg"%}" alt="">
-      <img id="level" src="{% static "IMG/level.svg"%}">
-      <img id="level2" src="{% static "IMG/level.svg"%}">
-      <img id="level3" src="{% static "IMG/level.svg"%}">
-      <img id="grad" src="{% static "IMG/grad.svg"%}">
-    </div>
-    <div id="watch">
-      <img id="watch" src="{% static "IMG/watch.svg"%}">
-      <img id="sec-hand" src="{% static "IMG/secHand.svg"%}">
-    </div>
- 
-    <div id="map-box" style="display: none">
-         <img id="#map" src="{% static "IMG/map.svg"%}">
-         <img id="#a-circ" src="{% static "IMG/area_circle.svg"%}">
-         <img id="#fh" src="{% static "IMG/friends_house.svg"%}">
-         <img id="#disp" src="{% static "IMG/displacement.svg"%}">
-         <img id="#mh" src="{% static "IMG/my_house.svg"%}">
-         <img id="#comp" src="{% static "IMG/compass.svg"%}">
-         <img id="#leg" src="{% static "IMG/legend.svg"%}">
-         <img id="#fh-leg" src="{% static "IMG/friends_house_legend.svg"%}">
-         <img id="#mh-leg" src="{% static "IMG/my_house_legend.svg"%}">
-         <img id="#disp" src="{% static "IMG/disp.svg"%}">
-         <img id="#theta" src="{% static "IMG/theta.svg"%}">
+      <img id="thermo" src="{% static "IMG/vec_1/themo.svg"%}" alt="">
+      <img id="level" src="{% static "IMG/vec_1/level.svg"%}">
+      <img id="level2" src="{% static "IMG/vec_1/level.svg"%}">
+      <img id="level3" src="{% static "IMG/vec_1/level.svg"%}">
+      <img id="grad" src="{% static "IMG/vec_1/grad.svg"%}">
+      <img id="watch" src="{% static "IMG/vec_1/watch.svg"%}">
+      <img id="sec-hand" src="{% static "IMG/vec_1/secHand.svg"%}">
+      <img id="map" src="{% static "IMG/vec_1/map.svg"%}">
+      <img id="a-circ" src="{% static "IMG/vec_1/area_circle.svg"%}">
+      <img id="fh" src="{% static "IMG/vec_1/friends_house.svg"%}">
+      <img id="disp" src="{% static "IMG/vec_1/displacement.svg"%}">
+      <img id="disp2" src="{% static "IMG/vec_1/displacement2.svg"%}">
+      <img id="mh" src="{% static "IMG/vec_1/my_house.svg"%}">
+      <img id="comp" src="{% static "IMG/vec_1/compass.svg"%}">
+      <img id="leg" src="{% static "IMG/vec_1/legend.svg"%}">
+      <img id="fh-leg" src="{% static "IMG/vec_1/friends_house_legend.svg"%}">
+      <img id="mh-leg" src="{% static "IMG/vec_1/my_house_legend.svg"%}">
+      <img id="mag" src="{% static "IMG/vec_1/disp.svg"%}">
+      <img id="mag2" src="{% static "IMG/vec_1/disp.svg"%}">
+      <img id="theta" src="{% static "IMG/vec_1/theta1.svg"%}">
   </div>
+  <div></div>
+  <div class="ftr">
+    <audio id="audio" controls controlList="nodownload">
+      <source src="https://dl.dropbox.com/s/s0rud6ll9795n5k/acc_fb.mp3?dl=1"/>
+    </audio>
+</div>
+  </div>
+</div>
+
+<div id="cs2" class="content-stage">
+  <div class="hdr">
+    <h3>Scalars</h3>
+  </div>
+  <div class="ctr">
+    <img id="axes" src="{% static "IMG/vec_2/axes.svg"%}" alt="">
+    <img id="force-lab" src="{% static "IMG/vec_2/F.svg"%}">
+    <img id="force-vec" src="{% static "IMG/vec_2/Fvec.svg"%}">
+    <img id="xcomp-lab" src="{% static "IMG/vec_2/Fx.svg"%}">
+    <img id="ycomp-lab" src="{% static "IMG/vec_2/Fy.svg"%}">
+    <img id="lightx" src="{% static "IMG/vec_2/lightX.svg"%}">
+    <img id="lighty" src="{% static "IMG/vec_2/lightY.svg"%}">
+    <img id="shadowx" src="{% static "IMG/vec_2/shadowX.svg"%}">
+    <img id="shadowy" src="{% static "IMG/vec_2/shadowY.svg"%}">
+    <img id="xcomp" src="{% static "IMG/vec_2/xcomp.svg"%}">
+    <img id="xdash" src="{% static "IMG/vec_2/xdash.svg"%}">
+    <img id="ycomp" src="{% static "IMG/vec_2/ycomp.svg"%}">
+    <img id="ydash" src="{% static "IMG/vec_2/ydash.svg"%}">
   </div>
   <div></div>
   <div class="ftr">
@@ -81,74 +104,113 @@
 
 <script>
 
-    const cs = document.querySelector(".content-stage")
+    const cs = document.querySelector("#cs1")
+    const cs2 = document.querySelector("#cs2")
     cs.style.width = String(0.85*w) + "px";
     cs.style.height = String(0.65*h) + "px";
+    cs2.style.width = String(0.85*w) + "px";
+    cs2.style.height = String(0.65*h) + "px";
 
   const tl = anime.timeline({
        easing: 'linear',
-       autoplay: false,
+       autoplay: true,
      });
-     tl.add({
-      targets: "#level2",
-      translateY: -7*size,
-     },1000)
-     tl.add({
-      targets: "#level3",
-      translateY: -4*size,
-     },1000)
-     tl.add({
-       targets: "#thermo,#grad,#level,#level2,#level3",
-       opacity: 1
-     },3000)
-     tl.add({
-       targets: "#level,#level2,#level3",
-       opacity: 0,
-     },3900)
-     tl.add({
-       targets: "#thermo,#grad",
-       opacity: 0,
-     },4000)
-     tl.add({
-       targets: "#thermo, #grad,#level,#level2,#level3",
-       begin: function(){
-         items = ["#thermo", "#grad", "#level", "#level2","#level3"]
-         items.forEach(itm =>{
-          document.querySelector(itm).style.display = "none";
-         })
-     }},4500)
-     tl.add({
-       targets: "#watch,#sec-hand",
-       opacity: 1
-     },4500)
-     tl.add({
-       targets: "#sec-hand",
-       rotate: 360,
-       duration: 60000,
-       loop: true,
-     },4500)
-     tl.add({
-       targets: "#watch,#sec-hand",
-       opacity: 0
-     },150000)
-     tl.add({
-       targets: "#watch,#sec-hand",
-       begin: function(){
-         document.querySelector("#watch").style.display = "none";
-         document.querySelector("#sec-hand").style.display = "none";
-       }
-     },150000)
-     let ct;
+    //  tl.add({
+    //   targets: "#level2",
+    //   translateY: -7*size,
+    //  },1000)
+    //  tl.add({
+    //   targets: "#level3",
+    //   translateY: -4*size,
+    //  },1000)
+    //  tl.add({
+    //    targets: "#thermo,#grad,#level,#level2,#level3",
+    //    opacity: 1
+    //  },3000)
+    //  tl.add({
+    //    targets: "#level,#level2,#level3",
+    //    opacity: 0,
+    //  },3900)
+    //  tl.add({
+    //    targets: "#thermo,#grad",
+    //    opacity: 0,
+    //  },4000)
+    //  tl.add({
+    //    targets: "#thermo, #grad,#level,#level2,#level3",
+    //    begin: function(){
+    //      items = ["#thermo", "#grad", "#level", "#level2","#level3"]
+    //      items.forEach(itm =>{
+    //       document.querySelector(itm).style.display = "none";
+    //      })
+    //  }},4500)
+    //  tl.add({
+    //    targets: "#watch,#sec-hand",
+    //    opacity: 1
+    //  },4500)
+    //  tl.add({
+    //    targets: "#sec-hand",
+    //    rotate: 60,
+    //    duration: 600,
+    //    loop: true,
+    //  },4500)
+    //  tl.add({
+    //    targets: "#watch,#sec-hand",
+    //    opacity: 0
+    //  },150000)
+    // tl.add({
+    //   targets: "#map",
+    //   opacity: 1
+    // },15500)
+    // tl.add({
+    //   targets: "#mh,#a-circ,#leg,#mh-leg",
+    //   opacity: 1
+    // },16000)
+    // tl.add({
+    //   targets: "#a-circ",
+    //   scale: 0.9*size,
+    // },17500)
+    // tl.add({
+    //   targets: "#disp2,#mag2",
+    //   opacity: 1
+    // },18000)
+    // tl.add({
+    //   targets: "#disp2,#mag2,#a-circ",
+    //   opacity: 0
+    // },20000)
+    // tl.add({
+    //   targets: "#disp",
+    //   opacity: 1
+    // },21000)
+    // tl.add({
+    //   targets: "#fh,#fh-leg",
+    //   opacity: 1
+    // },21500)
+    // tl.add({
+    //   targets: "#mag",
+    //   opacity: 1
+    // },22000)
+    // tl.add({
+    //   targets: "#comp,#theta",
+    //   opacity: 1
+    // },22500)
+
+    // setTimeout(function(){
+    //   document.querySelector("#cs1").style.display = "none";
+    //   document.querySelector("#cs2").style.display = "grid";
+    // },23000)
 
 
-     let place;
-     const audio = document.querySelector("#audio")
+    //  let ct;
+
+
+    //  let place;
+    //  const audio = document.querySelector("#audio")
      
-     setInterval(function(){
-       place = audio.currentTime
-       tl.seek(place*1000);
-       console.log(place)
-     },50);
+    //  setInterval(function(){
+    //    place = audio.currentTime
+    //    tl.seek(place*1000);
+    //    console.log(place)
+    //  },50);
 
 </script>
 
