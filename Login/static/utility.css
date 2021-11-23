@@ -108,6 +108,20 @@
     background-color: #c2c2c2;
 }
 
+audio {
+    width: 80%
+}
+
+audio::-webkit-media-controls-panel {
+    background-color:#8c979d;;
+    opacity: 0.9;
+}
+
+.primary-bg{
+    background-color: #8c979d;
+    border-radius: 0.7rem;
+}
+
 .primary{
     background-color: #8c979d;
 }
@@ -537,6 +551,10 @@ form{
  margin:auto;
  position: relative;
  overflow: hidden;
+}
+
+.content-stage .ftr{
+    justify-content: space-between;
 }
 
 

@@ -4,19 +4,7 @@
   ######################
   ######################*/
 
-audio {
-    width: 80%
-}
 
-audio::-webkit-media-controls-play-button {
-    border-color: #5278eb;
-}
-
-
-audio::-webkit-media-controls-panel {
-    background-color: gray;
-    opacity: 0.9;
-}
 
 /* Screen1 */
 
@@ -39,10 +27,6 @@ audio::-webkit-media-controls-panel {
     height: 8rem;
     left: 31.8rem;
     top: 7rem;
-}
-
-#grad, #thermo, #level, #level2,#level3 {
-    opacity: 0;
 }
 
 #watch {
@@ -118,10 +102,12 @@ audio::-webkit-media-controls-panel {
 }
 
 #mag {
-    left: 27rem;
-    top: 5rem;
-    width: 4rem;
+    left: 23.5rem;
+    top: 10rem;
+    width: 10rem;
     opacity: 0;
+    transform-origin: 50% 50%;
+    transform: rotate(-38deg);
 }
 
 #disp {
@@ -149,8 +135,8 @@ audio::-webkit-media-controls-panel {
 }
 
 #mag2 {
-    top: 12.5rem;
-    left: 31rem;
+    top: 15rem;
+    left: 28rem;
 }
 
 /* Screen2 */
@@ -160,66 +146,256 @@ audio::-webkit-media-controls-panel {
     width: 30rem;
     left: 18.6rem;
     top: 1rem;
+    z-index:1;
+}
+
+
+#force-vec {
+    position: absolute;
+    opacity:0;
+    width:12rem; 
+    left: 32.6rem;
+    top: 9.75rem;
+    z-index: 3;
+}
+
+#xcomp-lab{
+    opacity: 0;
+    position: absolute;
+    left: 37.8rem;
+    width: 2.5rem;
+    top: 18.5rem;
+}
+
+
+#cs2 .ftr{
+    justify-content: space-between;
+}
+
+#ycomp-lab{
+    opacity: 0
+}
+
+#lightx{
+    opacity: 0
+}
+
+#ycomp-lab{
+    position: absolute;
+    opacity: 0;
+    width: 2.6rem;
+    left: 29.5rem;
+    top: 12.9rem;
+    fill: #6c63ff;
+}
+
+#lightx{
+    position: absolute;
+    opacity: 0;
+    left: 32.6rem;
+    height: 13rem;
+    top: 4.6rem;
+}
+#lighty{
+    position: absolute;
+    opacity: 0;
+    top: -17.8rem;
+    width: 13rem;
+    left: 32.6rem;
+}
+
+#shadowx{
+    position: absolute;
+    opacity: 0;
+    left: 32.6rem;
+    top: 9.8rem;
+    height: 7.8rem;
+    
+}
+
+#shadowy{
+    position: absolute;
+    opacity: 0;
+    height: 7.8rem;
+    left: 32.6rem;
+    top:9.75rem;
+}
+
+#xcomp{
+    position: absolute;
+    opacity: 0;
+    width: 11.9rem;
+    left: 32.8rem;
+    top: 17.45rem;
+    z-index: 2;
+}
+
+#ycomp{
+    position: absolute;
+    opacity: 0;
+    top: 9.7rem;
+    height: 7.95rem;
+    left: 32.5rem;
+    z-index: 2;
+}
+
+#xdash{
+    position: absolute;
+    opacity: 0;
+    left: 44.5rem;
+    top: 9.75rem;
+    height: 8rem;
+}
+
+#ydash{
+    position: absolute;
+    opacity: 0;
+    left: 32.5rem;
+    width: 12.1rem;
+    top: 9.65rem;
+}
+
+#eqn1{
+    position: absolute;
+    left: 7rem;
+    top: 2.5rem;
+    width: 16rem;
+    opacity: 0;
+    z-index: 3;
+}
+
+#eqn2{
+    position: absolute;
+    left: 10rem;
+    top: 10.5rem;
+    width: 22rem;
+    opacity: 0;
+    z-index: 3;
+}
+
+#eqn3{
+    position: absolute;
+    left: 11rem;
+    top: 15.5rem;
+    width: 18rem;
+    opacity: 0;
+    z-index: 3;
+}
+
+#eqn4{
+    position: absolute;
+    left: 7rem;
+    top: 2.5rem;
+    width: 16rem;
+    opacity: 0;
+    z-index: 3;
+}
+
+#eqn5{
+    position: absolute;
+    left: 10rem;
+    top: 10.5rem;
+    width: 22rem;
+    opacity: 0;
+    z-index: 3;
+}
+
+#eqn6{
+    position: absolute;
+    left: 11rem;
+    top: 15.5rem;
+    width: 18rem;
+    opacity: 0;
+    z-index: 3;
+}
+
+#theta2{
+    position: absolute;
+    left: 38rem;
+    top: 14.5rem;
+    opacity: 0;
+    z-index: 3;
+}
+
+#triangle{
+    position: absolute;
+    left: 32.5rem;
+    top: 9.7rem;
+    width: 12rem;
+    opacity:0
+}
+
+#magF {
+    position:absolute;
+    width: 3.3rem;
+    left: 41.4rem;
+    top: 5.1rem;
+    z-index: 3;
+    opacity: 0
 }
 
 #force-lab {
     position:absolute;
-    opacity: 1;
-    left: 45rem;
-    top: 5rem;
-
+    left: 42rem;
+    top: 5.1rem;
+    z-index: 3;
+    opacity: 0;
+    width: 2.2rem;
 }
-#force-vec {
+
+#triangle2 {
     position: absolute;
-    opacity:1;
-    width:12rem; 
-    left: 32.6rem;
-    top: 9.7rem;
+    z-index: 3;
+    left: 32.57rem;
+    width: 15.6rem;
+    top: 8.5rem;
+    opacity:0;
 }
 
-#comp-lab{
+#cue11{
+    position: absolute;
+    left: 9.8rem;
+    top: 9.9rem;
+    width: 4.5rem;
     opacity: 0
 }
 
-#ycomp-lab{
+#cue12{
+    position: absolute;
+    left: 44.6rem;
+    top: 16.25rem;
+    width: 5rem;
     opacity: 0
 }
 
-#lightx{
+#cue13{
+    position: absolute;
+    left:10.5rem;
+    top: 15.5rem;
+    width: 4rem;
     opacity: 0
 }
 
-#ycomp-lab{
+#cue21{
+    position: absolute;
+    left: 17.7rem;
+    top: 9.9rem;
+    width: 4.7rem;
     opacity: 0
 }
 
-#lightx{
-    opacity: 0
-}
-#lighty{
-    opacity: 0
-}
-
-#shadowx{
+#cue22{
+    position: absolute;
+    width:5.9rem;
+    left: 42rem;
+    top: 2.7rem;
     opacity: 0
 }
 
-#shadowy{
-    opacity: 0
-}
-
-#xcomp{
-    opacity: 0
-}
-
-#ycomp{
-    opacity: 0
-}
-
-#xdash{
-    opacity: 0
-}
-
-#ydash{
+#cue23{
+    position: absolute;
+    left:17.6rem;
+    top: 15.4rem;
+    width: 4.2rem;
     opacity: 0
 }

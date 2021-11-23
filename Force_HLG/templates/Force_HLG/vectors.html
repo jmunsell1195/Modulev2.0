@@ -39,9 +39,9 @@
               </div> -->
             </div>
 
-<div id="cs1" class="content-stage" style="display: none">
+<div id="cs1" class="content-stage" >
   <div class="hdr">
-    <h3>Scalars</h3>
+    <h2>Scalars</h2>
   </div>
   <div class="ctr">
       <img id="thermo" src="{% static "IMG/vec_1/themo.svg"%}" alt="">
@@ -61,22 +61,24 @@
       <img id="leg" src="{% static "IMG/vec_1/legend.svg"%}">
       <img id="fh-leg" src="{% static "IMG/vec_1/friends_house_legend.svg"%}">
       <img id="mh-leg" src="{% static "IMG/vec_1/my_house_legend.svg"%}">
-      <img id="mag" src="{% static "IMG/vec_1/disp.svg"%}">
-      <img id="mag2" src="{% static "IMG/vec_1/disp.svg"%}">
+      <img id="mag" src="{% static "IMG/vec_1/disp2.svg"%}">
+      <img id="mag2" src="{% static "IMG/vec_1/disp2.svg"%}">
       <img id="theta" src="{% static "IMG/vec_1/theta1.svg"%}">
   </div>
   <div></div>
   <div class="ftr">
-    <audio id="audio" controls controlList="nodownload">
-      <source src="https://dl.dropbox.com/s/s0rud6ll9795n5k/acc_fb.mp3?dl=1"/>
+    <button style="opacity: 0"></button>
+    <audio class="primary-bg" id="audio" controls controlList="nodownload">
+      <source src="{% static "vec_1.wav"%}"/>
     </audio>
+    <button class="btn primary" onclick="frame1(false); frame2(true); pause1();">Next</button>
 </div>
   </div>
 </div>
 
-<div id="cs2" class="content-stage">
+<div id="cs2" class="content-stage" style="display:none">
   <div class="hdr">
-    <h3>Scalars</h3>
+    <h2>Vectors</h2>
   </div>
   <div class="ctr">
     <img id="axes" src="{% static "IMG/vec_2/axes.svg"%}" alt="">
@@ -84,26 +86,48 @@
     <img id="force-vec" src="{% static "IMG/vec_2/Fvec.svg"%}">
     <img id="xcomp-lab" src="{% static "IMG/vec_2/Fx.svg"%}">
     <img id="ycomp-lab" src="{% static "IMG/vec_2/Fy.svg"%}">
+    <img id="theta2" src="{% static "IMG/vec_2/theta.svg"%}">
     <img id="lightx" src="{% static "IMG/vec_2/lightX.svg"%}">
     <img id="lighty" src="{% static "IMG/vec_2/lightY.svg"%}">
     <img id="shadowx" src="{% static "IMG/vec_2/shadowX.svg"%}">
     <img id="shadowy" src="{% static "IMG/vec_2/shadowY.svg"%}">
+    <img id="magF" src="{% static "IMG/vec_2/magF.svg"%}">
     <img id="xcomp" src="{% static "IMG/vec_2/xcomp.svg"%}">
     <img id="xdash" src="{% static "IMG/vec_2/xdash.svg"%}">
     <img id="ycomp" src="{% static "IMG/vec_2/ycomp.svg"%}">
     <img id="ydash" src="{% static "IMG/vec_2/ydash.svg"%}">
+    <img id="eqn1" src="{% static "IMG/vec_2/eqn1.svg"%}">
+    <img id="eqn2" src="{% static "IMG/vec_2/eqn2.svg"%}">
+    <img id="eqn3" src="{% static "IMG/vec_2/eqn3.svg"%}">
+    <img id="eqn4" src="{% static "IMG/vec_2/eqn4.svg"%}">
+    <img id="eqn5" src="{% static "IMG/vec_2/eqn5.svg"%}">
+    <img id="eqn6" src="{% static "IMG/vec_2/eqn6.svg"%}">
+    <img id="triangle" src="{% static "IMG/vec_2/triangle.svg"%}">
+    <img id="triangle2" src="{% static "IMG/vec_2/triangle2.svg"%}">
+    <img id="cue11" src="{% static "IMG/vec_2/cue11.svg"%}">
+    <img id="cue12" src="{% static "IMG/vec_2/cue12.svg"%}">
+    <img id="cue13" src="{% static "IMG/vec_2/cue11.svg"%}">
+    <img id="cue21" src="{% static "IMG/vec_2/cue21.svg"%}">
+    <img id="cue22" src="{% static "IMG/vec_2/cue22.svg"%}">
+    <img id="cue23" src="{% static "IMG/vec_2/cue21.svg"%}">
+
   </div>
   <div></div>
   <div class="ftr">
-    <audio id="audio" controls controlList="nodownload">
+    <div>
+      <button class="btn secondary" onclick="frame1(true); frame2(false);">Back</button>
+    </div>
+    <audio id="audio2" controls controlList="nodownload">
       <source src="https://dl.dropbox.com/s/s0rud6ll9795n5k/acc_fb.mp3?dl=1"/>
     </audio>
+  <div>
+    <button class="btn secondary">Next</button>
+  </div>
 </div>
   </div>
 </div>
 
 <script>
-
     const cs = document.querySelector("#cs1")
     const cs2 = document.querySelector("#cs2")
     cs.style.width = String(0.85*w) + "px";
@@ -111,106 +135,386 @@
     cs2.style.width = String(0.85*w) + "px";
     cs2.style.height = String(0.65*h) + "px";
 
-  const tl = anime.timeline({
+    const pause1 = () => {
+      document.querySelector("#audio").pause();
+    }
+
+    const frame1 = (show) => {
+      if (show){
+        cs.style.display = "grid";
+
+        const tl = anime.timeline({
        easing: 'linear',
-       autoplay: true,
-     });
-    //  tl.add({
-    //   targets: "#level2",
-    //   translateY: -7*size,
-    //  },1000)
-    //  tl.add({
-    //   targets: "#level3",
-    //   translateY: -4*size,
-    //  },1000)
-    //  tl.add({
-    //    targets: "#thermo,#grad,#level,#level2,#level3",
-    //    opacity: 1
-    //  },3000)
-    //  tl.add({
-    //    targets: "#level,#level2,#level3",
-    //    opacity: 0,
-    //  },3900)
-    //  tl.add({
-    //    targets: "#thermo,#grad",
-    //    opacity: 0,
-    //  },4000)
-    //  tl.add({
-    //    targets: "#thermo, #grad,#level,#level2,#level3",
-    //    begin: function(){
-    //      items = ["#thermo", "#grad", "#level", "#level2","#level3"]
-    //      items.forEach(itm =>{
-    //       document.querySelector(itm).style.display = "none";
-    //      })
-    //  }},4500)
-    //  tl.add({
-    //    targets: "#watch,#sec-hand",
-    //    opacity: 1
-    //  },4500)
-    //  tl.add({
-    //    targets: "#sec-hand",
-    //    rotate: 60,
-    //    duration: 600,
-    //    loop: true,
-    //  },4500)
-    //  tl.add({
-    //    targets: "#watch,#sec-hand",
-    //    opacity: 0
-    //  },150000)
-    // tl.add({
-    //   targets: "#map",
-    //   opacity: 1
-    // },15500)
-    // tl.add({
-    //   targets: "#mh,#a-circ,#leg,#mh-leg",
-    //   opacity: 1
-    // },16000)
-    // tl.add({
-    //   targets: "#a-circ",
-    //   scale: 0.9*size,
-    // },17500)
-    // tl.add({
-    //   targets: "#disp2,#mag2",
-    //   opacity: 1
-    // },18000)
-    // tl.add({
-    //   targets: "#disp2,#mag2,#a-circ",
-    //   opacity: 0
-    // },20000)
-    // tl.add({
-    //   targets: "#disp",
-    //   opacity: 1
-    // },21000)
-    // tl.add({
-    //   targets: "#fh,#fh-leg",
-    //   opacity: 1
-    // },21500)
-    // tl.add({
-    //   targets: "#mag",
-    //   opacity: 1
-    // },22000)
-    // tl.add({
-    //   targets: "#comp,#theta",
-    //   opacity: 1
-    // },22500)
+       autoplay: false,
+      });
+      tl.add({
+        targets: "#level2",
+        translateY: -7*size,
+      },9000)
+      tl.add({
+        targets: "#level3",
+        translateY: -4*size,
+      },9000)
+      tl.add({
+        targets: "#thermo,#grad,#level,#level2,#level3",
+        opacity: 1
+      },9000)
+      tl.add({
+        targets: "#level,#level2,#level3",
+        opacity: 0,
+      },13000)
+      tl.add({
+        targets: "#thermo,#grad",
+        opacity: 0,
+      },13000)
+      tl.add({
+        targets: "#watch,#sec-hand",
+        opacity: 1
+      },14000)
+      tl.add({
+        targets: "#sec-hand",
+        rotate: 360,
+        duration: 60000,
+      },14000)
+      tl.add({
+        targets: "#watch,#sec-hand",
+        opacity: 0
+      },22000)
+      tl.add({
+        targets: "#map",
+        opacity: 1
+      },23000)
+      tl.add({
+        targets: "#mh",
+        opacity: 1
+      },28000)
+      tl.add({
+        targets: "#leg,#mh-leg,#a-circ",
+        opacity: 1,
+      },28000)
+      tl.add({
+        targets: "#a-circ",
+        scale: 0.9*size,
+      },36000)
+      tl.add({
+        targets: "#disp2,#mag2",
+        opacity: 1
+      },38000)
+      tl.add({
+        targets: "#disp2,#mag2,#a-circ",
+        opacity: 0
+      },41500)
+      tl.add({
+        targets: "#disp",
+        opacity: 1
+      },46000)
+      tl.add({
+        targets: "#fh,#fh-leg",
+        opacity: 1
+      },46000)
+      tl.add({
+        targets: "#mag",
+        opacity: 1
+      },46000)
+      tl.add({
+        targets: "#comp",
+        opacity: 1
+      },54000)
+      tl.add({
+        targets: "#theta",
+        opacity: 1,
+      },68000)
 
-    // setTimeout(function(){
-    //   document.querySelector("#cs1").style.display = "none";
-    //   document.querySelector("#cs2").style.display = "grid";
-    // },23000)
+      const x = setInterval(function(){
+          let place = document.querySelector("#audio").currentTime;
+            tl.seek(place*1000);
+        },50);
+      }
+      else{
+        cs.style.display = "none";
+        if (typeof x != 'undefined') {
+          clearInterval(x);
+        }}
 
+    }
+    frame1(true);
 
-    //  let ct;
-
-
-    //  let place;
-    //  const audio = document.querySelector("#audio")
-     
-    //  setInterval(function(){
-    //    place = audio.currentTime
-    //    tl.seek(place*1000);
-    //    console.log(place)
-    //  },50);
+    const frame2 = (show) => {
+      if (show) {
+        cs2.style.display = "grid";
+            const tl = anime.timeline({
+        easing: 'linear',
+        autoplay: false
+      })
+        tl.add({
+        targets: "#force-vec,#force-lab,#theta2",
+        opacity: 1
+      },1000)
+      tl.add({
+        targets: "#lighty,#shadowy",
+        opacity:1,
+        begin: function(){
+          document.querySelector("#cs2 .ctr").style.backgroundColor = "#343a40";
+        }
+      },1500)
+      tl.add({
+        targets: "#lighty,#shadowy",
+        opacity: 0
+      },4000)
+      tl.add({
+        targets: "#xcomp,#xdash,#xcomp-lab",
+        opacity: 1
+      },5000)
+      tl.add({
+        targets: "#lightx,#shadowx",
+        opacity: 1
+      },6500)
+      tl.add({
+        targets: "#ycomp,#ydash,#ycomp-lab",
+        opacity: 1
+      },9000)
+      tl.add({
+        targets: "#lightx,#shadowx",
+        opacity: 0,
+        begin: function(){
+          document.querySelector("#cs2 .ctr").style.backgroundColor = "#f5f5f5";
+        }
+      },9000)
+      tl.add({
+        targets: "#ycomp",
+        translateX: 11.9*size
+      },11500)
+      tl.add({
+        targets: "#ycomp-lab",
+        translateX: 16.1*size
+      },11700)
+      tl.add({
+        targets: "#axes,#xdash,#ydash",
+        opacity: 0
+      },13000)
+      tl.add({
+        targets: "#force-lab",
+        translateX: -0.84*6.5*size,
+        translateY: 0.54*6.5*size,
+        opacity: 0
+      },17000)
+      tl.add({
+        targets: "#magF",
+        translateX: -0.84*6.5*size,
+        translateY: 0.54*6.5*size,
+        opacity: 1
+      },17000)
+      tl.add({
+        targets: "#xcomp,#xcomp-lab,#ycomp,#ycomp-lab,#magF,#force-vec,#theta2",
+        opacity: 0 
+      },17000)
+      tl.add({
+        targets: "#triangle2",
+        opacity: 1
+      },17000)
+      tl.add({
+        targets: "#eqn1",
+        opacity: 1
+      },17000)
+      tl.add({
+        targets: "#eqn2",
+        opacity: 1
+      },17000)
+      tl.add({
+        targets: "#eqn3",
+        opacity: 1
+      },17000)
+      tl.add({
+        targets: "#triangle2",
+        scale: (1/15)*size,
+        translateY: -2.2*size,
+        translateX: 6*size
+      },18000)
+      tl.add({
+        targets: "#cue11",
+        opacity: 1,
+      },19000)
+      tl.add({
+        targets: "#cue11",
+        opacity: 0,
+      },19750)
+      tl.add({
+        targets: "#cue11",
+        opacity: 1,
+      },20500)
+      tl.add({
+        targets: "#cue11",
+        opacity: 0,
+      },21250)
+      tl.add({
+        targets: "#cue11",
+        opacity: 1,
+      },22000)
+      tl.add({
+        targets: "#triangle",
+        scale: 0.08*size,
+        translateY: -2*size 
+      },18000)
+      tl.add({
+        targets: "#theta2",
+        scale: 0.07*size,
+        translateY: -1.2*size
+      },18000)
+      tl.add({
+        targets: "#xcomp-lab",
+        scale: 0.08*size,
+      },18000)
+      tl.add({
+        targets: "#magF",
+        scale: 0.08*size,
+        translateY: -1.2*size
+      },18000)
+      tl.add({
+        targets: "#ycomp-lab",
+        scale: 0.08*size,
+        translateY: -1.2*size,
+        translateX: size
+      },18000)
+      tl.add({
+        targets: "#force-vec,#force-lab,#theta2",
+        opacity: 1
+      },1000)
+      tl.add({
+        targets: "#lighty,#shadowy",
+        opacity:1,
+        begin: function(){
+          document.querySelector("#cs2 .ctr").style.backgroundColor = "#343a40";
+        }
+      },1500)
+      tl.add({
+        targets: "#lighty,#shadowy",
+        opacity: 0
+      },4000)
+      tl.add({
+        targets: "#xcomp,#xdash,#xcomp-lab",
+        opacity: 1
+      },5000)
+      tl.add({
+        targets: "#lightx,#shadowx",
+        opacity: 1
+      },6500)
+      tl.add({
+        targets: "#ycomp,#ydash,#ycomp-lab",
+        opacity: 1
+      },9000)
+      tl.add({
+        targets: "#lightx,#shadowx",
+        opacity: 0,
+        begin: function(){
+          document.querySelector("#cs2 .ctr").style.backgroundColor = "#f5f5f5";
+        }
+      },9000)
+      tl.add({
+        targets: "#ycomp",
+        translateX: 11.9*size
+      },11500)
+      tl.add({
+        targets: "#ycomp-lab",
+        translateX: 16.1*size
+      },11700)
+      tl.add({
+        targets: "#axes,#xdash,#ydash",
+        opacity: 0
+      },13000)
+      tl.add({
+        targets: "#force-lab",
+        translateX: -0.84*6.5*size,
+        translateY: 0.54*6.5*size,
+        opacity: 0
+      },17000)
+      tl.add({
+        targets: "#magF",
+        translateX: -0.84*6.5*size,
+        translateY: 0.54*6.5*size,
+        opacity: 1
+      },17000)
+      tl.add({
+        targets: "#xcomp,#xcomp-lab,#ycomp,#ycomp-lab,#magF,#force-vec,#theta2",
+        opacity: 0 
+      },17000)
+      tl.add({
+        targets: "#triangle2",
+        opacity: 1
+      },17000)
+      tl.add({
+        targets: "#eqn1",
+        opacity: 1
+      },17000)
+      tl.add({
+        targets: "#eqn2",
+        opacity: 1
+      },17000)
+      tl.add({
+        targets: "#eqn3",
+        opacity: 1
+      },17000)
+      tl.add({
+        targets: "#triangle2",
+        scale: (1/15)*size,
+        translateY: -2.2*size,
+        translateX: 6*size
+      },18000)
+      tl.add({
+        targets: "#cue11",
+        opacity: 1,
+      },19000)
+      tl.add({
+        targets: "#cue11",
+        opacity: 0,
+      },19750)
+      tl.add({
+        targets: "#cue11",
+        opacity: 1,
+      },20500)
+      tl.add({
+        targets: "#cue11",
+        opacity: 0,
+      },21250)
+      tl.add({
+        targets: "#cue11",
+        opacity: 1,
+      },22000)
+      tl.add({
+        targets: "#triangle",
+        scale: 0.08*size,
+        translateY: -2*size 
+      },18000)
+      tl.add({
+        targets: "#theta2",
+        scale: 0.07*size,
+        translateY: -1.2*size
+      },18000)
+      tl.add({
+        targets: "#xcomp-lab",
+        scale: 0.08*size,
+      },18000)
+      tl.add({
+        targets: "#magF",
+        scale: 0.08*size,
+        translateY: -1.2*size
+      },18000)
+      tl.add({
+        targets: "#ycomp-lab",
+        scale: 0.08*size,
+        translateY: -1.2*size,
+        translateX: size
+      },18000)
+      
+      const x = setInterval(function(){
+          let place = document.querySelector("#audio2").currentTime;
+            tl.seek(place*1000);
+        },50);}
+      else{
+        cs2.style.display = "none";
+        if (typeof x != "undefined" ){
+          clearInterval(x);
+        }
+        }}
 
 </script>
 
