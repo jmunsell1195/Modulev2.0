@@ -9,6 +9,7 @@
 <title>Force Module | Vectors</title>
 
 
+
 {% endblock %}
 
 {% block body %}
@@ -39,7 +40,27 @@
               </div> -->
             </div>
 
-<div id="cs1" class="content-stage" >
+<!-- Frame 0  -->
+<div id="cs0" class="content-stage" style="display: none;">
+  <div class="hdr">
+    <h2>Vectors</h2>
+  </div>
+  <div class="ctr">
+    <h3>In this section you will watch two short videos about vectors and vector components. Vectors 
+      are used to write Newton's second law in a simplified format to make force problems easier to solve.</h3>
+  </div>
+  <div></div>
+  <div class="ftr">
+    <btn id="btn1" class="btn primary reduced-vis" onclick="frame0(false); frame1(true);">Next</btn>
+  </div>
+</div>
+
+<form id="audio-events" style="display:none">
+  {{context.log}}
+  {%csrf_token%}
+</form>
+<!-- Frame 1 -->
+<div id="cs1" class="content-stage" style="display: none">
   <div class="hdr">
     <h2>Scalars</h2>
   </div>
@@ -67,15 +88,18 @@
   </div>
   <div></div>
   <div class="ftr">
-    <button style="opacity: 0"></button>
+    <div>
+      <button id="btn2"class="btn primary reduced-vis" onclick="frame1(false);frame0(true); pause1();">Back</button>
+    </div>
     <audio class="primary-bg" id="audio" controls controlList="nodownload">
-      <source src="{% static "vec_1.wav"%}"/>
+      <source src="https://dl.dropbox.com/s/lfzacwa83xzcj59/vec_1.wav?dl=1"/>
     </audio>
-    <button class="btn primary" onclick="frame1(false); frame2(true); pause1();">Next</button>
+    <button id="btn3" class="btn primary reduced-vis" onclick="frame1(false); frame2(true); pause1();">Next</button>
 </div>
   </div>
 </div>
 
+<!-- Frame 2 -->
 <div id="cs2" class="content-stage" style="display:none">
   <div class="hdr">
     <h2>Vectors</h2>
@@ -87,6 +111,7 @@
     <img id="xcomp-lab" src="{% static "IMG/vec_2/Fx.svg"%}">
     <img id="ycomp-lab" src="{% static "IMG/vec_2/Fy.svg"%}">
     <img id="theta2" src="{% static "IMG/vec_2/theta.svg"%}">
+    <img id="theta3" src="{% static "IMG/vec_2/theta.svg"%}">
     <img id="lightx" src="{% static "IMG/vec_2/lightX.svg"%}">
     <img id="lighty" src="{% static "IMG/vec_2/lightY.svg"%}">
     <img id="shadowx" src="{% static "IMG/vec_2/shadowX.svg"%}">
@@ -107,415 +132,164 @@
     <img id="cue11" src="{% static "IMG/vec_2/cue11.svg"%}">
     <img id="cue12" src="{% static "IMG/vec_2/cue12.svg"%}">
     <img id="cue13" src="{% static "IMG/vec_2/cue11.svg"%}">
+    <img id="cue14" src="{% static "IMG/vec_2/cue12.svg"%}">
     <img id="cue21" src="{% static "IMG/vec_2/cue21.svg"%}">
     <img id="cue22" src="{% static "IMG/vec_2/cue22.svg"%}">
     <img id="cue23" src="{% static "IMG/vec_2/cue21.svg"%}">
-
   </div>
   <div></div>
   <div class="ftr">
     <div>
-      <button class="btn secondary" onclick="frame1(true); frame2(false);">Back</button>
+      <button id="btn4" class="btn primary reduced-vis" onclick="frame1(true); frame2(false);pause2();">Back</button>
     </div>
-    <audio id="audio2" controls controlList="nodownload">
-      <source src="https://dl.dropbox.com/s/s0rud6ll9795n5k/acc_fb.mp3?dl=1"/>
+    <audio class="primary-bg" id="audio2" controls controlList="nodownload">
+      <source src="https://dl.dropbox.com/s/gzucruqy1yc83yo/vec_2.wav?dl=1"/>
     </audio>
   <div>
-    <button class="btn secondary">Next</button>
+    <button id="btn5" class="btn primary reduced-vis" onclick="frame2(false); frame3(true);pause2();">Next</button>
   </div>
 </div>
   </div>
 </div>
 
-<script>
-    const cs = document.querySelector("#cs1")
-    const cs2 = document.querySelector("#cs2")
-    cs.style.width = String(0.85*w) + "px";
-    cs.style.height = String(0.65*h) + "px";
-    cs2.style.width = String(0.85*w) + "px";
-    cs2.style.height = String(0.65*h) + "px";
+<!-- Frame 3 -->
+<div class="content-stage" id="cs3" style="display:none;">
+  <div class="hdr">
+    <h2>Summary</h2>
+  </div>
+  <div class="ctr">
+    <div>
+      <div>
+        <strong><h5>Angle \(\theta \rightarrow x \)</h5></strong>
+      </div>
+      <hr/>
+      <div>
+        <img id="triangle3" src="{% static "IMG/vec_2/triangle2.svg"%}">
+      </div>
+      <div>
+        <img id="eqn7" src="{% static "IMG/vec_2/fxx.svg"%}">
+      </div>
+      <div>
+        <img id="eqn8" src="{% static "IMG/vec_2/fyx.svg"%}">
+      </div>
+    </div>
+    <div>
+      <div>
+        <strong><h5>Angle \(\theta \rightarrow y \)</h5></strong>
+      </div>
+      <hr/>
+      <div>
+        <img id="triangle4" src="{% static "IMG/vec_2/triangle3.svg"%}">
+      </div>
+      <div>
+        <img id="eqn9" src="{% static "IMG/vec_2/fxy.svg"%}">
+      </div>
+      <div>
+        <img id="eqn10" src="{% static "IMG/vec_2/fyy.svg"%}">
+      </div>
+    </div>
 
-    const pause1 = () => {
-      document.querySelector("#audio").pause();
-    }
+  </div>
+  <div></div>
+  <div class="ftr">
+    <button id="btn6" class="btn primary reduced-vis" onclick="frame3(false); frame2(true);">Back</button>
+    <button id="btn7" class="btn primary reduced-vis" onclick="frame3(false); question(true);">Next</button>
+  </div>
+</div>
 
-    const frame1 = (show) => {
-      if (show){
-        cs.style.display = "grid";
+<!-- Assessment Question -->
+<!-- <div class="wrapper pretest" id="q-container" style="display: none;">
+  <div class="hdr">
+      <h1>If \( |\vec{A}| = 15 \) and \( \theta = 30^{o} \), What is \( A_x \) and \( A_y \) ?</h1>
+  </div> 
+  <div class="ctr quiz">
+      <div><img src="{% static "pref2.svg"%}"/></div>
+      <div>               
+          <form method="POST" id="question">
+              <p>Please select a choice below</p>
+              <div>
+                  {{context.form.choice.0}}
+                  <label for="q2c1">\(A_x = 13 \) &nbsp;&nbsp;&nbsp;&nbsp; \(A_y = 13 \)</label><br/>
+                  {{context.form.choice.1}}
+                  <label for="q2c2">\(A_x = 7.5 \) &nbsp;&nbsp;&nbsp; \(A_y = 13 \)</label><br/>
+                  {{context.form.choice.2}}
+                  <label for="q2c3">\(A_x = 13 \) &nbsp;&nbsp;&nbsp;&nbsp; \(A_y = 7.5 \)</label><br/>
+                  {{context.form.choice.3}}
+                  <label for="q2c4">None of the above</label><br/>
+                  {% csrf_token %}
+              </div>
+          </form>
+      </div>
+  </div>
+  <div class="ftr">
+      <div id="button-box">
+        <div>
+          <button id="btn8" class="btn primary reduced-vis" onclick="question(false);frame3(true);">Back</button>
+        </div>
+        <div>
+          <button form="question" class="btn primary reduced-vis" type="submit">Submit</button>
+        </div>
+      </div>
+  </div>
+</div> -->
 
-        const tl = anime.timeline({
-       easing: 'linear',
-       autoplay: false,
-      });
-      tl.add({
-        targets: "#level2",
-        translateY: -7*size,
-      },9000)
-      tl.add({
-        targets: "#level3",
-        translateY: -4*size,
-      },9000)
-      tl.add({
-        targets: "#thermo,#grad,#level,#level2,#level3",
-        opacity: 1
-      },9000)
-      tl.add({
-        targets: "#level,#level2,#level3",
-        opacity: 0,
-      },13000)
-      tl.add({
-        targets: "#thermo,#grad",
-        opacity: 0,
-      },13000)
-      tl.add({
-        targets: "#watch,#sec-hand",
-        opacity: 1
-      },14000)
-      tl.add({
-        targets: "#sec-hand",
-        rotate: 360,
-        duration: 60000,
-      },14000)
-      tl.add({
-        targets: "#watch,#sec-hand",
-        opacity: 0
-      },22000)
-      tl.add({
-        targets: "#map",
-        opacity: 1
-      },23000)
-      tl.add({
-        targets: "#mh",
-        opacity: 1
-      },28000)
-      tl.add({
-        targets: "#leg,#mh-leg,#a-circ",
-        opacity: 1,
-      },28000)
-      tl.add({
-        targets: "#a-circ",
-        scale: 0.9*size,
-      },36000)
-      tl.add({
-        targets: "#disp2,#mag2",
-        opacity: 1
-      },38000)
-      tl.add({
-        targets: "#disp2,#mag2,#a-circ",
-        opacity: 0
-      },41500)
-      tl.add({
-        targets: "#disp",
-        opacity: 1
-      },46000)
-      tl.add({
-        targets: "#fh,#fh-leg",
-        opacity: 1
-      },46000)
-      tl.add({
-        targets: "#mag",
-        opacity: 1
-      },46000)
-      tl.add({
-        targets: "#comp",
-        opacity: 1
-      },54000)
-      tl.add({
-        targets: "#theta",
-        opacity: 1,
-      },68000)
-
-      const x = setInterval(function(){
-          let place = document.querySelector("#audio").currentTime;
-            tl.seek(place*1000);
-        },50);
-      }
-      else{
-        cs.style.display = "none";
-        if (typeof x != 'undefined') {
-          clearInterval(x);
-        }}
-
-    }
-    frame1(true);
-
-    const frame2 = (show) => {
-      if (show) {
-        cs2.style.display = "grid";
-            const tl = anime.timeline({
-        easing: 'linear',
-        autoplay: false
-      })
-        tl.add({
-        targets: "#force-vec,#force-lab,#theta2",
-        opacity: 1
-      },1000)
-      tl.add({
-        targets: "#lighty,#shadowy",
-        opacity:1,
-        begin: function(){
-          document.querySelector("#cs2 .ctr").style.backgroundColor = "#343a40";
-        }
-      },1500)
-      tl.add({
-        targets: "#lighty,#shadowy",
-        opacity: 0
-      },4000)
-      tl.add({
-        targets: "#xcomp,#xdash,#xcomp-lab",
-        opacity: 1
-      },5000)
-      tl.add({
-        targets: "#lightx,#shadowx",
-        opacity: 1
-      },6500)
-      tl.add({
-        targets: "#ycomp,#ydash,#ycomp-lab",
-        opacity: 1
-      },9000)
-      tl.add({
-        targets: "#lightx,#shadowx",
-        opacity: 0,
-        begin: function(){
-          document.querySelector("#cs2 .ctr").style.backgroundColor = "#f5f5f5";
-        }
-      },9000)
-      tl.add({
-        targets: "#ycomp",
-        translateX: 11.9*size
-      },11500)
-      tl.add({
-        targets: "#ycomp-lab",
-        translateX: 16.1*size
-      },11700)
-      tl.add({
-        targets: "#axes,#xdash,#ydash",
-        opacity: 0
-      },13000)
-      tl.add({
-        targets: "#force-lab",
-        translateX: -0.84*6.5*size,
-        translateY: 0.54*6.5*size,
-        opacity: 0
-      },17000)
-      tl.add({
-        targets: "#magF",
-        translateX: -0.84*6.5*size,
-        translateY: 0.54*6.5*size,
-        opacity: 1
-      },17000)
-      tl.add({
-        targets: "#xcomp,#xcomp-lab,#ycomp,#ycomp-lab,#magF,#force-vec,#theta2",
-        opacity: 0 
-      },17000)
-      tl.add({
-        targets: "#triangle2",
-        opacity: 1
-      },17000)
-      tl.add({
-        targets: "#eqn1",
-        opacity: 1
-      },17000)
-      tl.add({
-        targets: "#eqn2",
-        opacity: 1
-      },17000)
-      tl.add({
-        targets: "#eqn3",
-        opacity: 1
-      },17000)
-      tl.add({
-        targets: "#triangle2",
-        scale: (1/15)*size,
-        translateY: -2.2*size,
-        translateX: 6*size
-      },18000)
-      tl.add({
-        targets: "#cue11",
-        opacity: 1,
-      },19000)
-      tl.add({
-        targets: "#cue11",
-        opacity: 0,
-      },19750)
-      tl.add({
-        targets: "#cue11",
-        opacity: 1,
-      },20500)
-      tl.add({
-        targets: "#cue11",
-        opacity: 0,
-      },21250)
-      tl.add({
-        targets: "#cue11",
-        opacity: 1,
-      },22000)
-      tl.add({
-        targets: "#triangle",
-        scale: 0.08*size,
-        translateY: -2*size 
-      },18000)
-      tl.add({
-        targets: "#theta2",
-        scale: 0.07*size,
-        translateY: -1.2*size
-      },18000)
-      tl.add({
-        targets: "#xcomp-lab",
-        scale: 0.08*size,
-      },18000)
-      tl.add({
-        targets: "#magF",
-        scale: 0.08*size,
-        translateY: -1.2*size
-      },18000)
-      tl.add({
-        targets: "#ycomp-lab",
-        scale: 0.08*size,
-        translateY: -1.2*size,
-        translateX: size
-      },18000)
-      tl.add({
-        targets: "#force-vec,#force-lab,#theta2",
-        opacity: 1
-      },1000)
-      tl.add({
-        targets: "#lighty,#shadowy",
-        opacity:1,
-        begin: function(){
-          document.querySelector("#cs2 .ctr").style.backgroundColor = "#343a40";
-        }
-      },1500)
-      tl.add({
-        targets: "#lighty,#shadowy",
-        opacity: 0
-      },4000)
-      tl.add({
-        targets: "#xcomp,#xdash,#xcomp-lab",
-        opacity: 1
-      },5000)
-      tl.add({
-        targets: "#lightx,#shadowx",
-        opacity: 1
-      },6500)
-      tl.add({
-        targets: "#ycomp,#ydash,#ycomp-lab",
-        opacity: 1
-      },9000)
-      tl.add({
-        targets: "#lightx,#shadowx",
-        opacity: 0,
-        begin: function(){
-          document.querySelector("#cs2 .ctr").style.backgroundColor = "#f5f5f5";
-        }
-      },9000)
-      tl.add({
-        targets: "#ycomp",
-        translateX: 11.9*size
-      },11500)
-      tl.add({
-        targets: "#ycomp-lab",
-        translateX: 16.1*size
-      },11700)
-      tl.add({
-        targets: "#axes,#xdash,#ydash",
-        opacity: 0
-      },13000)
-      tl.add({
-        targets: "#force-lab",
-        translateX: -0.84*6.5*size,
-        translateY: 0.54*6.5*size,
-        opacity: 0
-      },17000)
-      tl.add({
-        targets: "#magF",
-        translateX: -0.84*6.5*size,
-        translateY: 0.54*6.5*size,
-        opacity: 1
-      },17000)
-      tl.add({
-        targets: "#xcomp,#xcomp-lab,#ycomp,#ycomp-lab,#magF,#force-vec,#theta2",
-        opacity: 0 
-      },17000)
-      tl.add({
-        targets: "#triangle2",
-        opacity: 1
-      },17000)
-      tl.add({
-        targets: "#eqn1",
-        opacity: 1
-      },17000)
-      tl.add({
-        targets: "#eqn2",
-        opacity: 1
-      },17000)
-      tl.add({
-        targets: "#eqn3",
-        opacity: 1
-      },17000)
-      tl.add({
-        targets: "#triangle2",
-        scale: (1/15)*size,
-        translateY: -2.2*size,
-        translateX: 6*size
-      },18000)
-      tl.add({
-        targets: "#cue11",
-        opacity: 1,
-      },19000)
-      tl.add({
-        targets: "#cue11",
-        opacity: 0,
-      },19750)
-      tl.add({
-        targets: "#cue11",
-        opacity: 1,
-      },20500)
-      tl.add({
-        targets: "#cue11",
-        opacity: 0,
-      },21250)
-      tl.add({
-        targets: "#cue11",
-        opacity: 1,
-      },22000)
-      tl.add({
-        targets: "#triangle",
-        scale: 0.08*size,
-        translateY: -2*size 
-      },18000)
-      tl.add({
-        targets: "#theta2",
-        scale: 0.07*size,
-        translateY: -1.2*size
-      },18000)
-      tl.add({
-        targets: "#xcomp-lab",
-        scale: 0.08*size,
-      },18000)
-      tl.add({
-        targets: "#magF",
-        scale: 0.08*size,
-        translateY: -1.2*size
-      },18000)
-      tl.add({
-        targets: "#ycomp-lab",
-        scale: 0.08*size,
-        translateY: -1.2*size,
-        translateX: size
-      },18000)
-      
-      const x = setInterval(function(){
-          let place = document.querySelector("#audio2").currentTime;
-            tl.seek(place*1000);
-        },50);}
-      else{
-        cs2.style.display = "none";
-        if (typeof x != "undefined" ){
-          clearInterval(x);
-        }
-        }}
-
-</script>
-
+<!-- Feedback -->
+<div class="content-stage" id="question" style="display: none;">
+  <div class="hdr">
+      <h1>If \( |\vec{A}| = 5 \) and \( \theta = 35^{o} \), What is \( A_x \) and \( A_y \) ?</h1>
+  </div> 
+  <div></div>
+  <div class="ctr-quiz">
+      <img id="tri-image" src="{% static "IMG/vec_3/tri-image.svg"%}">
+      <img id="vec-image" src="{% static "IMG/vec_3/vec-img.svg"%}">
+      <img id="cue51" src="{% static "IMG/vec_2/cue11.svg"%}">
+      <img id="cue52" src="{% static "IMG/vec_2/cue12.svg"%}">
+      <img id="cue53" src="{% static "IMG/vec_2/cue11.svg"%}">
+      <img id="cue54" src="{% static "IMG/vec_2/cue12.svg"%}">
+      <img id="cue61" src="{% static "IMG/vec_2/cue21.svg"%}">
+      <img id="cue62" src="{% static "IMG/vec_2/cue22.svg"%}">
+      <img id="cue63" src="{% static "IMG/vec_2/cue21.svg"%}">
+      <img id="eqn51" src="{% static "IMG/vec_3/eqn1.svg"%}">
+      <img id="eqn52" src="{% static "IMG/vec_3/eqn2.svg"%}">
+      <img id="eqn53" src="{% static "IMG/vec_3/eqn3.svg"%}">
+      <img id="eqn54" src="{% static "IMG/vec_3/eqn4.svg"%}">
+      <img id="eqn55" src="{% static "IMG/vec_3/eqn5.svg"%}">
+      <img id="eqn56" src="{% static "IMG/vec_3/eqn6.svg"%}">
+      <img id="eqn57" src="{% static "IMG/vec_3/eqn7.svg"%}">
+      <img id="eqn58" src="{% static "IMG/vec_3/eqn8.svg"%}">
+      <img id="eqn59" src="{% static "IMG/vec_3/eqn9.svg"%}">
+      <img id="eqn60" src="{% static "IMG/vec_3/eqn10.svg"%}">
+      <div id="form-box">
+        <form method="POST" id="question-form">
+          <p>Please select a choice below</p>
+          <div>
+              {{context.form.choice.0}}
+              <label for="q2c1">\(A_x = 4.1 \) &nbsp;&nbsp;&nbsp;&nbsp; \(A_y = 2.9 \)</label><br/>
+              {{context.form.choice.1}}
+              <label for="q2c2">\(A_x = 2.9 \) &nbsp;&nbsp;&nbsp; \(A_y = 2.9 \)</label><br/>
+              {{context.form.choice.2}}
+              <label for="q2c3">\(A_x = 2.9 \) &nbsp;&nbsp;&nbsp;&nbsp; \(A_y = 4.1 \)</label><br/>
+              {{context.form.choice.3}}
+              <label for="q2c4">None of the above</label><br/>
+          </div>
+      </form>      
+      </div>    
+  </div>
+  <div></div>
+  <div class="ftr">
+          <audio class="primary-bg" id="audio3" controls controlList="nodownload">
+            <source src="https://dl.dropbox.com/s/le46niwl7612nv5/vec_3.wav?dl=1"/>
+          </audio>
+        <div>
+          <button class="btn primary reduced-vis" id="nxt-btn">Next</button>
+        </div>
+        <div>
+          <button id="btn8" class="btn primary reduced-vis" onclick="question(false);frame3(true);">Back</button>
+        </div>
+        <div>
+          <button form="question-form" id="sub-btn" class="btn primary reduced-vis" type="submit">Submit</button>
+        </div>
+  </div>
+</div>
+      <script src="{% static "mod1_vec.js"%}"></script>
 {% endblock %}

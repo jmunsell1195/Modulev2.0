@@ -112,6 +112,11 @@ audio {
     width: 80%
 }
 
+.reduced-vis{
+    font-size: 0.7rem;
+    padding: 0.1rem;
+}
+
 audio::-webkit-media-controls-panel {
     background-color:#8c979d;;
     opacity: 0.9;
@@ -124,6 +129,7 @@ audio::-webkit-media-controls-panel {
 
 .primary{
     background-color: #8c979d;
+    margin: 30px;
 }
 
 .secondary{
@@ -508,10 +514,11 @@ form{
       height: 1.2rem;
   }
 
-  #button-box {
+ .ftr #button-box {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
+      flex-direction: row;
   }
 
 #pre-statement .ctr {
@@ -540,21 +547,27 @@ form{
 .content-stage .hdr {
     grid-column: 1 /span 3;
     text-align: center;
+    margin-top: 0.5rem;
 }
 
 .content-stage .ctr {
  grid-column: 1 /span 3;
  width: 85%;
- height: 100%;
+ height: 25rem;
  border: 1px black solid;
  border-radius: 20px;
  margin:auto;
  position: relative;
  overflow: hidden;
+ margin-top: 1rem;
 }
 
 .content-stage .ftr{
     justify-content: space-between;
+    grid-column: 1 /span 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 

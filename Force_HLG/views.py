@@ -28,4 +28,27 @@ def pretest(request):
         return render(request,'Force_HLG/pretest.html',{'forms':forms})
 
 def vectors(request):
-    return render(request,"Force_HLG/vectors.html")
+    if request.method == "POST":
+        if request.headers['event'] == 'submission':
+            form = vectorForm(request.POST)
+            if form.is_valid():
+                form = form.save(commit=False)
+                form.event = 'submission'
+                form.user = request.user
+                form.timeStamp = request.headers['datetime']
+                form.numClicks = request.headers['clicks']
+                form.save()
+                print('saved')
+                return HttpResponse('okay!')
+        else:
+            form = vectorLogForm(request.POST)
+            print(form.errors)
+            if form.is_valid():
+                form.save()
+                return HttpResponse('AWESOME')
+
+    else:
+        form = vectorForm()
+        log = vectorLogForm()
+        context = {'form':form,'log':log}
+        return render(request,"Force_HLG/vectors.html",{"context":context})
