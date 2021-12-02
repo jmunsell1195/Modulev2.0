@@ -5,7 +5,6 @@
 {% load static %}
 <link rel="stylesheet" href="{% static "utility.css"%}">
 <link rel="stylesheet" href="{% static "style.css"%}"> 
-<script src="{% static "main_page.js"%}"></script>
 <title>Force Module | Warmup</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -57,7 +56,7 @@
         <h1>If \( |\vec{A}| = 10 \) and \( \theta = 15^{o} \), What is \( A_x \) and \( A_y \) ?</h1>
     </div> 
     <div class="ctr quiz">
-        <div><img class="img-primary" src="{% static "pref1.svg"%}"/></div>
+        <div><img class="img-primary" src="{% static "IMG/Pre/pref1.svg"%}"/></div>
         <div>               
             <form method="POST" id="question1">
                 <p>Please select a choice below</p>
@@ -86,7 +85,7 @@
         <h1>If \( |\vec{A}| = 15 \) and \( \theta = 30^{o} \), What is \( A_x \) and \( A_y \) ?</h1>
     </div> 
     <div class="ctr quiz">
-        <div><img src="{% static "pref2.svg"%}"/></div>
+        <div><img src="{% static "IMG/Pre/pref2.svg"%}"/></div>
         <div>               
             <form method="POST" id="question2">
                 <p>Please select a choice below</p>
@@ -117,7 +116,7 @@
         <h1>If \( |\vec{A}| = 10 \) and \( \theta = 60^{o} \), What is \( A_x \) and \( A_y \) ?</h1>
     </div> 
     <div class="ctr quiz">
-        <div><img src="{% static "pref3.svg"%}"/></div>
+        <div><img src="{% static "IMG/Pre/pref3.svg"%}"/></div>
         <div>               
             <form method="POST" id="question3">
                 <p>Please select a choice below</p>
@@ -156,10 +155,10 @@
                     <div>{{forms.form4.choice.1}}</div>
                     <div>{{forms.form4.choice.2}}</div>    
                     <div>{{forms.form4.choice.3}}</div>
-                    <div><img src="{% static "pre4f1.svg"%}"></div>
-                    <div><img src="{% static "pre4f2.svg"%}"></div>
-                    <div><img src="{% static "pre4f3.svg"%}"></div>
-                    <div><img src="{% static "pre4f4.svg"%}"></div> 
+                    <div><img src="{% static "IMG/Pre/pre4f1.svg"%}"></div>
+                    <div><img src="{% static "IMG/Pre/pre4f2.svg"%}"></div>
+                    <div><img src="{% static "IMG/Pre/pre4f3.svg"%}"></div>
+                    <div><img src="{% static "IMG/Pre/pre4f4.svg"%}"></div> 
                 </div>
             </form>
     </div>
@@ -178,7 +177,7 @@
              choices correctly give the net force acting on the box. Take to the right to be +x and up to be +y</h5>
     </div> 
     <div class="ctr quiz">
-        <div><img src="{% static "pref5.svg"%}"/></div>
+        <div><img src="{% static "IMG/Pre/pref5.svg"%}"/></div>
         <div>               
             <form method="POST" id="question5">
                 <p>Please select a choice below</p>
@@ -216,10 +215,10 @@
                     <div>{{forms.form6.choice.1}}</div>
                     <div>{{forms.form6.choice.2}}</div>    
                     <div>{{forms.form6.choice.3}}</div>
-                    <div><img src="{% static "pref6f1.svg"%}"></div>
-                    <div><img src="{% static "pref6f2.svg"%}"></div>
-                    <div><img src="{% static "pref6f3.svg"%}"></div>
-                    <div><img src="{% static "pref6f4.svg"%}"></div> 
+                    <div><img src="{% static "IMG/Pre/pref6f1.svg"%}"></div>
+                    <div><img src="{% static "IMG/Pre/pref6f2.svg"%}"></div>
+                    <div><img src="{% static "IMG/Pre/pref6f3.svg"%}"></div>
+                    <div><img src="{% static "IMG/Pre/pref6f4.svg"%}"></div> 
                 </div>
             </form>
     </div>
@@ -237,7 +236,7 @@
         \( |\vec{F}_{N}| = 750N\) what is the direction and magnitude of the accleration of the rider?</h4>
     </div> 
     <div class="ctr quiz">
-        <div><img src="{% static "pref7.svg"%}"/></div>
+        <div><img src="{% static "IMG/Pre/pref7.svg"%}"/></div>
         <div>               
             <form method="POST" id="question7">
                 <p>Please select a choice below</p>
@@ -353,201 +352,7 @@
 
 
 
-<script>
-    let clicks = 0;
-    let start = Date.now();
-
-    document.addEventListener('click',function(){clicks += 1})
-
-    const pre_statement = state => {
-        document.getElementById("navbar").style.opacity = "0.4";
-        document.getElementById("bottombar").style.opacity = "0.4";
-        document.getElementById("pre-statement").style.display = String(state);}
-
-    const ques1 = state => {
-        document.getElementById("q1-container").style.display = String(state);
-        return start = Date.now();
-    }
-
-    const ques2 = state => document.getElementById("q2-container").style.display = String(state);
-
-    const ques3 = state => document.getElementById("q3-container").style.display = String(state);
-
-    const ques4 = state => document.getElementById("q4-container").style.display = String(state);
-
-    const ques5 = state => document.getElementById("q5-container").style.display = String(state);
-
-    const ques6 = state => document.getElementById("q6-container").style.display = String(state);
-
-    const ques7 = state => document.getElementById("q7-container").style.display = String(state);
-
-    const ques8 = state => document.getElementById("q8-container").style.display = String(state);
-
-    const ques9 = state => document.getElementById("q9-container").style.display = String(state);
-
-    const ques10 = state => document.getElementById("q10-container").style.display = String(state);
-
-    ques1('none');
-    ques2('none');
-    ques3('none');
-    ques4('none');
-    ques5('none');
-    ques6('none');
-    ques7('none');
-    ques8('none');
-    ques9('none');
-    ques10('none');
-
-    document.getElementById('pre-btn').addEventListener('click',() => {pre_statement('none');ques1("grid")});
-
-    document.getElementById('bottom')
-    console.log(document.getElementById("question1"));
-
-    $("#question1").submit(function(e){
-        e.preventDefault();
-        const form = $(this);
-        let quiz1time = (Date.now() - start)/1000;
-        let url = form.attr("action");
-        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-        $.ajax({
-            headers: {'X-CSRFToken': csrftoken, 'question': 'q1', 'num_clicks': clicks, 'quiz1time':quiz1time},
-            type:"POST",
-            url: url,
-            data: form.serialize(),
-            complete: function(){ques1("none"); ques2("grid"); console.log(document.getElementById("question1"))}
-            })
-         });
-
-    $("#question2").submit(function(e){
-        e.preventDefault();
-        const form = $(this);
-        let quiz1time = (Date.now() - start)/1000;
-        let url = form.attr("action");
-        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-        $.ajax({
-            headers: {'X-CSRFToken': csrftoken, 'question': 'q2','quiz1time':quiz1time},
-            type:"POST",
-            url: url,
-            data: form.serialize(),
-            complete: function(){ques2("none"); ques3("grid");}
-            })
-         });
-
-    $("#question3").submit(function(e){
-        e.preventDefault();
-        const form = $(this);
-        // let quiz1 = (Date.now() - start)/1000;
-        let url = form.attr("action");
-        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-        $.ajax({
-            headers: {'X-CSRFToken': csrftoken, 'ques': 'q1'},
-            type:"POST",
-            url: url,
-            data: form.serialize(),
-            complete: function(){ques3("none"); ques4("grid");}
-            })
-         });
-    
-    $("#question4").submit(function(e){
-        e.preventDefault();
-        const form = $(this);
-        // let quiz1 = (Date.now() - start)/1000;
-        let url = form.attr("action");
-        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-        $.ajax({
-            headers: {'X-CSRFToken': csrftoken, 'ques': 'q1'},
-            type:"POST",
-            url: url,
-            data: form.serialize(),
-            complete: function(){ques4("none"); ques5("grid");}
-            })
-        });
-
-    $("#question5").submit(function(e){
-        e.preventDefault();
-        const form = $(this);
-        // let quiz1 = (Date.now() - start)/1000;
-        let url = form.attr("action");
-        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-        $.ajax({
-            headers: {'X-CSRFToken': csrftoken, 'ques': 'q1'},
-            type:"POST",
-            url: url,
-            data: form.serialize(),
-            complete: function(){ques5("none"); ques6("grid");}
-            })
-         });
-    $("#question6").submit(function(e){
-        e.preventDefault();
-        const form = $(this);
-        // let quiz1 = (Date.now() - start)/1000;
-        let url = form.attr("action");
-        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-        $.ajax({
-            headers: {'X-CSRFToken': csrftoken, 'ques': 'q1'},
-            type:"POST",
-            url: url,
-            data: form.serialize(),
-            complete: function(){ques6("none"); ques7("grid");}
-            })
-         });
-    $("#question7").submit(function(e){
-        e.preventDefault();
-        const form = $(this);
-        // let quiz1 = (Date.now() - start)/1000;
-        let url = form.attr("action");
-        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-        $.ajax({
-            headers: {'X-CSRFToken': csrftoken, 'ques': 'q1'},
-            type:"POST",
-            url: url,
-            data: form.serialize(),
-            complete: function(){ques7("none"); ques8("grid");}
-            })
-         });
-    $("#question8").submit(function(e){
-        e.preventDefault();
-        const form = $(this);
-        // let quiz1 = (Date.now() - start)/1000;
-        let url = form.attr("action");
-        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-        $.ajax({
-            headers: {'X-CSRFToken': csrftoken, 'ques': 'q1'},
-            type:"POST",
-            url: url,
-            data: form.serialize(),
-            complete: function(){ques8("none"); ques9("grid");}
-            })
-         });
-    $("#question9").submit(function(e){
-        e.preventDefault();
-        const form = $(this);
-        // let quiz1 = (Date.now() - start)/1000;
-        let url = form.attr("action");
-        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-        $.ajax({
-            headers: {'X-CSRFToken': csrftoken, 'ques': 'q1'},
-            type:"POST",
-            url: url,
-            data: form.serialize(),
-            complete: function(){ques9("none"); ques10("grid");}
-            })
-         });
-    $("#question10").submit(function(e){
-        e.preventDefault();
-        const form = $(this);
-        // let quiz1 = (Date.now() - start)/1000;
-        let url = form.attr("action");
-        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-        $.ajax({
-            headers: {'X-CSRFToken': csrftoken, 'ques': 'q1'},
-            type:"POST",
-            url: url,
-            data: form.serialize(),
-            complete: function(){ques10("none"); ques9("grid");}
-            })
-         });
-</script>
+<script src="{% static "JS/pretest.js"%}"></script>
 
 
 

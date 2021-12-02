@@ -4,7 +4,7 @@
 
 {% block head %}
 <link rel="stylesheet" href="{% static "utility.css"%}">
-<link rel="stylesheet" href="{% static "content-styles.css"%}"> 
+<link rel="stylesheet" href="{% static "CSS/content-styles.css"%}"> 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Force Module | Vectors</title>
 
@@ -51,7 +51,7 @@
   </div>
   <div></div>
   <div class="ftr">
-    <btn id="btn1" class="btn primary reduced-vis" onclick="frame0(false); frame1(true);">Next</btn>
+    <btn id="btn1" class="btn primary reduced-vis">Next</btn>
   </div>
 </div>
 
@@ -89,12 +89,12 @@
   <div></div>
   <div class="ftr">
     <div>
-      <button id="btn2"class="btn primary reduced-vis" onclick="frame1(false);frame0(true); pause1();">Back</button>
+      <button id="btn2"class="btn primary reduced-vis">Back</button>
     </div>
     <audio class="primary-bg" id="audio" controls controlList="nodownload">
       <source src="https://dl.dropbox.com/s/lfzacwa83xzcj59/vec_1.wav?dl=1"/>
     </audio>
-    <button id="btn3" class="btn primary reduced-vis" onclick="frame1(false); frame2(true); pause1();">Next</button>
+    <button id="btn3" class="btn primary reduced-vis">Next</button>
 </div>
   </div>
 </div>
@@ -129,6 +129,7 @@
     <img id="eqn6" src="{% static "IMG/vec_2/eqn6.svg"%}">
     <img id="triangle" src="{% static "IMG/vec_2/triangle.svg"%}">
     <img id="triangle2" src="{% static "IMG/vec_2/triangle2.svg"%}">
+    <img id="triangle35" src="{% static "IMG/vec_2/triangle2.svg"%}">
     <img id="cue11" src="{% static "IMG/vec_2/cue11.svg"%}">
     <img id="cue12" src="{% static "IMG/vec_2/cue12.svg"%}">
     <img id="cue13" src="{% static "IMG/vec_2/cue11.svg"%}">
@@ -140,13 +141,13 @@
   <div></div>
   <div class="ftr">
     <div>
-      <button id="btn4" class="btn primary reduced-vis" onclick="frame1(true); frame2(false);pause2();">Back</button>
+      <button id="btn4" class="btn primary reduced-vis">Back</button>
     </div>
     <audio class="primary-bg" id="audio2" controls controlList="nodownload">
       <source src="https://dl.dropbox.com/s/gzucruqy1yc83yo/vec_2.wav?dl=1"/>
     </audio>
   <div>
-    <button id="btn5" class="btn primary reduced-vis" onclick="frame2(false); frame3(true);pause2();">Next</button>
+    <button id="btn5" class="btn primary reduced-vis">Next</button>
   </div>
 </div>
   </div>
@@ -192,8 +193,8 @@
   </div>
   <div></div>
   <div class="ftr">
-    <button id="btn6" class="btn primary reduced-vis" onclick="frame3(false); frame2(true);">Back</button>
-    <button id="btn7" class="btn primary reduced-vis" onclick="frame3(false); question(true);">Next</button>
+    <button id="btn6" class="btn primary reduced-vis">Back</button>
+    <button id="btn7" class="btn primary reduced-vis">Next</button>
   </div>
 </div>
 
@@ -246,8 +247,10 @@
       <img id="cue52" src="{% static "IMG/vec_2/cue12.svg"%}">
       <img id="cue53" src="{% static "IMG/vec_2/cue11.svg"%}">
       <img id="cue54" src="{% static "IMG/vec_2/cue12.svg"%}">
+      <img id="cue55" src="{% static "IMG/vec_2/cue11.svg"%}">
+      <img id="cue56" src="{% static "IMG/vec_2/cue12.svg"%}">
       <img id="cue61" src="{% static "IMG/vec_2/cue21.svg"%}">
-      <img id="cue62" src="{% static "IMG/vec_2/cue22.svg"%}">
+      <img id="cue62" src="{% static "IMG/vec_2/cue21.svg"%}">
       <img id="cue63" src="{% static "IMG/vec_2/cue21.svg"%}">
       <img id="eqn51" src="{% static "IMG/vec_3/eqn1.svg"%}">
       <img id="eqn52" src="{% static "IMG/vec_3/eqn2.svg"%}">
@@ -277,19 +280,22 @@
   </div>
   <div></div>
   <div class="ftr">
+        <div>
+          <button style="opacity: 0"></button>
+        </div>
           <audio class="primary-bg" id="audio3" controls controlList="nodownload">
-            <source src="https://dl.dropbox.com/s/le46niwl7612nv5/vec_3.wav?dl=1"/>
+            <source src="https://dl.dropbox.com/s/jzuf69tt1rub030/vec_3.wav?dl=1"/>
           </audio>
         <div>
           <button class="btn primary reduced-vis" id="nxt-btn">Next</button>
         </div>
         <div>
-          <button id="btn8" class="btn primary reduced-vis" onclick="question(false);frame3(true);">Back</button>
+          <button id="btn8" class="btn primary reduced-vis">Back</button>
         </div>
         <div>
           <button form="question-form" id="sub-btn" class="btn primary reduced-vis" type="submit">Submit</button>
         </div>
   </div>
 </div>
-      <script src="{% static "mod1_vec.js"%}"></script>
+      <script src="{% static "JS/mod1_vec.js"%}"></script>
 {% endblock %}

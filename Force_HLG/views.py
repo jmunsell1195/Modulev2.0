@@ -44,6 +44,7 @@ def vectors(request):
             form = vectorLogForm(request.POST)
             print(form.errors)
             if form.is_valid():
+                print(form['event'])
                 form.save()
                 return HttpResponse('AWESOME')
 

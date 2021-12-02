@@ -12,6 +12,11 @@ class pretest(models.Model):
     duration = models.CharField(max_length=25,blank=True)
     numClicks = models.CharField(max_length=25,blank=True)
 
+class pretestLog(models.Model):
+    event = models.CharField(max_length=25)
+    user = models.CharField(max_length=25,blank=True)
+    timeStamp = models.CharField(max_length=100)
+
 class Vectors(models.Model):
     event = models.CharField(max_length=100,blank=True)
     timeStamp = models.CharField(max_length=100,blank=True)
