@@ -52,16 +52,16 @@ const ques10 = state => document.getElementById("q10-container").style.display =
 #################################################
 */
 
-ques1('none');
-ques2('none');
-ques3('none');
-ques4('none');
-ques5('none');
-ques6('none');
-ques7('none');
-ques8('none');
-ques9('none');
-ques10('none');
+// ques1('none');
+// ques2('none');
+// ques3('none');
+// ques4('none');
+// ques5('none');
+// ques6('none');
+// ques7('none');
+// ques8('none');
+// ques9('none');
+// ques10('none');
 
 //Add event listener to move from pre-statement to question1 on button click
 document.querySelector('#pre-btn').addEventListener('click',() => {pre_statement('none');ques1("grid")});

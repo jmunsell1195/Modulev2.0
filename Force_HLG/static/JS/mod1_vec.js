@@ -393,7 +393,7 @@ const frame2 = (show) => {
         targets: "#lighty,#shadowy",
         opacity:1,
         begin: function(){
-          document.querySelector("#cs2 .ctr").style.backgroundColor = "#343a40";
+          document.querySelector("#cs2 .ctr").style.backgroundColor = "#535c66";
         }
       },40000)
       tl.add({
