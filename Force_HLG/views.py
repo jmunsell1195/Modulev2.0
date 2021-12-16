@@ -11,11 +11,12 @@ def pretest(request):
     if request.method == "POST":
         form = pretestForm(request.POST)
         if form.is_valid():
+            print(request.headers)
             form = form.save(commit=False)
             form.user = request.user
-            form.question = request.headers['question']
+            form.question = request.headers['Question']
             form.quiz1Time = request.headers['quiz1time']
-            form.timeStamp = pd.Timestamp.now()
+            form.timeStamp = request.headers['timeStamp']
             form.save()
             return HttpResponse('There was a problem')
         else: 
@@ -53,3 +54,6 @@ def vectors(request):
         log = vectorLogForm()
         context = {'form':form,'log':log}
         return render(request,"Force_HLG/vectors.html",{"context":context})
+
+def forces(request):
+    return render(request,"Force_HLG/n2.html")

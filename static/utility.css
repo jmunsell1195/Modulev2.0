@@ -118,6 +118,10 @@ audio {
     padding: 0.1rem;
 }
 
+.clicked{
+    background-color: red;
+}
+
 audio::-webkit-media-controls-panel {
     background-color:#8c979d;;
     opacity: 0.9;

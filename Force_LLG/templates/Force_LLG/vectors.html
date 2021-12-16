@@ -40,10 +40,14 @@
               </div> -->
             </div>
 
+<div id="start" style="width:100%; height:85.5vh; background-color: #f5f5f5;">
+  <button id="start-btn" class="btn primary reduced-vis">START</button>
+</div>
+
 <!-- Frame 0  -->
 <div id="cs0" class="content-stage" style="display: none;">
   <div class="hdr">
-    <h2>Vectors</h2>
+    <h2>Vectors Frame 0</h2>
   </div>
   <div class="ctr">
     <h3>In this section you will view content in a self-directed manner. 
@@ -58,14 +62,22 @@
   </div>
 </div>
 
-<form id="page-events" style="display:none">
+<form id="page-events" style="display: none">
   {{context.log}}
+  {%csrf_token%}
+</form>
+<form id="mouse-events" style="display: none">
+  {{context.mouse}}
+  {%csrf_token%}
+</form>
+<form id="mouse-events2" style="display: none">
+  {{context.mouse}}
   {%csrf_token%}
 </form>
 <!-- Frame 1 -->
 <div id="cs1" class="content-stage" style="display: grid">
   <div class="hdr">
-    <h2>Scalars</h2>
+    <h2>Vectors Frame 1</h2>
   </div>
   <div class="ctr">
       <div id="scalar-stmnt">
@@ -96,7 +108,7 @@
         <div id="scalars" class="btn primary main">Scalars</div>
         <div id="dist" class="btn primary main">Distance</div>
         <div id="disp" class="btn primary main">Displacement</div>
-    <button id="btn3" class="btn primary reduced-vis">Next</button>
+    <button id="btn3" class="btn primary reduced-vis" style="opacity: 0">Next</button>
 </div>
   </div>
 </div>
@@ -104,7 +116,7 @@
 <!-- Frame 2 -->
 <div id="cs2" class="content-stage" style="display:none">
   <div class="hdr">
-    <h2>Vectors</h2>
+    <h2>Vectors Frame 2</h2>
   </div>
   <div class="ctr">
     <div id="vectorStmnt">
@@ -127,7 +139,7 @@
     </div>
     <div id="y-compStmnt">
       <p>
-        Since \(F_x\) is the side adjacent to \(\theta \), \(F_y\) must be the side opposite to \(\theta\), and \(F_x = |\vec{F}|cos(\theta)\)
+        Since \(F_x\) is the side adjacent to \(\theta \), \(F_y\) must be the side opposite to \(\theta\), and \(F_y = |\vec{F}|sin(\theta)\)
       </p>
     </div>
     <img id="vector-main" src="{% static "IMG/vec_2/vector-figure.svg"%}">
@@ -148,12 +160,12 @@
     <div>
       <button id="btn4" class="btn primary reduced-vis">Back</button>
     </div>
-    <div id="vectors" class="btn primary main">Vectors</div>
+    <div id="vectorsbutt" class="btn primary main">Vectors</div>
     <div id="meaning" class="btn primary main">Meaning</div>
     <div id="fx-butt" class="btn primary main">\( F_x \)</div>
     <div id="fy-butt" class="btn primary main">\( F_y \)</div>
   <div>
-    <button id="btn5" class="btn primary reduced-vis">Next</button>
+    <button id="btn5" class="btn primary reduced-vis" style="opacity: 0">Next</button>
   </div>
 </div>
   </div>
@@ -162,7 +174,7 @@
 <!-- Frame 3 -->
 <div class="content-stage" id="cs3" style="display:none;">
   <div class="hdr">
-    <h2>Summary</h2>
+    <h2>Vectors Frame 3</h2>
   </div>
   <div class="ctr">
     <div>
@@ -174,10 +186,10 @@
         <img id="triangle3" src="{% static "IMG/vec_2/triangle2.svg"%}">
       </div>
       <div>
-        <img id="eqn7" src="{% static "IMG/vec_2/fxx.svg"%}">
+        <img id="eqn7" src="{% static "IMG/vec_2/fxx_llg.svg"%}">
       </div>
       <div>
-        <img id="eqn8" src="{% static "IMG/vec_2/fyx.svg"%}">
+        <img id="eqn8" src="{% static "IMG/vec_2/fyx_llg.svg"%}">
       </div>
     </div>
     <div>
@@ -189,10 +201,10 @@
         <img id="triangle4" src="{% static "IMG/vec_2/triangle3.svg"%}">
       </div>
       <div>
-        <img id="eqn9" src="{% static "IMG/vec_2/fxy.svg"%}">
+        <img id="eqn9" src="{% static "IMG/vec_2/fxy_llg.svg"%}">
       </div>
       <div>
-        <img id="eqn10" src="{% static "IMG/vec_2/fyy.svg"%}">
+        <img id="eqn10" src="{% static "IMG/vec_2/fyy_llg.svg"%}">
       </div>
     </div>
 
@@ -247,27 +259,8 @@
   </div> 
   <div></div>
   <div class="ctr-quiz">
-      <img id="tri-image" src="{% static "IMG/vec_3/tri-image.svg"%}">
       <img id="vec-image" src="{% static "IMG/vec_3/vec-img.svg"%}">
-      <img id="cue51" src="{% static "IMG/vec_2/cue11.svg"%}">
-      <img id="cue52" src="{% static "IMG/vec_2/cue12.svg"%}">
       <img id="cue53" src="{% static "IMG/vec_2/cue11.svg"%}">
-      <img id="cue54" src="{% static "IMG/vec_2/cue12.svg"%}">
-      <img id="cue55" src="{% static "IMG/vec_2/cue11.svg"%}">
-      <img id="cue56" src="{% static "IMG/vec_2/cue12.svg"%}">
-      <img id="cue61" src="{% static "IMG/vec_2/cue21.svg"%}">
-      <img id="cue62" src="{% static "IMG/vec_2/cue21.svg"%}">
-      <img id="cue63" src="{% static "IMG/vec_2/cue21.svg"%}">
-      <img id="eqn51" src="{% static "IMG/vec_3/eqn1.svg"%}">
-      <img id="eqn52" src="{% static "IMG/vec_3/eqn2.svg"%}">
-      <img id="eqn53" src="{% static "IMG/vec_3/eqn3.svg"%}">
-      <img id="eqn54" src="{% static "IMG/vec_3/eqn4.svg"%}">
-      <img id="eqn55" src="{% static "IMG/vec_3/eqn5.svg"%}">
-      <img id="eqn56" src="{% static "IMG/vec_3/eqn6.svg"%}">
-      <img id="eqn57" src="{% static "IMG/vec_3/eqn7.svg"%}">
-      <img id="eqn58" src="{% static "IMG/vec_3/eqn8.svg"%}">
-      <img id="eqn59" src="{% static "IMG/vec_3/eqn9.svg"%}">
-      <img id="eqn60" src="{% static "IMG/vec_3/eqn10.svg"%}">
       <div id="form-box">
         <form method="POST" id="question-form">
           <p>Please select a choice below</p>
@@ -288,11 +281,6 @@
   <div class="ftr">
         <div>
           <button style="opacity: 0"></button>
-        </div>
-          <audio class="primary-bg" id="audio3" controls controlList="nodownload">
-            <source src="https://dl.dropbox.com/s/jzuf69tt1rub030/vec_3.wav?dl=1"/>
-          </audio>
-        <div>
           <button class="btn primary reduced-vis" id="nxt-btn">Next</button>
         </div>
         <div>

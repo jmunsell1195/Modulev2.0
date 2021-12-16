@@ -66,6 +66,47 @@ const ques10 = state => document.getElementById("q10-container").style.display =
 //Add event listener to move from pre-statement to question1 on button click
 document.querySelector('#pre-btn').addEventListener('click',() => {pre_statement('none');ques1("grid")});
 
+document.querySelector("#btn1").addEventListener('click',()=>{
+    document.querySelector("#btn1").style.backgroundColor = "red";
+})
+
+document.querySelector("#btn2").addEventListener('click',()=>{
+    document.querySelector("#btn2").style.backgroundColor = "red";
+})
+
+document.querySelector("#btn3").addEventListener('click',()=>{
+    document.querySelector("#btn3").style.backgroundColor = "red";
+})
+
+document.querySelector("#btn4").addEventListener('click',()=>{
+    document.querySelector("#btn4").style.backgroundColor = "red";
+})
+
+document.querySelector("#btn5").addEventListener('click',()=>{
+    document.querySelector("#btn5").style.backgroundColor = "red";
+})
+
+document.querySelector("#btn6").addEventListener('click',()=>{
+    document.querySelector("#btn6").style.backgroundColor = "red";
+})
+
+document.querySelector("#btn7").addEventListener('click',()=>{
+    document.querySelector("#btn7").style.backgroundColor = "red";
+})
+
+document.querySelector("#btn8").addEventListener('click',()=>{
+    document.querySelector("#btn8").style.backgroundColor = "red";
+})
+
+document.querySelector("#btn9").addEventListener('click',()=>{
+    document.querySelector("#btn9").style.backgroundColor = "red";
+})
+
+document.querySelector("#btn10").addEventListener('click',()=>{
+    document.querySelector("#btn10").style.backgroundColor = "red";
+})
+
+
 
 //Submit Meta Data through headers rather than 
 //fill in client-side to reduce js footprint
@@ -76,32 +117,40 @@ $("#question1").submit(function(e){
     const form = $(this);
     let quiz1time = (Date.now() - start)/1000;
     start = Date.now();
+    const newDate = new Date();
+    const datetime = `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()} --- ${newDate.getHours()} : ${newDate.getMinutes()} : ${newDate.getMilliseconds()}`
     let url = form.attr("action");
     const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-    $.ajax({
-        headers: {'X-CSRFToken': csrftoken, 'question': 'q1', 'num_clicks': clicks, 'quiz1time':quiz1time},
-        type:"POST",
-        url: url,
-        data: form.serialize(),
-        complete: function(){ques1("none"); ques2("grid"); console.log(document.getElementById("question1"))}
-        })
-     });
+    setTimeout(function(){
+        $.ajax({
+            headers: {'X-CSRFToken': csrftoken, 'question': 'q1', 'num_clicks': clicks, 'quiz1time':quiz1time,'timeStamp':datetime},
+            type:"POST",
+            url: url,
+            data: form.serialize(),
+            complete: function(){ ques1('none');ques2('grid');}
+            })
+    },250)
+});
 
 //jQuery listens for submission of question 2
 $("#question2").submit(function(e){
     e.preventDefault();
     const form = $(this);
     let quiz1time = (Date.now() - start)/1000;
+    const newDate = new Date();
+    const datetime = `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()} --- ${newDate.getHours()} : ${newDate.getMinutes()} : ${newDate.getMilliseconds()}`
     let url = form.attr("action");
     start = Date.now();
     const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-    $.ajax({
-        headers: {'X-CSRFToken': csrftoken, 'question': 'q2','quiz1time':quiz1time},
-        type:"POST",
-        url: url,
-        data: form.serialize(),
-        complete: function(){ques2("none"); ques3("grid");}
-        })
+    setTimeout(function(){
+        $.ajax({
+            headers: {'X-CSRFToken': csrftoken, 'question': 'q2','quiz1time':quiz1time,'timeStamp':datetime},
+            type:"POST",
+            url: url,
+            data: form.serialize(),
+            complete: function(){ques2("none"); ques3("grid");}
+            })
+    },250)
      });
 
 //jQuery listens for submission of question 3
@@ -110,15 +159,19 @@ $("#question3").submit(function(e){
     const form = $(this);
     let quiz1time = (Date.now() - start)/1000;
     start = Date.now();
+    const newDate = new Date();
+    const datetime = `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()} --- ${newDate.getHours()} : ${newDate.getMinutes()} : ${newDate.getMilliseconds()}`
     let url = form.attr("action");
     const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-    $.ajax({
-        headers: {'X-CSRFToken': csrftoken, 'question': 'q3','quiz1time':quiz1time},
-        type:"POST",
-        url: url,
-        data: form.serialize(),
-        complete: function(){ques3("none"); ques4("grid");}
-        })
+    setTimeout(function(){
+        $.ajax({
+            headers: {'X-CSRFToken': csrftoken, 'question': 'q3','quiz1time':quiz1time,'timeStamp':datetime},
+            type:"POST",
+            url: url,
+            data: form.serialize(),
+            complete: function(){ques3("none"); ques4("grid");}
+            })
+    })
      });
 
 //jQuery listens for submission of question 4
@@ -128,14 +181,18 @@ $("#question4").submit(function(e){
     let quiz1time = (Date.now() - start)/1000;
     start = Date.now()
     let url = form.attr("action");
+    const newDate = new Date();
+    const datetime = `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()} --- ${newDate.getHours()} : ${newDate.getMinutes()} : ${newDate.getMilliseconds()}`
     const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-    $.ajax({
-        headers: {'X-CSRFToken': csrftoken, 'question': 'q4','quiz1time':quiz1time},
-        type:"POST",
-        url: url,
-        data: form.serialize(),
-        complete: function(){ques4("none"); ques5("grid");}
-        })
+    setTimeout(function(){
+        $.ajax({
+            headers: {'X-CSRFToken': csrftoken, 'question': 'q4','quiz1time':quiz1time,'timeStamp':datetime},
+            type:"POST",
+            url: url,
+            data: form.serialize(),
+            complete: function(){ques4("none"); ques5("grid");}
+            })
+    },250)
     });
 
 //jQuery listens for submission of question 5
@@ -145,14 +202,18 @@ $("#question5").submit(function(e){
     let quiz1time = (Date.now() - start)/1000;
     start = Date.now();
     let url = form.attr("action");
+    const newDate = new Date();
+    const datetime = `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()} --- ${newDate.getHours()} : ${newDate.getMinutes()} : ${newDate.getMilliseconds()}`
     const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-    $.ajax({
-        headers: {'X-CSRFToken': csrftoken, 'question': 'q5','quiz1time':quiz1time},
-        type:"POST",
-        url: url,
-        data: form.serialize(),
-        complete: function(){ques5("none"); ques6("grid");}
-        })
+    setTimeout(function(){
+        $.ajax({
+            headers: {'X-CSRFToken': csrftoken, 'question': 'q5','quiz1time':quiz1time,'timeStamp':datetime},
+            type:"POST",
+            url: url,
+            data: form.serialize(),
+            complete: function(){ques5("none"); ques6("grid");}
+            })
+    },250)
      });
 
 //jQuery listens for submission of question 6
@@ -162,14 +223,18 @@ $("#question6").submit(function(e){
     let quiz1time = (Date.now() - start)/1000;
     start = Date.now();
     let url = form.attr("action");
+    const newDate = new Date();
+    const datetime = `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()} --- ${newDate.getHours()} : ${newDate.getMinutes()} : ${newDate.getMilliseconds()}`
     const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-    $.ajax({
-        headers: {'X-CSRFToken': csrftoken, 'question': 'q6','quiz1time':quiz1time},
-        type:"POST",
-        url: url,
-        data: form.serialize(),
-        complete: function(){ques6("none"); ques7("grid");}
-        })
+    setTimeout(function(){
+        $.ajax({
+            headers: {'X-CSRFToken': csrftoken, 'question': 'q6','quiz1time':quiz1time,'timeStamp':datetime},
+            type:"POST",
+            url: url,
+            data: form.serialize(),
+            complete: function(){ques6("none"); ques7("grid");}
+            })
+    },250)
      });
 
 //jQuery listens for submission of question 7
@@ -179,14 +244,18 @@ $("#question7").submit(function(e){
     let quiz1time = (Date.now() - start)/1000;
     let url = form.attr("action");
     start = Date.now();
+    const newDate = new Date();
+    const datetime = `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()} --- ${newDate.getHours()} : ${newDate.getMinutes()} : ${newDate.getMilliseconds()}`
     const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-    $.ajax({
-        headers: {'X-CSRFToken': csrftoken, 'question': 'q7','quiz1time':quiz1time},
-        type:"POST",
-        url: url,
-        data: form.serialize(),
-        complete: function(){ques7("none"); ques8("grid");}
-        })
+    setTimeout(function(){
+        $.ajax({
+            headers: {'X-CSRFToken': csrftoken, 'question': 'q7','quiz1time':quiz1time,'timeStamp':datetime},
+            type:"POST",
+            url: url,
+            data: form.serialize(),
+            complete: function(){ques7("none"); ques8("grid");}
+            })
+    },250)
      });
 
 //jQuery listens for submission of question 8
@@ -196,14 +265,18 @@ $("#question8").submit(function(e){
     const quiz1time = (Date.now() - start)/1000;
     start = Date.now();
     const url = form.attr("action");
+    const newDate = new Date();
+    const datetime = `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()} --- ${newDate.getHours()} : ${newDate.getMinutes()} : ${newDate.getMilliseconds()}`
     const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-    $.ajax({
-        headers: {'X-CSRFToken': csrftoken, 'question': 'q8','quiz1time':quiz1time},
-        type:"POST",
-        url: url,
-        data: form.serialize(),
-        complete: function(){ques8("none"); ques9("grid");}
-        })
+    setTimeout(function(){
+        $.ajax({
+            headers: {'X-CSRFToken': csrftoken, 'question': 'q8','quiz1time':quiz1time,'timeStamp':datetime},
+            type:"POST",
+            url: url,
+            data: form.serialize(),
+            complete: function(){ques8("none"); ques9("grid");}
+            })
+    },250)
      });
 
 //jQuery listens for submission of question 9
@@ -212,15 +285,19 @@ $("#question9").submit(function(e){
     const form = $(this);
     const quiz1time = (Date.now() - start)/1000;
     start = Date.now();
+    const newDate = new Date();
+    const datetime = `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()} --- ${newDate.getHours()} : ${newDate.getMinutes()} : ${newDate.getMilliseconds()}`
     const url = form.attr("action");
     const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-    $.ajax({
-        headers: {'X-CSRFToken': csrftoken, 'question': 'q19','quiz1time':quiz1time},
-        type:"POST",
-        url: url,
-        data: form.serialize(),
-        complete: function(){ques9("none"); ques10("grid");}
-        })
+    setTimeout(function(){
+        $.ajax({
+            headers: {'X-CSRFToken': csrftoken, 'question': 'q9','quiz1time':quiz1time,'timeStamp':datetime},
+            type:"POST",
+            url: url,
+            data: form.serialize(),
+            complete: function(){ques9("none"); ques10("grid");}
+            })
+    },250)
      });
 
 //jQuery listens for submission of question 10
@@ -229,13 +306,17 @@ $("#question10").submit(function(e){
     const form = $(this);
     const quiz1time = (Date.now() - start)/1000;
     start = Date.now();
+    const newDate = new Date();
+    const datetime = `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()} --- ${newDate.getHours()} : ${newDate.getMinutes()} : ${newDate.getMilliseconds()}`
     const url = form.attr("action");
     const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-    $.ajax({
-        headers: {'X-CSRFToken': csrftoken, 'question': 'q10','quiz1time':quiz1time},
-        type:"POST",
-        url: url,
-        data: form.serialize(),
-        complete: function(){window.location.replace('/Force/Force_HLG/vectors')}
-        })
+    setTimeout(function(){
+        $.ajax({
+            headers: {'X-CSRFToken': csrftoken, 'question': 'q10','quiz1time':quiz1time,'timeStamp':datetime},
+            type:"POST",
+            url: url,
+            data: form.serialize(),
+            complete: function(){window.location.replace('/Force/Force_HLG/vectors')}
+            })
+    },250)
      });

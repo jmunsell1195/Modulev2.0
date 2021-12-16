@@ -37,15 +37,15 @@
 #area-pic {
     position: absolute;
     height: 30rem;
-    left: 6rem;
+    left: 7.5rem;
     top: 6rem;
     opacity: 0;
 }
 
 #scalar-stmnt {
     position: absolute;
-    left: 1rem;
-    width: 62.5rem;
+    left: 2.5%;
+    width: 95%;
     top: 1rem;
     text-align: center;
     border: 1px black solid;
@@ -55,8 +55,8 @@
 
 #area-stmnt {
     position: absolute;
-    left: 1rem;
-    width: 62.5rem;
+    left: 2.5%;
+    width: 95%;
     top: 1rem;
     text-align: center;
     border: 1px black solid;
@@ -79,8 +79,8 @@
 
 #vec-stmnt{
     position: absolute;
-    left: 1rem;
-    width: 62.5rem;
+    left: 2.5%;
+    width: 95%;
     top: 1rem;
     text-align: center;
     border: 1px black solid;
@@ -110,8 +110,8 @@
 
 #vectorStmnt{
     position: absolute;
-    left: 1rem;
-    width: 62.5rem;
+    left: 2.5%;
+    width: 95%;
     top: 1rem;
     text-align: center;
     border: 1px black solid;
@@ -121,8 +121,8 @@
 
 #compStmnt{
     position: absolute;
-    left: 1rem;
-    width: 62.5rem;
+    left: 2.5%;
+    width: 95%;
     top: 1rem;
     text-align: center;
     border: 1px black solid;
@@ -135,10 +135,6 @@
 #compStmnt p {
     margin: 0;
 }
-
-/* #cs2 .ctr {
-    background-color: #535c66;
-} */
 
 #vectorStmnt p {
     margin: 0;
@@ -188,6 +184,7 @@
     right: 5rem;
     top: 7rem;
     width: 20rem;
+    opacity: 0;
 }
 
 #eqn1{
@@ -195,7 +192,7 @@
     left: 7rem;
     top: 7rem;
     width: 12rem;
-    opacity: 1;
+    opacity: 0;
     z-index: 3;
 }
 
@@ -204,7 +201,7 @@
     left: 9.3rem;
     top: 14rem;
     width: 16.5rem;
-    opacity: 1;
+    opacity: 0;
 }
 
 #eqn3{
@@ -212,7 +209,7 @@
     left: 10.1rem;
     top: 19.5rem;
     width: 13.5rem;
-    opacity: 1;
+    opacity: 0;
     z-index: 3;
 }
 
@@ -221,7 +218,7 @@
     left: 7rem;
     top: 7.4rem;
     width: 12rem;
-    opacity: 1;
+    opacity: 0;
     z-index: 3;
 }
 
@@ -230,7 +227,7 @@
     left: 9.3rem;
     top: 14rem;
     width: 16.5rem;
-    opacity: 1;
+    opacity: 0;
 }
 
 #eqn6{
@@ -238,18 +235,18 @@
     left: 10.1rem;
     top: 19.5rem;
     width: 13.5rem;
-    opacity: 1;
+    opacity: 0;
     z-index: 3;
 }
 #x-compStmnt{
     position: absolute;
-    left: 1rem;
-    width: 62.5rem;
+    left: 2.5%;
+    width: 95%;
     top: 1rem;
     text-align: center;
     border: 1px black solid;
     padding: 0.25rem 0.25rem;
-    opacity: 1;
+    opacity: 0;
     background-color: whitesmoke;
     z-index: 5;
 }
@@ -260,13 +257,13 @@
 
 #y-compStmnt{
     position: absolute;
-    left: 1rem;
-    width: 62.5rem;
+    left: 2.5%;
+    width: 95%;
     top: 1rem;
     text-align: center;
     border: 1px black solid;
     padding: 0.25rem 0.25rem;
-    opacity: 1;
+    opacity: 0;
     background-color: whitesmoke;
     z-index: 5;
 }
@@ -283,7 +280,11 @@
     padding: 0.6rem 0;
 }
 
-/* Screen 3 */
+/*################### 
+#                   #
+#      Screen 3     #
+#                   #
+####################*/
 
 #cs3.content-stage .ctr > div {
     display: flex;
@@ -342,7 +343,6 @@
     position: absolute;
     left: 52.5rem;
     top: 18rem;
-    opacity: 1;
 }
 
 #audio3 {

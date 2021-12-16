@@ -118,6 +118,10 @@ audio {
     padding: 0.1rem;
 }
 
+.clicked{
+    background-color: red;
+}
+
 audio::-webkit-media-controls-panel {
     background-color:#8c979d;;
     opacity: 0.9;
@@ -559,15 +563,17 @@ form{
     justify-content: center;
     background-color: whitesmoke;
     border-radius: 30px;
-    margin: 2% auto;
+    margin: 2vh auto;
     overflow: hidden;
+    width: 90%;
+    height: 81.5vh;
  }
 
- @media(max-width: 1400px){
+ /* @media(max-width: 1400px){
      .content-stage{
          margin: 1% auto;
      }
- }
+ } */
 
 
 .content-stage .hdr {
@@ -586,6 +592,7 @@ form{
  position: relative;
  overflow: hidden;
  margin-top: 1rem;
+ padding-left: 7.5%;
 }
 
 .content-stage .ftr{
@@ -596,5 +603,17 @@ form{
     align-items: center;
     margin-bottom: 1rem;
 }
+
+#start-btn{
+    width: 2.5vw;
+    height: 2.5vh;
+    position: absolute;
+    transform-origin: center center;
+    left: 48.75vw;
+    top: 48.75vh;
+    margin: 0;
+}
+
+
 
 

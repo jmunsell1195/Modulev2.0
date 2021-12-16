@@ -15,5 +15,3 @@ const back = () => {
       window.location.replace('/Auth/login/')
     }
 
-navStatus('Module',1);
-
