@@ -6,6 +6,14 @@ This project is a work in progress, beginning in the final months of 2021. As of
 
 This web app is designed to be used in a study that uses eye tracking to study visual attention during learning and problem solving. The functions are as follows:
 
+# Login
+  <ul>
+    <li>Student logs in with school credentials (Username, student number, etc...)</li>
+    <li>Web app runs on https protocol</li>
+    <li>django has built in sha256 hashing</li>
+  </ul>
+  
+
 # Content
   <ul>
     <li>Content (equations, figures, charts) animated with anime.js</li>
