@@ -41,6 +41,19 @@ const notPlaying = () => {
 ###########################################
 */
 
+const startFrame = (show) => {
+  if (show){
+    document.getElementById("start").style.display = "block";
+  } else {
+    document.getElementById("start").style.display = "none";
+  }
+}
+
+document.querySelector("#start").addEventListener("click",function(){
+  startFrame(false);
+  frame0(true);
+})
+
 const frame0 = (show) => {
   if (show) {
 
@@ -853,6 +866,52 @@ const question = (show,feedback) => {
 }
 
 /* 
+#########################################
+#                                       #
+#   Event Listener For Mouse Movement   #
+#                                       #   
+#    Catches Event and Submits Form     #
+#    Only Logs Mouse Start and Stop     #
+#                                       #
+#########################################
+*/
+
+
+let fired = false;
+let prevX;
+let prevY;
+
+document.addEventListener("mousemove",function(e){
+  let locX = e.pageX;
+  let locY = e.pageY;
+  const me = document.querySelector("#mouse-events")
+  if (!fired){
+    me.event.value = 'mouse-start'
+    me.mouseX.value = locX
+    me.mouseY.value = locY
+    const newDate = new Date();
+    const datetime = `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()} --- ${newDate.getHours()} : ${newDate.getMinutes()} : ${newDate.getMilliseconds()}`
+    me.timeStamp.value = datetime
+    $("#mouse-events").triggerHandler("submit")
+    fired = true;
+  }
+  setTimeout(function(){
+    if(locX === prevX && locY === prevY){
+      me.event.value = 'mouse-stop'
+      me.mouseX.value = e.pageX
+      me.mouseY.value = e.pageY
+      const newDate = new Date();
+      const datetime = `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()} --- ${newDate.getHours()} : ${newDate.getMinutes()} : ${newDate.getMilliseconds()}`
+      me.timeStamp.value = datetime
+      $("#mouse-events").triggerHandler("submit")
+      fired=false;
+    }
+  },300)
+  prevX = locX
+  prevY = locY
+})
+
+/* 
 ###########################################
 #                                         #
 #       jQuery Event Listeners/           #
@@ -1059,6 +1118,16 @@ $("#nxt-btn").on("click",function(){
   console.log('next-pressed')
 })
 
+$("#mouse-events").submit(function(e){
+  e.preventDefault();
+  form = $(this);
+  const url = window.location;
+  const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+  $.ajax({
+      headers: {'X-CSRFToken': csrftoken,'event':'mouse'},
+      type: "POST",
+      url: url,
+      data: form.serialize(),
+      })
+  })
 
-
-frame0(true);

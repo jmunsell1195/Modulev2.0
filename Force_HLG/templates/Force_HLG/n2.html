@@ -5,7 +5,7 @@
 {% block head %}
 
 <link rel="stylesheet" href="{% static "utility.css"%}">
-<link rel="stylesheet" href="{% static "CSS/content-styles.css"%}"> 
+<link rel="stylesheet" href="{% static "CSS/content-styles-forces.css"%}"> 
 <title>Force Module | Forces</title>
 
 {% endblock %}
@@ -39,21 +39,182 @@
                 </div> -->
               </div>
 
-    <div class="content-stage" id="cs0">
-        <div class="hdr">
-            <h2>
-                Forces 1
-            </h2>
-        </div>
-        <div class="ctr">
-    
-        </div>
-        <div></div>
-        <div class="ftr">
-    
-        </div>
-    </div>
 
+<!-- Calibration -->
+<div id="start" style="width:100%; height:85.5vh; background-color: #f5f5f5;">
+  <button id="start-btn" class="btn primary reduced-vis">START</button>
+</div>
+
+    <!-- Content Stage 0 -->
+<div class="content-stage" id="cs0">
+    <div class="hdr">
+        <h2>
+            Forces 1
+        </h2>
+    </div>
+    <div class="ctr">
+      <!-- Cue Titles for Newton's Second Law -->
+      <h1 id="Force-head"> \(Force\)</h1>
+      <h1 id="Motion-head"> \(Motion\)</h1>
+      <img id="cueA" src="{% static "IMG/Force1/cueA.svg"%}">
+      <img id="cueF" src="{% static "IMG/Force1/cueF.svg"%}">
+
+      <!-- Vector Images (w/components) -->
+      <img id="vec1" src="{% static "IMG/Force1/vec-img1.svg"%}">    
+      <img id="vec2" src="{% static "IMG/Force1/vec-img2.svg"%}">
+      <img id="vec3" src="{% static "IMG/Force1/vec-img3.svg"%}">
+
+      <!-- Newton's Second Law (vector)-->
+      <img id="N2" src="{% static "IMG/Force1/N2.svg"%}">
+
+      <!-- Newton's second law (components) -->
+      <img id="Fnetx" src="{% static "IMG/Force1/Fnetx.svg"%}">
+      <img id="Fnety" src="{% static "IMG/Force1/Fnety.svg"%}">
+      <img id="equals" src="{% static "IMG/Force1/equals.svg"%}">
+      <img id="equals2" src="{% static "IMG/Force1/equals.svg"%}">
+      <img id="max" src="{% static "IMG/Force1/ma_x.svg"%}">
+      <img id="may" src="{% static "IMG/Force1/ma_y.svg"%}">
+
+      <!-- Sum of forces -->
+      <img id="Fnetx2" src="{% static "IMG/Force1/Fnetx.svg"%}">
+      <img id="Fnety2" src="{% static "IMG/Force1/Fnety.svg"%}">
+      <img id="equals11" src="{% static "IMG/Force1/equals.svg"%}">
+      <img id="equals222" src="{% static "IMG/Force1/equals.svg"%}">
+      <img id="max1" src="{% static "IMG/Force1/ma_x.svg"%}">
+      <img id="may1" src="{% static "IMG/Force1/ma_y.svg"%}">
+      <img id="sumx" src="{% static "IMG/Force1/Sumx.svg"%}">
+      <img id="sumy" src="{% static "IMG/Force1/Sumy.svg"%}">
+
+      <!-- Example Problem -->
+
+      <!-- Axes -->
+      <img id="xax" src="{% static "IMG/Force1/xax.svg"%}">
+      <img id="yax" src="{% static "IMG/Force1/yax.svg"%}">
+
+      <!-- Normal Force -->
+      <img id="fn-vec" src="{% static "IMG/Force1/fn-vec.svg"%}">
+      <img id="fn-lab" src="{% static "IMG/Force1/fn-lab.svg"%}">
+      <img id="fn-lab11" src="{% static "IMG/Force1/fn-lab.svg"%}">
+
+      <!-- Force of gravity -->
+      <img id="Fg-vec" src="{% static "IMG/Force1/Fg-vec.svg"%}">
+      <img id="Fg-lab" src="{% static "IMG/Force1/Fg-lab.svg"%}">
+      <img id="Fg-lab11" src="{% static "IMG/Force1/Fg-lab.svg"%}">
+
+      <!-- Kinetic Friction -->
+      <img id="Ffk-vec" src="{% static "IMG/Force1/Ffk-vec.svg"%}">
+      <img id="Ffk-lab" src="{% static "IMG/Force1/Ffk-lab.svg"%}">
+      <img id="Ffk-lab11" src="{% static "IMG/Force1/Ffk-lab.svg"%}">
+
+      <!-- Tension Force -->
+      <img id="F" src="{% static "IMG/Force1/F.svg"%}">
+      <img id="F-lab" src="{% static "IMG/Force1/F-lab.svg"%}">
+      <img id="F-lab11" src="{% static "IMG/Force1/F-lab.svg"%}">
+
+      <!-- Components (magnitudes) -->
+      <img id="Fy" src="{% static "IMG/Force1/F_y.svg"%}">
+      <img id="Fx" src="{% static "IMG/Force1/fx.svg"%}">
+      <img id="Fy2" src="{% static "IMG/Force1/F_y.svg"%}">
+      <img id="Fy22" src="{% static "IMG/Force1/F_y.svg"%}">
+      <img id="Fx2" src="{% static "IMG/Force1/fx.svg"%}">
+      <img id="xdash" src="{% static "IMG/Force1/xdash.svg"%}">
+      <img id="ydash" src="{% static "IMG/Force1/ydash.svg"%}">
+      <img id="fx-vec2" src="{% static "IMG/Force1/fxvec2.svg"%}">
+      <img id="fy-vec2" src="{% static "IMG/Force1/fyvec2.svg"%}">
+
+      <!-- Fn -->
+      <img id="fn-vec2" src="{% static "IMG/Force1/fn-vec2.svg"%}">
+      <img id="fn-lab2" src="{% static "IMG/Force1/fn-lab2.svg"%}">
+      <img id="fn-lab3" src="{% static "IMG/Force1/fn-lab2.svg"%}">
+
+      <!-- Fg -->
+      <img id="Fg-vec2" src="{% static "IMG/Force1/Fg-vec2.svg"%}">
+      <img id="Fg-lab2" src="{% static "IMG/Force1/Fg-lab2.svg"%}">
+      <img id="Fg-lab3" src="{% static "IMG/Force1/Fg-lab2.svg"%}">
+
+      <!-- Ffk -->
+      <img id="Ffk-vec2" src="{% static "IMG/Force1/Ffk-vec2.svg"%}">
+      <img id="Ffk-lab2" src="{% static "IMG/Force1/Ffk-lab2.svg"%}">
+      <img id="Ffk-lab3" src="{% static "IMG/Force1/Ffk-lab2.svg"%}">
+
+      <!-- Newton's Second Law -->
+      <img id="Fnet" src="{% static "IMG/Force1/Fnet.svg"%}">
+      <img id="ma" src="{% static "IMG/Force1/ma.svg"%}">
+      <img id="plus1" src="{% static "IMG/Force1/plus.svg"%}">
+      <img id="plus2" src="{% static "IMG/Force1/plus.svg"%}">
+      <img id="plus3" src="{% static "IMG/Force1/plus.svg"%}">
+      <img id="minus" src="{% static "IMG/Force1/minus.svg"%}">
+      <!-- <img id="sumx2" src="{% static "IMG/Force1/sumx2.svg"%}">
+      <img id="sumy2" src="{% static "IMG/Force1/sumy2.svg"%}"> -->
+
+      <!-- X-direction vector construction -->
+      <img id="xdash2" src="{% static "IMG/Force1/xdash.svg"%}">
+      <img id="xdash3" src="{% static "IMG/Force1/xdash.svg"%}">
+      <img id="xdash4" src="{% static "IMG/Force1/xdash.svg"%}">
+      
+      <img id="ydash2" src="{% static "IMG/Force1/ydash.svg"%}">
+      <img id="ydash3" src="{% static "IMG/Force1/ydash.svg"%}">
+      <img id="ydash4" src="{% static "IMG/Force1/ydash.svg"%}">
+
+      <!-- max -->
+      <img id="max-vec" src="{% static "IMG/Force1/max-vec.svg"%}">
+      <img id="max-lab" src="{% static "IMG/Force1/max-lab.svg"%}">
+      <img id="max-lab2" src="{% static "IMG/Force1/max-lab.svg"%}">
+
+      <!-- may -->
+      <img id="plus4" src="{% static "IMG/Force1/plus.svg"%}">
+      <img id="minus2" src="{% static "IMG/Force1/minus.svg"%}">
+      <img id="zero" src="{% static "IMG/Force1/Zero.svg"%}">
+
+
+      
+      <div id="prblm-stmnt">
+        <img id="ft-cue1" src="{% static "IMG/Force1/ft_cue1.svg"%}">
+        <img id="ft-cue2" src="{% static "IMG/Force1/ft_cue2.svg"%}">
+        <img id="fg-cue1" src="{% static "IMG/Force1/fg_cue1.svg"%}">
+        <img id="fk-cue1" src="{% static "IMG/Force1/fk_cue.svg"%}">
+        <p>
+          Two children are pulled on a sled by a rope with force \(|\vec{F}_T| = 145N\) that makes an angle of \(\theta = 30^{o}\). Assume the combined mass of 
+          the sled and the children is \(100 kg\), and there is a coefficient of friction \(\mu_k = 0.1\) between the ground and the sled. Find the magnitude of 
+          the normal force \(|\vec{F}_N|\) and the magnitude of the acceleration \(|\vec{a}|\)    
+        </p>
+      </div>
+    </div>
+    <div></div>
+    <div class="ftr">
+      <button class="btn primary reduced-vis" style="opacity: 0"></button>
+      <audio class="primary-bg" id="audio" controls controlList="nodownload">
+        <source src="https://dl.dropbox.com/s/b257zcwf081xhrl/Forces-2022-01-13.wav?dl=1"/>
+      </audio>
+      <button id="btn1" class="btn primary reduced-vis">Next</button>
+    </div>
+</div>
+
+
+<div class="content-stage" id="cs1">
+  <div class="hdr">
+    <h2>
+      Forces 2
+  </h2>
+  </div>
+  <div class="ctr">
+    <img id="N2x-eqn1" src="{% static "IMG/Force1/eqn1.svg"%}">
+    <img id="N2y-eqn1" src="{% static "IMG/Force1/eqn2.svg"%}">
+
+    <img id="diagram1" src="{% static "IMG/Force1/dia1.svg"%}">
+    <img id="diagram2" src="{% static "IMG/Force1/dia2.svg"%}">
+
+    <img id="eqn3" src="{% static "IMG/Force1/eqn3.svg"%}">
+    <img id="eqn4" src="{% static "IMG/Force1/eqn4.svg"%}">
+    <img id="eqn5" src="{% static "IMG/Force1/eqn5.svg"%}">
+    <img id="eqn6" src="{% static "IMG/Force1/eqn6.svg"%}">
+
+  </div>
+  <div></div>
+  <div class="ftr">
+
+  </div>
+</div>
 
 
 

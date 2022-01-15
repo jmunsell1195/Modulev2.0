@@ -5,5 +5,5 @@ urlpatterns = [
     path('',views.info,name='force'),
     path('warmup/',views.pretest),
     path('vectors/',views.vectors),
-    path('Forces/',views.forces)
+    path('Forces/',views.forces),
 ]

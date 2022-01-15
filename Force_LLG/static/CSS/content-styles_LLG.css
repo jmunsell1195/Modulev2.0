@@ -20,7 +20,7 @@
     position: absolute;
     height: 18rem;
     top: 6.5rem;
-    left: 14.5rem;
+    left: 16rem;
     z-index: 1;
     opacity: 0;
 }
@@ -37,7 +37,7 @@
 #area-pic {
     position: absolute;
     height: 30rem;
-    left: 7.5rem;
+    left: 9.5rem;
     top: 6rem;
     opacity: 0;
 }
@@ -74,7 +74,7 @@
     top: 5.9rem;
     z-index: 2;
     opacity: 0;
-    left: 16.1rem;
+    left: 20rem;
 }
 
 #vec-stmnt{
@@ -103,7 +103,7 @@
 #vector-main {
     position: absolute;
     width: 30rem;
-    left: 18.5rem;
+    left: 19.5rem;
     top: 6rem;
     opacity: 0;
 }
@@ -304,8 +304,8 @@
 }
 
 #cs0.content-stage .ctr {
-    padding: 5rem;
     text-align: center;
+    padding: 5rem;
 }
 
 
@@ -515,4 +515,8 @@
     top: 2.85rem;
     width: 22rem;
     opacity: 0
+}
+
+#cs3.content-stage .ctr{
+    padding: 0
 }

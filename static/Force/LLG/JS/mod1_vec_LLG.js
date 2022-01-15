@@ -1,26 +1,5 @@
 const start = Date.now();
 
-/* 
-###########################################
-#                                         #
-#                                         #
-#     Box-Sizing based on Screen Size     #
-#                                         #
-#                                         #
-###########################################
-*/
-
-// Set the width and height so it doesn't resize with the window
-document.querySelector("#cs0").style.width = String(0.85*w) + "px";
-document.querySelector("#cs0").style.height = String(0.675*h) + "px";
-document.querySelector("#cs1").style.width = String(0.85*w) + "px";
-document.querySelector("#cs1").style.height = String(0.675*h) + "px";
-document.querySelector("#cs2").style.width = String(0.85*w) + "px";
-document.querySelector("#cs2").style.height = String(0.675*h) + "px";
-document.querySelector("#cs3").style.width = String(0.85*w) + "px";
-document.querySelector("#cs3").style.height = String(0.675*h) + "px";
-document.querySelector("#question").style.width = String(0.85*w) + "px";
-document.querySelector("#question").style.height = String(0.675*h) + "px";
 
 // Toggle Dim navbar/footer when video is playing
 const isPlaying = () => {
@@ -56,6 +35,21 @@ const frame0 = (show) => {
     document.querySelector("#cs0").style.display = "none";
   }
 };
+
+const startScreen = (state) => {
+  document.querySelector("#start").style.display = String(state);
+}
+
+document.querySelector("#start-btn").addEventListener('click',function(){
+  document.querySelector("#start-btn").style.backgroundColor = "red";
+  setTimeout(function(){
+      startScreen('none');
+      frame0('grid');
+  },250)
+})
+
+const me = document.querySelector("#mouse-events")
+const pe = document.querySelector("#page-events")
 
 /* 
 ###########################################
@@ -95,22 +89,103 @@ const frame1 = (show) => {
   const btn3 = document.querySelector("#btn3");
   const btn2 = document.querySelector("#btn2");
 
+
   //Content Functions 
-  const sclr = (show) =>{
+  const sclr = (e,show) =>{
     if (show) {
+
+      let locX = e.pageX;
+      let locY = e.pageY;
+
+      //Controls display of content
       sclrStmnt.style.opacity = 1;
       thermo.style.opacity = 1;
       watch.style.opacity = 1;
       scalars.style.backgroundColor = "#6c63ff";
       dist.style.opacity = 0.4;
       disp.style.opacity = 0.4;
+
+
+      //Target "scalar div" content area
+      btn = scalars
+
+
+      //Date Stamp
+      const newDate = new Date();
+      const datetime = `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()} --- ${newDate.getHours()} : ${newDate.getMinutes()} : ${newDate.getMilliseconds()}`
+      
+      //Log event type
+      pe.event.value = "entered scalars div";
+      me.event.value = "entered scalars div";
+
+      //Log timeStamp
+      pe.timeStamp.value = datetime;
+      me.timeStamp.value = datetime;
+
+      //Get absolute mouseX and mouseY
+      pe.clickX.value = locX;
+      pe.clickY.value = locY;
+
+      me.clickX.value = locX;
+      me.clickY.value = locY;
+
+      //Get item location on screen
+      let rect = btn.getBoundingClientRect();
+      me.clickedITMtl.value = `(${rect.left},${rect.top})`
+      me.clickedITMbr.value = `(${rect.right},${rect.bottom})`
+
+      //Submit
+      $("#page-events").triggerHandler("submit")
+      $("#mouse-events").triggerHandler("submit")
     } else {
+
+      let evnt = "left scalars div";
+      let locX = e.pageX;
+      let locY = e.pageY;
+
+      //Control display
       sclrStmnt.style.opacity = 0;
       thermo.style.opacity = 0;
       watch.style.opacity = 0;
       scalars.style.backgroundColor = "#8c979d";
       dist.style.opacity = 1;
       disp.style.opacity = 1;
+
+      //Target "scalar div" content area
+      btn = scalars
+
+      //Grab Forms
+      const pe = document.querySelector("#page-events")
+      const me = document.querySelector("#mouse-events")
+
+      //Date Stamp
+      const newDate = new Date();
+      const datetime = `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()} --- ${newDate.getHours()} : ${newDate.getMinutes()} : ${newDate.getMilliseconds()}`
+      
+      //Log event type
+      pe.event.value = 'left scalars div';
+      me.event.value = 'left scalars div';
+
+      //Log timeStamp
+      pe.timeStamp.value = datetime;
+      me.timeStamp.value = datetime;
+
+      //Get absolute mouseX and mouseY
+      pe.clickX.value = locX;
+      pe.clickY.value = locY;
+
+      me.clickX.value = locX;
+      me.clickY.value = locY;
+
+      //Get item location on screen
+      let rect = btn.getBoundingClientRect();
+      me.clickedITMtl.value = `(${rect.left},${rect.top})`
+      me.clickedITMbr.value = `(${rect.right},${rect.bottom})`
+
+      //Submit
+      $("#page-events").triggerHandler("submit")
+      $("#mouse-events").triggerHandler("submit")
+
       setTimeout(function(){
         if (box1 && box2 && box3){
           document.querySelector("#btn3").style.opacity = 1;
@@ -119,19 +194,90 @@ const frame1 = (show) => {
     }
   }
 
-  const dst = (show) => {
+  const dst = (e,show) => {
+
+    let locX = e.pageX;
+    let locY = e.pageY
+
     if (show) {
+
       areaStmnt.style.opacity =1;
       areaPic.style.opacity = 1;
       scalars.style.opacity =0.4;
       disp.style.opacity = 0.4;
       dist.style.backgroundColor = "#6c63ff";
-    } else {
+
+      //Target "distance" content area
+      btn = dist
+
+
+      //Date Stamp
+      const newDate = new Date();
+      const datetime = `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()} --- ${newDate.getHours()} : ${newDate.getMinutes()} : ${newDate.getMilliseconds()}`
+      
+      //Log event type
+      pe.event.value = 'entered distance area';
+      me.event.value =  'entered distance area';
+
+      //Log timeStamp
+      pe.timeStamp.value = datetime;
+      me.timeStamp.value = datetime;
+
+      //Get absolute mouseX and mouseY
+      pe.clickX.value = locX;
+      pe.clickY.value = locY;
+
+      me.clickX.value = locX;
+      me.clickY.value = locY;
+
+      //Get item location on screen
+      let rect = btn.getBoundingClientRect();
+      me.clickedITMtl.value = `(${rect.left},${rect.top})`
+      me.clickedITMbr.value = `(${rect.right},${rect.bottom})`
+
+      //Submit
+      $("#page-events").triggerHandler("submit")
+      $("#mouse-events").triggerHandler("submit")
+} else {
+
       areaStmnt.style.opacity =0;
       areaPic.style.opacity = 0;
       scalars.style.opacity =1;
       disp.style.opacity = 1;
       dist.style.backgroundColor = "#8c979d";
+
+      //Target "scalar div" content area
+      btn = dist
+
+
+      //Date Stamp
+      const newDate = new Date();
+      const datetime = `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()} --- ${newDate.getHours()} : ${newDate.getMinutes()} : ${newDate.getMilliseconds()}`
+      
+      //Log event type
+      pe.event.value = 'left distance area';
+      me.event.value =  'left distance area';
+
+      //Log timeStamp
+      pe.timeStamp.value = datetime;
+      me.timeStamp.value = datetime;
+
+      //Get absolute mouseX and mouseY
+      pe.clickX.value = locX;
+      pe.clickY.value = locY;
+
+      me.clickX.value = locX;
+      me.clickY.value = locY;
+
+      //Get item location on screen
+      let rect = btn.getBoundingClientRect();
+      me.clickedITMtl.value = `(${rect.left},${rect.top})`
+      me.clickedITMbr.value = `(${rect.right},${rect.bottom})`
+
+      //Submit
+      $("#page-events").triggerHandler("submit")
+      $("#mouse-events").triggerHandler("submit")
+
       setTimeout(function(){
         if (box1 && box2 && box3){
           document.querySelector("#btn3").style.opacity = 1;
@@ -140,19 +286,90 @@ const frame1 = (show) => {
     }
   }
 
-  const dsp = (show) => {
+  const dsp = (e,show) => {
+
+    let locX = e.pageX
+    let locY = e.pageY
+
     if (show) {
       vecStmnt.style.opacity =1;
       vecPic.style.opacity = 1;
       scalars.style.opacity =0.4;
       dist.style.opacity = 0.4;
       disp.style.backgroundColor = "#6c63ff";
+
+      //Target "displacement div" content area
+      btn = disp
+
+
+      //Date Stamp
+      const newDate = new Date();
+      const datetime = `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()} --- ${newDate.getHours()} : ${newDate.getMinutes()} : ${newDate.getMilliseconds()}`
+      
+      //Log event type
+      pe.event.value = 'entered diplacement area';
+      me.event.value =  'entered displacement area';
+
+      //Log timeStamp
+      pe.timeStamp.value = datetime;
+      me.timeStamp.value = datetime;
+
+      //Get absolute mouseX and mouseY
+      pe.clickX.value = locX;
+      pe.clickY.value = locY;
+
+      me.clickX.value = locX;
+      me.clickY.value = locY;
+
+      //Get item location on screen
+      let rect = btn.getBoundingClientRect();
+      me.clickedITMtl.value = `(${rect.left},${rect.top})`
+      me.clickedITMbr.value = `(${rect.right},${rect.bottom})`
+
+      //Submit
+      $("#page-events").triggerHandler("submit")
+      $("#mouse-events").triggerHandler("submit")
+
     } else {
       vecStmnt.style.opacity =0;
       vecPic.style.opacity = 0;
       scalars.style.opacity =1;
       dist.style.opacity = 1;
       disp.style.backgroundColor = "#8c979d";
+
+      //Target "scalar div" content area
+      btn = disp
+
+
+      //Date Stamp
+      const newDate = new Date();
+      const datetime = `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()} --- ${newDate.getHours()} : ${newDate.getMinutes()} : ${newDate.getMilliseconds()}`
+      
+      //Log event type
+      pe.event.value = 'left displacement area';
+      me.event.value =  'left displacement area';
+
+      //Log timeStamp
+      pe.timeStamp.value = datetime;
+      me.timeStamp.value = datetime;
+
+      //Get absolute mouseX and mouseY
+      pe.clickX.value = locX;
+      pe.clickY.value = locY;
+
+      me.clickX.value = locX;
+      me.clickY.value = locY;
+
+      //Get item location on screen
+      let rect = btn.getBoundingClientRect();
+      me.clickedITMtl.value = `(${rect.left},${rect.top})`
+      me.clickedITMbr.value = `(${rect.right},${rect.bottom})`
+
+      //Submit
+      $("#page-events").triggerHandler("submit")
+      $("#mouse-events").triggerHandler("submit")
+
+
       setTimeout(function(){
         if (box1 && box2 && box3){
           document.querySelector("#btn3").style.opacity = 1;
@@ -173,36 +390,36 @@ const frame1 = (show) => {
 
     //Add event listener to scalars button 
     // Shows content on scalar button mouseenter
-    scalars.addEventListener("mouseenter",()=>{
-      sclr(true);
+    scalars.addEventListener("mouseenter",(e)=>{
+      sclr(e,true);
     })
      // Hides content on scalar button mouseleave
-    scalars.addEventListener("mouseleave",()=>{
-      sclr(false);
+    scalars.addEventListener("mouseleave",(e)=>{
+      sclr(e,false);
       box1 = true;
     })
 
     //Add event listener to distance button
     //Shows content on mouseenter
-    dist.addEventListener("mouseenter",()=>{
+    dist.addEventListener("mouseenter",(e)=>{
       if(box2) {
-        dst(true)
+        dst(e,true)
       }
     })
     //Hides content on mouseleave
-    dist.addEventListener("mouseleave",()=>{
-      dst(false)
+    dist.addEventListener("mouseleave",(e)=>{
+      dst(e,false)
       box2 = true;
     })
     
     //Add event listener to displacement button
     //Shows content on mouseenter
-    disp.addEventListener("mouseenter",()=>{
-      dsp(true)
+    disp.addEventListener("mouseenter",(e)=>{
+      dsp(e,true)
     })
     //hides content on mouseleave
-    disp.addEventListener("mouseleave",()=>{
-      dsp(false)
+    disp.addEventListener("mouseleave",(e)=>{
+      dsp(e,false)
       box3 = true;
     })
 
@@ -210,11 +427,11 @@ const frame1 = (show) => {
     } else {
       document.querySelector("#cs1").style.display = "none";
       scalars.removeEventListener("mouseenter",()=>{
-        sclr(true)
+        sclr(e,true)
       })
 
       scalars.removeEventListener("mouseleave",()=>{
-        sclr(false)
+        sclr(e,false)
         box1 = true;
       })
   
@@ -222,24 +439,24 @@ const frame1 = (show) => {
       //Shows content on mouseenter
       dist.removeEventListener("mouseenter",()=>{
         if (box2){
-          dst(true)
+          dst(e,true)
         }
       })
       //Hides content on mouseleave
       dist.removeEventListener("mouseleave",()=>{
-        dst(false)
+        dst(e,false)
         box2 = true;
       })
       
       //Add event listener to displacement button
       //Shows content on mouseenter
       disp.removeEventListener("mouseenter",()=>{
-        dsp(true)
+        dsp(e,true)
         
       })
       //hides content on mouseleave
       disp.removeEventListener("mouseleave",()=>{
-        dsp(false)
+        dsp(e,false)
         box3 = true;
       })
     }}
@@ -294,6 +511,11 @@ const frame2 = (show) => {
   const eqn5 = document.querySelector("#eqn5"); 
   const eqn6 = document.querySelector("#eqn6");
 
+  //Grab Forms
+
+  const me = document.querySelector("#mouse-events")
+  const pe = document.querySelector("#page-events")
+
   //Content Seen Flags
   let box1 = false;
   let box2 = false;
@@ -301,7 +523,11 @@ const frame2 = (show) => {
   let box4 = false;
 
   //Content functions
-  const vec_cont = (show) => {
+  const vec_cont = (e,show) => {
+
+    let locX = e.pageX
+    let locY = e.pageY
+
     if (show) {
       vec.style.opacity = 1;
       vecStmnt.style.opacity = 1;
@@ -309,6 +535,39 @@ const frame2 = (show) => {
       FxButt.style.opacity = 0.4;
       FyButt.style.opacity = 0.4;
       vecButt.style.backgroundColor = "#6c63ff";
+
+      //Target "displacement div" content area
+      btn = vecButt
+
+
+      //Date Stamp
+      const newDate = new Date();
+      const datetime = `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()} --- ${newDate.getHours()} : ${newDate.getMinutes()} : ${newDate.getMilliseconds()}`
+      
+      //Log event type
+      pe.event.value = 'entered vectors area';
+      me.event.value =  'entered vectors area';
+
+      //Log timeStamp
+      pe.timeStamp.value = datetime;
+      me.timeStamp.value = datetime;
+
+      //Get absolute mouseX and mouseY
+      pe.clickX.value = locX;
+      pe.clickY.value = locY;
+
+      me.clickX.value = locX;
+      me.clickY.value = locY;
+
+      //Get item location on screen
+      let rect = btn.getBoundingClientRect();
+      me.clickedITMtl.value = `(${rect.left},${rect.top})`
+      me.clickedITMbr.value = `(${rect.right},${rect.bottom})`
+
+      //Submit
+      $("#page-events").triggerHandler("submit")
+      $("#mouse-events").triggerHandler("submit")
+
     } else {
       vec.style.opacity = 0;
       vecStmnt.style.opacity = 0;
@@ -317,6 +576,39 @@ const frame2 = (show) => {
       FyButt.style.opacity = 1;
       vecButt.style.backgroundColor = "#8c979d";
       box1 = true;
+
+      //Target "displacement div" content area
+      btn = vecButt
+
+
+      //Date Stamp
+      const newDate = new Date();
+      const datetime = `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()} --- ${newDate.getHours()} : ${newDate.getMinutes()} : ${newDate.getMilliseconds()}`
+      
+      //Log event type
+      pe.event.value = 'left vectors area';
+      me.event.value =  'left vectors area';
+
+      //Log timeStamp
+      pe.timeStamp.value = datetime;
+      me.timeStamp.value = datetime;
+
+      //Get absolute mouseX and mouseY
+      pe.clickX.value = locX;
+      pe.clickY.value = locY;
+
+      me.clickX.value = locX;
+      me.clickY.value = locY;
+
+      //Get item location on screen
+      let rect = btn.getBoundingClientRect();
+      me.clickedITMtl.value = `(${rect.left},${rect.top})`
+      me.clickedITMbr.value = `(${rect.right},${rect.bottom})`
+
+      //Submit
+      $("#page-events").triggerHandler("submit")
+      $("#mouse-events").triggerHandler("submit")
+
       setTimeout(function(){
         if (box1 && box2 && box3 && box4){
           document.querySelector("#btn5").style.opacity = 1;
@@ -325,7 +617,11 @@ const frame2 = (show) => {
     }
   }
 
-  const mean = (show) => {
+  const mean = (e,show) => {
+
+    let locX = e.pageX
+    let locY = e.pageY
+
     if (show) {
       document.querySelector("#cs2 .ctr").style.backgroundColor = "#535c66";
       lightX.style.opacity = 1;
@@ -337,6 +633,39 @@ const frame2 = (show) => {
       FxButt.style.opacity = 0.4;
       meaning.style.backgroundColor = "#6c63ff"
       vecButt.style.opacity = 0.4;
+
+      //Target "displacement div" content area
+      btn = meaning
+
+
+      //Date Stamp
+      const newDate = new Date();
+      const datetime = `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()} --- ${newDate.getHours()} : ${newDate.getMinutes()} : ${newDate.getMilliseconds()}`
+      
+      //Log event type
+      pe.event.value = 'entered meaning area';
+      me.event.value =  'entered meaning area';
+
+      //Log timeStamp
+      pe.timeStamp.value = datetime;
+      me.timeStamp.value = datetime;
+
+      //Get absolute mouseX and mouseY
+      pe.clickX.value = locX;
+      pe.clickY.value = locY;
+
+      me.clickX.value = locX;
+      me.clickY.value = locY;
+
+      //Get item location on screen
+      let rect = btn.getBoundingClientRect();
+      me.clickedITMtl.value = `(${rect.left},${rect.top})`
+      me.clickedITMbr.value = `(${rect.right},${rect.bottom})`
+
+      //Submit
+      $("#page-events").triggerHandler("submit")
+      $("#mouse-events").triggerHandler("submit")
+
     } else {
       document.querySelector("#cs2 .ctr").style.backgroundColor = "#f5f5f5";
       lightX.style.opacity = 0;
@@ -349,6 +678,39 @@ const frame2 = (show) => {
       meaning.style.backgroundColor = "#8c979d";
       vecButt.style.opacity = 1;
       box2 = true;
+
+      //Target "meaning div" content area
+      btn = meaning
+
+
+      //Date Stamp
+      const newDate = new Date();
+      const datetime = `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()} --- ${newDate.getHours()} : ${newDate.getMinutes()} : ${newDate.getMilliseconds()}`
+      
+      //Log event type
+      pe.event.value = 'left meaning area';
+      me.event.value =  'left meaning area';
+
+      //Log timeStamp
+      pe.timeStamp.value = datetime;
+      me.timeStamp.value = datetime;
+
+      //Get absolute mouseX and mouseY
+      pe.clickX.value = locX;
+      pe.clickY.value = locY;
+
+      me.clickX.value = locX;
+      me.clickY.value = locY;
+
+      //Get item location on screen
+      let rect = btn.getBoundingClientRect();
+      me.clickedITMtl.value = `(${rect.left},${rect.top})`
+      me.clickedITMbr.value = `(${rect.right},${rect.bottom})`
+
+      //Submit
+      $("#page-events").triggerHandler("submit")
+      $("#mouse-events").triggerHandler("submit")
+
       setTimeout(function(){
         if (box1 && box2 && box3 && box4){
           document.querySelector("#btn5").style.opacity = 1;
@@ -357,7 +719,11 @@ const frame2 = (show) => {
     }
   }
 
-  const Fxx = (show) => {
+  const Fxx = (e,show) => {
+
+    let locX = e.pageX
+    let locY = e.pageY
+
     if (show) {
       tri.style.opacity = 1;
       eqn1.style.opacity = 1;
@@ -368,6 +734,39 @@ const frame2 = (show) => {
       FyButt.style.opacity = 0.4;
       meaning.style.opacity = 0.4;
       vecButt.style.opacity = 0.4;
+
+      //Target "Fx div" content area
+      btn = FxButt
+
+
+      //Date Stamp
+      const newDate = new Date();
+      const datetime = `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()} --- ${newDate.getHours()} : ${newDate.getMinutes()} : ${newDate.getMilliseconds()}`
+      
+      //Log event type
+      pe.event.value = 'entered Fx area';
+      me.event.value =  'entered Fx area';
+
+      //Log timeStamp
+      pe.timeStamp.value = datetime;
+      me.timeStamp.value = datetime;
+
+      //Get absolute mouseX and mouseY
+      pe.clickX.value = locX;
+      pe.clickY.value = locY;
+
+      me.clickX.value = locX;
+      me.clickY.value = locY;
+
+      //Get item location on screen
+      let rect = btn.getBoundingClientRect();
+      me.clickedITMtl.value = `(${rect.left},${rect.top})`
+      me.clickedITMbr.value = `(${rect.right},${rect.bottom})`
+
+      //Submit
+      $("#page-events").triggerHandler("submit")
+      $("#mouse-events").triggerHandler("submit")
+
     } else {
       tri.style.opacity = 0;
       eqn1.style.opacity = 0;
@@ -379,6 +778,39 @@ const frame2 = (show) => {
       meaning.style.opacity = 1;
       vecButt.style.opacity = 1;
       box3=true;
+
+      //Target "Fx div" content area
+      btn = FxButt
+
+
+      //Date Stamp
+      const newDate = new Date();
+      const datetime = `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()} --- ${newDate.getHours()} : ${newDate.getMinutes()} : ${newDate.getMilliseconds()}`
+      
+      //Log event type
+      pe.event.value = 'entered meaning area';
+      me.event.value =  'entered meaning area';
+
+      //Log timeStamp
+      pe.timeStamp.value = datetime;
+      me.timeStamp.value = datetime;
+
+      //Get absolute mouseX and mouseY
+      pe.clickX.value = locX;
+      pe.clickY.value = locY;
+
+      me.clickX.value = locX;
+      me.clickY.value = locY;
+
+      //Get item location on screen
+      let rect = btn.getBoundingClientRect();
+      me.clickedITMtl.value = `(${rect.left},${rect.top})`
+      me.clickedITMbr.value = `(${rect.right},${rect.bottom})`
+
+      //Submit
+      $("#page-events").triggerHandler("submit")
+      $("#mouse-events").triggerHandler("submit")
+
       setTimeout(function(){
         if (box1 && box2 && box3 && box4){
           document.querySelector("#btn5").style.opacity = 1;
@@ -387,7 +819,11 @@ const frame2 = (show) => {
     }
   }
 
-  const Fyy = (show) => {
+  const Fyy = (e,show) => {
+
+    let locX = e.pageX
+    let locY = e.pageY
+
     if (show) {
       tri.style.opacity = 1;
       eqn4.style.opacity = 1;
@@ -398,6 +834,39 @@ const frame2 = (show) => {
       FxButt.style.opacity = 0.4;
       meaning.style.opacity = 0.4;
       vecButt.style.opacity = 0.4;
+
+      //Target "Fy div" content area
+      btn = FyButt
+
+
+      //Date Stamp
+      const newDate = new Date();
+      const datetime = `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()} --- ${newDate.getHours()} : ${newDate.getMinutes()} : ${newDate.getMilliseconds()}`
+      
+      //Log event type
+      pe.event.value = 'entered Fy area';
+      me.event.value =  'entered Fy area';
+
+      //Log timeStamp
+      pe.timeStamp.value = datetime;
+      me.timeStamp.value = datetime;
+
+      //Get absolute mouseX and mouseY
+      pe.clickX.value = locX;
+      pe.clickY.value = locY;
+
+      me.clickX.value = locX;
+      me.clickY.value = locY;
+
+      //Get item location on screen
+      let rect = btn.getBoundingClientRect();
+      me.clickedITMtl.value = `(${rect.left},${rect.top})`
+      me.clickedITMbr.value = `(${rect.right},${rect.bottom})`
+
+      //Submit
+      $("#page-events").triggerHandler("submit")
+      $("#mouse-events").triggerHandler("submit")
+
     } else {
       tri.style.opacity = 0;
       eqn4.style.opacity = 0;
@@ -409,6 +878,39 @@ const frame2 = (show) => {
       meaning.style.opacity = 1;
       vecButt.style.opacity = 1;
       box4 = true;
+
+      //Target "Fy div" content area
+      btn = FyButt
+
+
+      //Date Stamp
+      const newDate = new Date();
+      const datetime = `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()} --- ${newDate.getHours()} : ${newDate.getMinutes()} : ${newDate.getMilliseconds()}`
+      
+      //Log event type
+      pe.event.value = 'left Fy area';
+      me.event.value =  'left Fy area';
+
+      //Log timeStamp
+      pe.timeStamp.value = datetime;
+      me.timeStamp.value = datetime;
+
+      //Get absolute mouseX and mouseY
+      pe.clickX.value = locX;
+      pe.clickY.value = locY;
+
+      me.clickX.value = locX;
+      me.clickY.value = locY;
+
+      //Get item location on screen
+      let rect = btn.getBoundingClientRect();
+      me.clickedITMtl.value = `(${rect.left},${rect.top})`
+      me.clickedITMbr.value = `(${rect.right},${rect.bottom})`
+
+      //Submit
+      $("#page-events").triggerHandler("submit")
+      $("#mouse-events").triggerHandler("submit")
+
       setTimeout(function(){
         if (box1 && box2 && box3 && box4){
           document.querySelector("#btn5").style.opacity = 1;
@@ -417,71 +919,69 @@ const frame2 = (show) => {
     }
   }
 
-
-
   if (show) {
     document.querySelector("#cs2").style.display = "grid";
 
-  vecButt.addEventListener("mouseenter",()=>{
-    vec_cont(true)
+  vecButt.addEventListener("mouseenter",(e)=>{
+    vec_cont(e,true)
   })
-  vecButt.addEventListener("mouseleave",() => {
-    vec_cont(false);
+  vecButt.addEventListener("mouseleave",(e) => {
+    vec_cont(e,false);
   })
 
-  meaning.addEventListener("mouseenter",()=>{
-    mean(true)
+  meaning.addEventListener("mouseenter",(e)=>{
+    mean(e,true)
   })        
-  meaning.addEventListener("mouseleave",()=>{
-    mean(false)
+  meaning.addEventListener("mouseleave",(e)=>{
+    mean(e,false)
   })
 
-  FxButt.addEventListener("mouseenter",()=>{
-    Fxx(true)
+  FxButt.addEventListener("mouseenter",(e)=>{
+    Fxx(e,true)
   })
-  FxButt.addEventListener("mouseleave",()=>{
-    Fxx(false)
+  FxButt.addEventListener("mouseleave",(e)=>{
+    Fxx(e,false)
   })
 
-  FyButt.addEventListener("mouseenter",()=>{
+  FyButt.addEventListener("mouseenter",(e)=>{
     if (box4) {
-      Fyy(true);
+      Fyy(e,true);
     }
   })        
-  FyButt.addEventListener("mouseleave",()=>{
-    Fyy(false);
+  FyButt.addEventListener("mouseleave",(e)=>{
+    Fyy(e,false);
   })
     } else {
       document.querySelector("#cs2").style.display = "none";
 
-      vecButt.removeEventListener("mouseenter",() => {
-        vec_cont(true)
+      vecButt.removeEventListener("mouseenter",(e) => {
+        vec_cont(e,true)
       })
-      vecButt.removeEventListener("mouseleave",() => {
-        vec_cont(false)
+      vecButt.removeEventListener("mouseleave",(e) => {
+        vec_cont(e,false)
       })
     
-      meaning.removeEventListener("mouseenter",()=>{
-        mean(true);
+      meaning.removeEventListener("mouseenter",(e)=>{
+        mean(e,true);
       })        
-      meaning.removeEventListener("mouseleave",()=>{
-        mean(false)
+      meaning.removeEventListener("mouseleave",(e)=>{
+        mean(e,false)
       })
     
-      FxButt.removeEventListener("mouseenter",()=>{
-        Fxx(true)
+      FxButt.removeEventListener("mouseenter",(e)=>{
+        Fxx(e,true)
       })
-      FxButt.removeEventListener("mouseleave",()=>{
-        Fxx(false)
+      FxButt.removeEventListener("mouseleave",(e)=>{
+        Fxx(e,false)
       })
     
-      FyButt.removeEventListener("mouseenter",()=>{
+      FyButt.removeEventListener("mouseenter",(e)=>{
         if (box4) {
-          Fyy(true)
+          Fyy(e,true)
         }
       })        
-      FyButt.removeEventListener("mouseleave",()=>{
-        Fyy(false)
+      FyButt.removeEventListener("mouseleave",(e)=>{
+        Fyy(e,false)
       })
     }}
 
@@ -720,9 +1220,46 @@ $("#btn8").on('click',function(e){
   $("#mouse-events").triggerHandler("submit")
 })
 
+let fired = false;
+let prevX;
+let prevY;
+
 document.addEventListener("mousemove",function(e){
+  let locX = e.pageX;
+  let locY = e.pageY;
   const me = document.querySelector("#mouse-events2")
-  me.event.value = 'mouse-location'
+  if (!fired){
+    me.event.value = 'mouse-start'
+    me.mouseX.value = locX
+    me.mouseY.value = locY
+    const newDate = new Date();
+    const datetime = `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()} --- ${newDate.getHours()} : ${newDate.getMinutes()} : ${newDate.getMilliseconds()}`
+    me.timeStamp.value = datetime
+    $("#mouse-events2").triggerHandler("submit")
+    fired = true;
+    console.log('start')
+  }
+  setTimeout(function(){
+    if(locX === prevX && locY === prevY){
+      me.event.value = 'mouse-stop'
+      me.mouseX.value = e.pageX
+      me.mouseY.value = e.pageY
+      const newDate = new Date();
+      const datetime = `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()} --- ${newDate.getHours()} : ${newDate.getMinutes()} : ${newDate.getMilliseconds()}`
+      me.timeStamp.value = datetime
+      $("#mouse-events2").triggerHandler("submit")
+      fired=false;
+      console.log('stop')
+    }
+  },300)
+  prevX = locX
+  prevY = locY
+})
+
+
+document.addEventListener("click",function(e){
+  const me = document.querySelector("#mouse-events2")
+  me.event.value = 'click'
   me.mouseX.value = e.pageX
   me.mouseY.value = e.pageY
   const newDate = new Date();
@@ -778,5 +1315,18 @@ $("#mouse-events").submit(function(e){
     })
   })
 
-frame0(true);
+  $("#mouse-events2").submit(function(e){
+    e.preventDefault();
+    form = $(this);
+    const url = window.location;
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    $.ajax({
+        headers: {'X-CSRFToken': csrftoken,'event':'mouse'},
+        type: "POST",
+        url: url,
+        data: form.serialize(),
+      })
+    })
+
+frame0(false);
 frame1(false);

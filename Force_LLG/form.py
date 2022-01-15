@@ -13,7 +13,7 @@ class pretestForm(forms.ModelForm):
 class pretestLogForm(forms.ModelForm):
         class Meta:
             model = pretestLog
-            fields = ('event','timeStamp','clickX','clickY')
+            fields = ('event','timeStamp')
 
 class pretestMouseForm(forms.ModelForm):
         class Meta:
@@ -38,7 +38,7 @@ class vectorForm(forms.ModelForm):
 class vectorLogForm(forms.ModelForm):
         class Meta:
             model = vectorsLog
-            fields = ('event','timeStamp')
+            fields = ('event','timeStamp','clickX','clickY')
 
 class vectorMouseForm(forms.ModelForm):
         class Meta:
